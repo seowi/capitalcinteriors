@@ -122,7 +122,7 @@
     <!-- Portfolio Grid Section -->
     <section id="press" class="portfolio bg-light-gray">
         <div class="wrapper">
-            <div class="container init">
+            <div class="container">
                 <div class="portfolio-item">
                     <a href="#pressModal1" class="portfolio-link" data-toggle="modal">
                         <div class="portfolio-hover">
