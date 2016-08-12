@@ -238,6 +238,12 @@ $(function () {
 			$('body').css("opacity",1);
 		}, 400);
 	});
+	$(document).on("click", "#press a" , function() {
+		resizePortfolioImages("press");
+	});
+	$(document).on("click", "#projects a" , function() {
+		resizePortfolioImages("project");
+	});
 
 
 
