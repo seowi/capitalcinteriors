@@ -194,6 +194,9 @@ header{
 			background-size: 500px;
 			background-position: calc(100% + 110px) 100%;
 		}
+		@media (min-height: 900px) {
+			background-position-y: bottom;
+		}
 	}
 	.container{
 		position: relative;
