@@ -382,6 +382,7 @@ $(function () {
 		});
 
     // SCROLL
+    $("#press .container.init").addClass("init");
 	$(window).scroll(function (e) { 
 		topscroll = $(this).scrollTop();
 		// Header parallax
