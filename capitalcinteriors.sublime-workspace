@@ -1,0 +1,1805 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"laborShow",
+				"laborShowBreakdownWrapper"
+			],
+			[
+				"default",
+				"defualtDuration"
+			],
+			[
+				"def",
+				"defaultStart"
+			],
+			[
+				"g",
+				"_GET"
+			],
+			[
+				"new",
+				"newVal"
+			],
+			[
+				"exp",
+				"expense"
+			],
+			[
+				"invoiceAverage",
+				"invoiceAverageProfit"
+			],
+			[
+				"status",
+				"statusPrev"
+			],
+			[
+				"rollov",
+				"rolloverTotal"
+			],
+			[
+				"invoice",
+				"invoiceID"
+			],
+			[
+				"st",
+				"style	Attr"
+			],
+			[
+				"style",
+				"font-style"
+			],
+			[
+				"mater",
+				"material_count"
+			],
+			[
+				"strtime",
+				"strtotime"
+			],
+			[
+				"outstanding",
+				"outstanding-value"
+			],
+			[
+				"ta",
+				"tax_rate"
+			],
+			[
+				"issue",
+				"date_issue"
+			],
+			[
+				"inlin",
+				"inline-block"
+			],
+			[
+				"inli",
+				"inline-block"
+			],
+			[
+				"discount",
+				"discount_percent"
+			],
+			[
+				"dis",
+				"discount_value"
+			],
+			[
+				"tex",
+				"text-decoration"
+			],
+			[
+				"att",
+				"attachmentIDs"
+			],
+			[
+				"ex",
+				"expense-edit"
+			],
+			[
+				"file",
+				"filename_i"
+			],
+			[
+				"fil",
+				"filesizeMB"
+			],
+			[
+				"fils",
+				"filesizeMB"
+			],
+			[
+				"base",
+				"base64_encode"
+			],
+			[
+				"char",
+				"chargeCount"
+			],
+			[
+				"undo",
+				"undoError"
+			],
+			[
+				"EXP",
+				"EXPENSE_CHARGE"
+			],
+			[
+				"charge",
+				"chargeTotal"
+			],
+			[
+				"profit",
+				"profitColor"
+			],
+			[
+				"invoic",
+				"invoiceID"
+			],
+			[
+				"EX",
+				"EXPENSE_CHARGE"
+			],
+			[
+				"d",
+				"disabled	Attr"
+			],
+			[
+				"labor",
+				"labor-details"
+			],
+			[
+				"prev",
+				"prevCharge"
+			],
+			[
+				"charg",
+				"chargeID"
+			],
+			[
+				"prof",
+				"profitColor"
+			],
+			[
+				"labtot",
+				"laborTotal"
+			],
+			[
+				"row",
+				"rowTotal"
+			],
+			[
+				"payroll",
+				"payrollDisabled"
+			],
+			[
+				"pa",
+				"payrollHours"
+			],
+			[
+				"ino",
+				"invoiceID"
+			],
+			[
+				"invoi",
+				"invoiceID"
+			],
+			[
+				"padd",
+				"padding"
+			],
+			[
+				"_",
+				"_POST"
+			],
+			[
+				"s",
+				"style	Attr"
+			],
+			[
+				"mar",
+				"margin"
+			],
+			[
+				"th",
+				"thumb"
+			],
+			[
+				"faceb",
+				"facebook-icon"
+			],
+			[
+				"twitter",
+				"twitter-icon"
+			],
+			[
+				"marg",
+				"margin"
+			],
+			[
+				"thum",
+				"thumbnailURL"
+			],
+			[
+				"thu",
+				"thumbnailURL"
+			],
+			[
+				"cli",
+				"clientId"
+			],
+			[
+				"PRINT",
+				"print_r"
+			],
+			[
+				"sub",
+				"subTotal"
+			],
+			[
+				"in",
+				"invoiceTotal"
+			],
+			[
+				"labo",
+				"LABOR"
+			],
+			[
+				"lab",
+				"LABOR_CHARGE"
+			],
+			[
+				"stafc",
+				"staffCount"
+			],
+			[
+				"updat",
+				"updateCosts"
+			],
+			[
+				"replace",
+				"str_replace"
+			],
+			[
+				"user",
+				"user_photo"
+			],
+			[
+				"targ",
+				"target_name"
+			],
+			[
+				"view",
+				"view-written"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"red",
+				"redirect"
+			],
+			[
+				"expen",
+				"expenseId"
+			],
+			[
+				"clienid",
+				"clientIds"
+			],
+			[
+				"prin",
+				"print_r"
+			],
+			[
+				"add-exp",
+				"add-expense-supplier-wrapper"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"add-expe",
+				"add-expense-type"
+			],
+			[
+				"cust",
+				"customTotal"
+			],
+			[
+				"defa",
+				"defaultTotal"
+			],
+			[
+				"cus",
+				"customSum"
+			],
+			[
+				"has",
+				"hasClass"
+			],
+			[
+				"remov",
+				"removeClass"
+			],
+			[
+				"margi",
+				"margin"
+			],
+			[
+				"data",
+				"data_array"
+			],
+			[
+				"get",
+				"getLocation"
+			],
+			[
+				"fo",
+				"font-size"
+			],
+			[
+				"scroll",
+				"scrollTop"
+			],
+			[
+				"concei",
+				"conceive-again"
+			],
+			[
+				"release",
+				"releaseVideos"
+			],
+			[
+				"pres",
+				"lad-president2"
+			],
+			[
+				"articl",
+				"articleCat"
+			],
+			[
+				"arti",
+				"articleCat"
+			],
+			[
+				"artic",
+				"articleQuery"
+			],
+			[
+				"ARTI",
+				"article"
+			],
+			[
+				"client",
+				"clientID"
+			],
+			[
+				"showid",
+				"ShowPageId"
+			],
+			[
+				"ajax",
+				"ajaxURL"
+			],
+			[
+				"font",
+				"font-family"
+			],
+			[
+				"email",
+				"emailPresenters"
+			],
+			[
+				"mix",
+				"mixcloud"
+			],
+			[
+				"mixcl",
+				"mixcloudToken"
+			],
+			[
+				"desc",
+				"description"
+			],
+			[
+				"last",
+				"lastShowId"
+			],
+			[
+				"las",
+				"lastShowId"
+			],
+			[
+				"starttim",
+				"startTime"
+			],
+			[
+				"endtim",
+				"endTime"
+			],
+			[
+				"Y",
+				"Y"
+			],
+			[
+				"start",
+				"startTimestamp"
+			],
+			[
+				"shoid",
+				"ShowPageId"
+			],
+			[
+				"showpage",
+				"ShowPageId"
+			],
+			[
+				"showName",
+				"showName"
+			],
+			[
+				"shofb",
+				"showFb"
+			],
+			[
+				"paddin",
+				"padding-bottom"
+			],
+			[
+				"nth",
+				"nth-of-type"
+			],
+			[
+				"arrkey",
+				"array_key_exists"
+			],
+			[
+				"resul",
+				"result_url"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"scro",
+				"scrollTop"
+			],
+			[
+				"str",
+				"str_replace"
+			],
+			[
+				"web_artic",
+				"web_articles_content"
+			],
+			[
+				"au",
+				"default"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"add",
+				"addClass"
+			],
+			[
+				"cur",
+				"cursor"
+			],
+			[
+				"type",
+				"type"
+			],
+			[
+				"ty",
+				"type"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"border-r",
+				"border-radius"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 35543,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 367.0,
+		"last_filter": "php",
+		"selected_items":
+		[
+			[
+				"php",
+				"Set Syntax: PHP"
+			],
+			[
+				"js",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"ftp",
+				"SFTP: Edit Server…"
+			],
+			[
+				"wrap",
+				"Word Wrap: Toggle"
+			],
+			[
+				"sftp",
+				"SFTP: Delete Server…"
+			],
+			[
+				"snippet ",
+				"Snippet: FILES['…']"
+			],
+			[
+				"rena",
+				"File: Rename"
+			],
+			[
+				"upload",
+				"SFTP: Upload File"
+			],
+			[
+				"javasc",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"java	",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"html ",
+				"Set Syntax: HTML"
+			],
+			[
+				"pytho",
+				"Set Syntax: Python"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"server",
+				"SFTP: Setup Server…"
+			],
+			[
+				"edit",
+				"SFTP: Edit Server…"
+			],
+			[
+				"gru",
+				"Grunt: Kill Running Tasks"
+			],
+			[
+				"rename",
+				"File: Rename"
+			],
+			[
+				"edi",
+				"SFTP: Edit Server…"
+			],
+			[
+				"edis",
+				"SFTP: Edit Server…"
+			],
+			[
+				"edit ser",
+				"SFTP: Edit Server…"
+			],
+			[
+				"grunt",
+				"Grunt: Kill Running Tasks"
+			],
+			[
+				"grunt ",
+				"Preferences: Grunt - Settings – Default"
+			],
+			[
+				"syncboth",
+				"SFTP: Sync Both Directions…"
+			],
+			[
+				"sftp sync",
+				"SFTP: Sync Local -> Remote…"
+			],
+			[
+				"sftp set",
+				"Preferences: SFTP Settings"
+			],
+			[
+				"grun",
+				"Grunt: Kill Running Tasks"
+			],
+			[
+				"g",
+				"Grunt"
+			],
+			[
+				"GRUNT",
+				"Grunt"
+			],
+			[
+				"gr",
+				"Grunt"
+			],
+			[
+				"sftp s",
+				"SFTP: Edit Server…"
+			],
+			[
+				"sftp key",
+				"Preferences: SFTP Key Bindings"
+			],
+			[
+				"ftp key",
+				"Preferences: SFTP Key Bindings"
+			],
+			[
+				"keybin",
+				"Preferences: Key Bindings - Default"
+			],
+			[
+				"key",
+				"Preferences: Key Bindings - User"
+			],
+			[
+				"down",
+				"SFTP: Download File"
+			],
+			[
+				"gur",
+				"Grunt"
+			],
+			[
+				"mon",
+				"SFTP: Monitor File (Upload on External Save)"
+			],
+			[
+				"monito",
+				"SFTP: Monitor File (Upload on External Save)"
+			],
+			[
+				"packins",
+				"Package Control: Install Package"
+			],
+			[
+				"grut",
+				"Grunt"
+			],
+			[
+				"user",
+				"Preferences: Settings - User"
+			],
+			[
+				"downl",
+				"SFTP: Download File"
+			],
+			[
+				"ftpmon",
+				"SFTP: Monitor File (Upload on External Save)"
+			],
+			[
+				"sftp ",
+				"SFTP: Monitor File (Upload on External Save)"
+			],
+			[
+				"packag",
+				"Package Control: Install Package"
+			],
+			[
+				"click	",
+				"Snippet: jQuery click handler"
+			],
+			[
+				"html	",
+				"Snippet: html"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"fetch",
+				"Fetch: Package"
+			],
+			[
+				"snip",
+				"Snippet: html"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"lint",
+				"SublimeLinter: Lint This View"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"fetc",
+				"Fetch: Package"
+			],
+			[
+				"sniphtml",
+				"Snippet: html"
+			],
+			[
+				"latex",
+				"LaTeXTools: View PDF"
+			],
+			[
+				"latexto",
+				"LaTeXTools: Reconfigure and migrate settings"
+			],
+			[
+				"plain tex",
+				"Set Syntax: Plain Text"
+			],
+			[
+				"word r",
+				"Word Wrap: Toggle"
+			],
+			[
+				"SERVER",
+				"SFTP: Setup Server…"
+			],
+			[
+				"brow",
+				"SFTP: Browse Server…"
+			],
+			[
+				"brows",
+				"SFTP: Browse Server…"
+			],
+			[
+				"browse",
+				"SFTP: Browse Server…"
+			],
+			[
+				"control pa",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 575.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/jonty/Sites/capitalcinteriors"
+	],
+	"file_history":
+	[
+		"/Users/jonty/Sites/capitalcinteriors/index.html",
+		"/Users/jonty/Sites/clover/js/laborAdd.js",
+		"/Users/jonty/Sites/clover/input/index.php",
+		"/Users/jonty/Sites/clover/includes/functions.php",
+		"/Users/jonty/Sites/clover/login/new.php",
+		"/Users/jonty/Sites/clover/login/photo.php",
+		"/Users/jonty/Sites/clover/login/views/register.php",
+		"/Users/jonty/Sites/clover/login/views/login.php",
+		"/Users/jonty/Sites/clover/login/config/db.php",
+		"/Users/jonty/Sites/clover/test.php",
+		"/Users/jonty/Sites/clover/test-webcam.php",
+		"/Users/jonty/Sites/clover/plugins/webcamjs/demos/basic.html",
+		"/Users/jonty/Sites/clover/includes/webcam.php",
+		"/Users/jonty/Sites/clover/includes/header.php",
+		"/Users/jonty/Sites/clover/includes/config.php",
+		"/Users/jonty/Sites/clover/login/classes/Login.php",
+		"/Users/jonty/Sites/clover/login/libraries/password_compatibility_library.php",
+		"/Users/jonty/Sites/clover/takePhoto.php",
+		"/Users/jonty/Sites/clover/scripts/invoicePDF.action.php",
+		"/Users/jonty/Sites/clover/labor/index.php",
+		"/Users/jonty/Sites/clover/scripts/editLabor.php",
+		"/Users/jonty/Sites/clover/labor/charges.php",
+		"/Users/jonty/Sites/clover/scripts/settings.action.php",
+		"/Users/jonty/Sites/clover/scripts/addLabor.php",
+		"/Users/jonty/Sites/clover/labor/laborModal.php",
+		"/Users/jonty/Sites/clover/labor/breakdownStaff.php",
+		"/Users/jonty/Sites/clover/js/settings.js",
+		"/Users/jonty/Sites/clover/invoices/index.php",
+		"/Users/jonty/Sites/clover/clients/clientModal.php",
+		"/Users/jonty/Sites/clover/clients/index.php",
+		"/Users/jonty/Sites/clover/scripts/addClient.php",
+		"/Users/jonty/Sites/clover/scripts/editClient.php",
+		"/Users/jonty/Sites/clover/js/clients/editClient.js",
+		"/Users/jonty/Sites/clover/js/general.js",
+		"/Users/jonty/Sites/clover/expenses/index.php",
+		"/Users/jonty/Sites/clover/js/expenses.js",
+		"/Users/jonty/Sites/clover/js/labor.js",
+		"/Users/jonty/Sites/clover/invoices/editInvoice.php",
+		"/Users/jonty/Sites/clover/expenses/breakdownType.php",
+		"/Users/jonty/Sites/clover/css/main.scss",
+		"/Users/jonty/Sites/clover/settings/index.php",
+		"/Users/jonty/Sites/clover/expenses/breakdownSuppliers.php",
+		"/Users/jonty/Sites/clover/labor/payroll.php",
+		"/Users/jonty/Sites/clover/input/staffHours.php",
+		"/Users/jonty/Sites/clover/js/invoiceEdit.js",
+		"/Users/jonty/Sites/clover/js/clients/addClient.js",
+		"/Users/jonty/Sites/clover/login/index.php",
+		"/Users/jonty/Sites/clover/includes/changeCompany.php",
+		"/Users/jonty/Sites/clover/.htaccess",
+		"/Users/jonty/Sites/clover/scripts/editInvoice.action.php",
+		"/Users/jonty/Sites/clover/js/expenseAdd.js",
+		"/Users/jonty/Sites/AdminLTE-2.1.1/pages/calendar.html",
+		"/Users/jonty/Sites/clover/js/input.js",
+		"/Users/jonty/Sites/clover/scripts/addExpense.php",
+		"/Users/jonty/Sites/clover/input/expensesTable.php",
+		"/Users/jonty/Sites/clover/expenses/expenseModal.php",
+		"/Users/jonty/Sites/clover/js/expenseEdit.js",
+		"/Users/jonty/Sites/clover/invoices/chargeModal.php",
+		"/Users/jonty/Sites/clover/scripts/uploadAttachment.php",
+		"/Users/jonty/Sites/clover/scripts/invoicePay.action.php",
+		"/Users/jonty/Sites/clover/scripts/invoiceCharge.action.php",
+		"/Users/jonty/Sites/clover/scripts/invoiceAdd.php",
+		"/Users/jonty/Sites/clover/scripts/editExpense.php",
+		"/Users/jonty/Sites/clover/blank.php",
+		"/Users/jonty/Sites/clover/js/modal-ajax.js",
+		"/Users/jonty/Sites/clover/invoices/issueModal.php",
+		"/Users/jonty/Sites/clover/invoices/cancelModal.php",
+		"/Users/jonty/Sites/clover/includes/modal-ajax.php",
+		"/Users/jonty/Sites/clover/invoices/payModal.php",
+		"/Users/jonty/Sites/clover/invoices/pdfForwarder.php",
+		"/Users/jonty/Sites/clover/blankModal.php",
+		"/Users/jonty/Sites/clover/js/laborEdit.js",
+		"/Users/jonty/Sites/clover/includes/popupWarning.html",
+		"/Users/jonty/Sites/clover/input/inputExpensesTable.php",
+		"/Users/jonty/Sites/clover/input/attachFiles.php",
+		"/Users/jonty/Sites/clover/attachFiles.php",
+		"/Users/jonty/Sites/clover/input.php",
+		"/Users/jonty/Sites/clover/plugins/fpdf/fpdf.rotate.php",
+		"/Users/jonty/Sites/clover/labor.php",
+		"/Users/jonty/Sites/clover/invoices/viewInvoice.php",
+		"/Users/jonty/Sites/clover/includes/class.switcher.php",
+		"/Users/jonty/Sites/clover/invoice/editInvoice.php",
+		"/Users/jonty/Sites/clover/invoices.php",
+		"/Users/jonty/Sites/clover/scripts/newInvoice.php",
+		"/Users/jonty/Sites/clover/client.php",
+		"/Users/jonty/Sites/clover/gitLatest.php",
+		"/Users/jonty/Sites/clover/includes/footer.php",
+		"/Users/jonty/Sites/clover/Gruntfile.js",
+		"/Users/jonty/Sites/clover/expense.php",
+		"/Users/jonty/Sites/clover/clients.php",
+		"/Users/jonty/Sites/clover/pages/calendar.html",
+		"/Users/jonty/Sites/clover/dist/js/app.js",
+		"/Users/jonty/Sites/clover/modal-template.php",
+		"/private/etc/apache2/httpd.conf",
+		"/Users/jonty/Desktop/httpd.conf alias",
+		"/Users/jonty/Sites/clover/inputExpensesTable.php",
+		"/Users/jonty/Sites/clover/js/daily/dailyAddLabor.js",
+		"/Users/jonty/Sites/clover/build/daily.php",
+		"/Users/jonty/Sites/clover/js/daily/daily.js",
+		"/Users/jonty/Sites/clover/js/editExpense.js",
+		"/Users/jonty/Sites/clover/js/editLabor.js",
+		"/Users/jonty/Sites/clover/js/invoice/newInvoice.js",
+		"/Users/jonty/Sites/clover/invoiceLabor.php",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440864373/jonty/home2/ocassioh/public_html/sra/sras/winners/index.php",
+		"/Users/jonty/Sites/clover/clientDetails.php",
+		"/Users/jonty/Sites/clover/includes/modals.php",
+		"/Users/jonty/Sites/clover/client-details.php",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440852624/su9urb/u/u/su9urb/public_html/BathDecides.php",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440852106/jonty/home2/ocassioh/public_html/uniradiobath/.htaccess",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440847383/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/elements/loop-single.php",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440847314/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/taxonomy-section.php",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440846021/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/content-ask.php",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440846606/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/header.php",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440846585/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/template-homepage.php",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440846453/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/archive-ask.php",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440846414/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/taxonomy-regions.php",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440846378/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/taxonomy-section.php",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440846314/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/inc/cpt.ask.php",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440846011/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/inc/functions.ask.php",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440845806/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/inc/helper.mediainfo.feeds.php",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440845713/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/page-industry.php",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440844786/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/footer.php",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440845188/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/content.php",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440843860/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/elements/awards-homepage.php",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440843422/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/inc/functions.homepagehero.php",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440841362/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-config.php",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440840967/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/.htaccess",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440839977/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/template-awards.php"
+	],
+	"find":
+	{
+		"height": 25.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+			"/Users/jonty/Sites/uniradiobath"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"format",
+			"console",
+			"0.1",
+			"breakdown",
+			"count",
+			"clientID",
+			"-hours",
+			"desc",
+			"config_staff",
+			"modal",
+			"<?=getSetting(\"laborOvertimeRate\")?>",
+			"timepicker",
+			"console",
+			"daily-date",
+			"rate",
+			"external-events",
+			"/input",
+			"multiselec",
+			"camera",
+			"number",
+			".php",
+			"?",
+			"prop",
+			"pay",
+			"deleted",
+			"pdf",
+			"-rollover",
+			"charge",
+			"name=\"",
+			"modal",
+			"payment",
+			"submit",
+			"ajaxmo",
+			"edit",
+			"total",
+			"footer",
+			"console",
+			"currency",
+			"BEEN ISSUED",
+			"multicell",
+			"php?",
+			"?id",
+			"modal",
+			"select",
+			"date",
+			"files",
+			"attachment",
+			"attachments",
+			"href",
+			"order",
+			"WHILE",
+			"outstanding",
+			"user",
+			"submit",
+			"$id",
+			"hidden",
+			"issue",
+			"subtotal-pre-discount",
+			"name=\"",
+			"date",
+			"$new",
+			"$id",
+			"$invoice",
+			"modal",
+			"table",
+			"data",
+			"payrol",
+			"<b",
+			"main-head",
+			"<u>",
+			"under",
+			"alert",
+			"produc",
+			"info",
+			"docroot",
+			"button",
+			"exp-cost-prev",
+			"prev",
+			"$charge",
+			"charge",
+			"$charge",
+			"$client",
+			"labor-total",
+			"cost",
+			"invoicelabor",
+			"tool",
+			"info-cir",
+			"loading",
+			"$client",
+			"currency",
+			"cost-value",
+			"rate",
+			"click",
+			"your ques",
+			"wp_related_posts",
+			"has_post_thumbnail",
+			"mediainfo_feed_page",
+			"mediainfo",
+			"<b>Written:</b>",
+			"<b>Audio:</b>",
+			"&a",
+			"&",
+			"<div class=\"box collapsed-box\">",
+			"<div class=\"box-tools pull-right\">\n            <button class=\"btn btn-box-tool\" data-widget=\"collapse\">\n            <i class=\"fa fa-plus\"></i>\n            </button>\n         </div>",
+			"\n         <div class=\"box-tools pull-right\">\n            <button class=\"btn btn-box-tool\" data-widget=\"collapse\">\n            <i class=\"fa fa-minus\"></i>\n            </button>\n         </div>",
+			"<div class=\"box\">",
+			"<div class=\"box-tools pull-right\"> <button class=\"btn btn-box-tool\" data-widget=\"collapse\" data-toggle=\"tooltip\" title=\"Collapse\"><i class=\"fa fa-minus\"></i></button> </div>",
+			"<div class=\"box\">",
+			"<a",
+			"posted",
+			"classes",
+			"'host'",
+			"host'",
+			"dbuser",
+			"user",
+			"database",
+			"sra_display",
+			"unit",
+			"pass",
+			"autoconfig",
+			"img",
+			"<a",
+			".result",
+			"multipl",
+			"validate",
+			"clients",
+			"user",
+			"USER"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"$edit",
+			"<b>Written:</b>&nbsp;",
+			"<b>Audio:</b>&nbsp;",
+			"<b>Audio:</b>&am",
+			"<div class=\"box well\">",
+			"",
+			"<div class=\"box well\">",
+			"",
+			"<div class=\"box well\">",
+			"winners.php",
+			"$raw",
+			"'",
+			"",
+			"?",
+			"&amp;enablejsapi=1&amp;rel=0",
+			"['',",
+			"In the \"year of the lad\", we thought it was important to figure out just how lad-ish each of the manifestos are. Browse through the candidates to find out how their 500 words score.",
+			"In the \"year of the lad\", we thought it was important to figure out just how lad-ish each of the manifestos are. Browse through the candidates below to find out how their 500 words score. ",
+			"http://uniradiobath.com/docs/suelections2015/",
+			"class=\"candidate-facebook\" target=\"_blank\">",
+			"class=\"candidate-twitter\" target=\"_blank\">",
+			"<a href=\"/su9urb/docs/suelections2015/\" class=\"candidate-manifesto\" target=\"_blank\">",
+			"<br/><a href=\"\" class=\"candidate-manifesto\">",
+			" "
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 35543,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"WordCount":
+							{
+								"changes": 0,
+								"count": 736,
+								"modified": false,
+								"selection": false,
+								"status": -1,
+								"syntax": "plain text"
+							},
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 25.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 145.0
+	},
+	"pinned_build_system": "",
+	"project": "capitalcinteriors.sublime-project",
+	"replace":
+	{
+		"height": 46.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"ind",
+				"index.html"
+			],
+			[
+				"index",
+				"index.html"
+			],
+			[
+				"scripts/labo",
+				"scripts/editLabor.php"
+			],
+			[
+				"input/ind",
+				"input/index.php"
+			],
+			[
+				"func",
+				"includes/functions.php"
+			],
+			[
+				"scripts/labor",
+				"scripts/editLabor.php"
+			],
+			[
+				"js/labadd",
+				"js/laborAdd.js"
+			],
+			[
+				"js/labor",
+				"js/laborEdit.js"
+			],
+			[
+				"labormoda",
+				"labor/laborModal.php"
+			],
+			[
+				"login/",
+				"login/libraries/password_compatibility_library.php"
+			],
+			[
+				"login",
+				"login/classes/Login.php"
+			],
+			[
+				"login/new",
+				"login/new.php"
+			],
+			[
+				"login/php",
+				"login/photo.php"
+			],
+			[
+				"login/view",
+				"login/views/register.php"
+			],
+			[
+				"login/db",
+				"login/config/db.php"
+			],
+			[
+				"config",
+				"includes/config.php"
+			],
+			[
+				"header",
+				"includes/header.php"
+			],
+			[
+				"photo",
+				"takePhoto.php"
+			],
+			[
+				"webcamjs/demos/ba",
+				"plugins/webcamjs/demos/basic.html"
+			],
+			[
+				"test",
+				"test.php"
+			],
+			[
+				"labor/ind",
+				"labor/index.php"
+			],
+			[
+				"labormod",
+				"labor/laborModal.php"
+			],
+			[
+				"laborbre",
+				"labor/breakdownStaff.php"
+			],
+			[
+				"labor/cha",
+				"labor/charges.php"
+			],
+			[
+				"pdf",
+				"scripts/invoicePDF.action.php"
+			],
+			[
+				"scripts/add",
+				"scripts/addLabor.php"
+			],
+			[
+				"laborad",
+				"js/laborAdd.js"
+			],
+			[
+				"input",
+				"input/index.php"
+			],
+			[
+				"laborjs",
+				"js/laborAdd.js"
+			],
+			[
+				"scripts/sett",
+				"scripts/settings.action.php"
+			],
+			[
+				"settings",
+				"js/settings.js"
+			],
+			[
+				"scripts/clien",
+				"scripts/addClient.php"
+			],
+			[
+				"clients/",
+				"clients/index.php"
+			],
+			[
+				"clientmo",
+				"clients/clientModal.php"
+			],
+			[
+				"editlab",
+				"scripts/editLabor.php"
+			],
+			[
+				"invoice/",
+				"invoices/index.php"
+			],
+			[
+				"head",
+				"includes/header.php"
+			],
+			[
+				"laboradd",
+				"js/laborAdd.js"
+			],
+			[
+				"input/in",
+				"input/index.php"
+			],
+			[
+				"labor/",
+				"labor/index.php"
+			],
+			[
+				"js/clien",
+				"js/clients/editClient.js"
+			],
+			[
+				"action.php",
+				"scripts/settings.action.php"
+			],
+			[
+				"scripts/cli",
+				"scripts/editClient.php"
+			],
+			[
+				"clien",
+				"clients/clientModal.php"
+			],
+			[
+				"addlabor",
+				"scripts/addLabor.php"
+			],
+			[
+				"general",
+				"js/general.js"
+			],
+			[
+				"setting",
+				"scripts/settings.action.php"
+			],
+			[
+				"scripts/lab",
+				"scripts/addLabor.php"
+			],
+			[
+				"breakdow",
+				"expenses/breakdownType.php"
+			],
+			[
+				"scss",
+				"css/main.scss"
+			],
+			[
+				"labor",
+				"js/labor.js"
+			],
+			[
+				"expenses",
+				"js/expenses.js"
+			],
+			[
+				"expenses/",
+				"expenses/index.php"
+			],
+			[
+				"invoice",
+				"invoices/editInvoice.php"
+			],
+			[
+				"js/add",
+				"js/laborAdd.js"
+			],
+			[
+				"staff",
+				"input/staffHours.php"
+			],
+			[
+				"js/la",
+				"js/laborAdd.js"
+			],
+			[
+				"input/",
+				"input/staffHours.php"
+			],
+			[
+				"js/labo",
+				"js/labor.js"
+			],
+			[
+				"labor/in",
+				"labor/index.php"
+			],
+			[
+				"js/",
+				"js/invoiceEdit.js"
+			],
+			[
+				"settin/in",
+				"settings/index.php"
+			],
+			[
+				"sett",
+				"js/settings.js"
+			],
+			[
+				"expenses/i",
+				"expenses/index.php"
+			],
+			[
+				"company",
+				"includes/changeCompany.php"
+			],
+			[
+				"login/in",
+				"login/index.php"
+			],
+			[
+				"settingac",
+				"scripts/settings.action.php"
+			],
+			[
+				"settings/ind",
+				"settings/index.php"
+			],
+			[
+				"js/client",
+				"js/clients/addClient.js"
+			],
+			[
+				"clients",
+				"clients/index.php"
+			],
+			[
+				"invoices",
+				"invoices/index.php"
+			],
+			[
+				"logindb",
+				"login/config/db.php"
+			],
+			[
+				"htacc",
+				".htaccess"
+			],
+			[
+				"login/ind",
+				"login/index.php"
+			],
+			[
+				"settings.a",
+				"scripts/settings.action.php"
+			],
+			[
+				"htacce",
+				".htaccess"
+			],
+			[
+				"new.",
+				"login/new.php"
+			],
+			[
+				"settings/",
+				"settings/index.php"
+			],
+			[
+				"test.",
+				"test.php"
+			],
+			[
+				"settings.ac",
+				"scripts/settings.action.php"
+			],
+			[
+				"clientmod",
+				"clients/clientModal.php"
+			],
+			[
+				"expensead",
+				"js/expenseAdd.js"
+			],
+			[
+				"setting/",
+				"settings/index.php"
+			],
+			[
+				"invoice/ed",
+				"invoices/editInvoice.php"
+			],
+			[
+				"input/i",
+				"input/index.php"
+			],
+			[
+				"js/lab",
+				"js/labor.js"
+			],
+			[
+				"function",
+				"includes/functions.php"
+			],
+			[
+				"expense/in",
+				"expenses/index.php"
+			],
+			[
+				"client/id",
+				"clients/index.php"
+			],
+			[
+				"htaccess",
+				".htaccess"
+			],
+			[
+				"js/invoice",
+				"js/invoiceEdit.js"
+			],
+			[
+				"expensmod",
+				"expenses/expenseModal.php"
+			],
+			[
+				"editlabo",
+				"scripts/editLabor.php"
+			],
+			[
+				"expenstabl",
+				"input/expensesTable.php"
+			],
+			[
+				"invoiceaction",
+				"scripts/editInvoice.action.php"
+			],
+			[
+				"invoiceedi",
+				"invoices/editInvoice.php"
+			],
+			[
+				"addex",
+				"scripts/addExpense.php"
+			],
+			[
+				"addlab",
+				"scripts/addLabor.php"
+			],
+			[
+				"expes/ind",
+				"expenses/index.php"
+			],
+			[
+				"expensjs",
+				"js/expenseEdit.js"
+			],
+			[
+				"expenmod",
+				"expenses/expenseModal.php"
+			],
+			[
+				"chargemod",
+				"invoices/chargeModal.php"
+			],
+			[
+				"addla",
+				"scripts/addLabor.php"
+			],
+			[
+				"invoices/ind",
+				"invoices/index.php"
+			],
+			[
+				"expenmoda",
+				"expenses/expenseModal.php"
+			],
+			[
+				"uploadatt",
+				"scripts/uploadAttachment.php"
+			],
+			[
+				"scripts/",
+				"scripts/editExpense.php"
+			],
+			[
+				"expen",
+				"input/expensesTable.php"
+			],
+			[
+				"invoices/",
+				"invoices/index.php"
+			],
+			[
+				"inde",
+				"clients/index.php"
+			],
+			[
+				"blank",
+				"blank.php"
+			],
+			[
+				"expensadd",
+				"js/expenseAdd.js"
+			],
+			[
+				"invoicejs",
+				"js/invoiceEdit.js"
+			],
+			[
+				"invoic",
+				"invoices/index.php"
+			],
+			[
+				"clientm",
+				"clients/clientModal.php"
+			],
+			[
+				"funct",
+				"includes/functions.php"
+			],
+			[
+				"ajax",
+				"js/modal-ajax.js"
+			],
+			[
+				"css/",
+				"css/main.scss"
+			],
+			[
+				"scripts/invoice",
+				"scripts/editInvoice.action.php"
+			],
+			[
+				"invoicedi",
+				"scripts/invoicePDF.action.php"
+			],
+			[
+				"modal",
+				"js/modal-ajax.js"
+			],
+			[
+				"invoicepdf",
+				"scripts/invoicePDF.action.php"
+			],
+			[
+				"blankmod",
+				"blankModal.php"
+			],
+			[
+				"js/invoi",
+				"js/invoiceEdit.js"
+			],
+			[
+				"issue",
+				"invoices/issueModal.php"
+			],
+			[
+				"invoiceac",
+				"scripts/editInvoice.action.php"
+			],
+			[
+				"scripts/in",
+				"scripts/editInvoice.action.php"
+			],
+			[
+				"laborm",
+				"labor/laborModal.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 210.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
