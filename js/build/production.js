@@ -127,7 +127,7 @@ $(function () {
 	  	var windowHeight = $(window).height();
 	}
   	var windowWidth = $(window).width();
-  	if(isMobile && window.innerHeight > window.innerWidth){
+  	if(isMobile && window.innerHeight < window.innerWidth){
 	  	var windowHeight = windowWidth;
 	  	var windowWidth = windowHeight;
   	}
