@@ -123,11 +123,10 @@ $(function () {
 
 	if(isMobile){
 	  	var windowHeight = window.screen.height;
-	  	var windowWidth = window.screen.width;
 	}else{
 	  	var windowHeight = $(window).height();
-	  	var windowWidth = $(window).width();
 	}
+  	var windowWidth = $(window).width();
 	function resizeAdjustments(){
 		// Resize header
 			// If portrait
@@ -405,7 +404,12 @@ $(function () {
 			}
 		// Reveal press
 			pressOffset = $("#press").offset().top;
-			if(topscroll>(pressOffset-(0.8*windowHeight)))
+			if(isMobile){
+				pressTrigger = pressOffset-windowHeight;
+			}else{
+				pressTrigger = pressOffset-(0.8*windowHeight);
+			}
+			if(topscroll>pressTrigger)
 				$("#press .container.init").removeClass("init");
 	});
 	// Show elements if page is loaded pre-scrolled
