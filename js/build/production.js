@@ -121,7 +121,7 @@ $(function () {
 
 	$.scrollUp({topDistance: '1000'});
 
-	if(isMobile){
+	if(isMobile && window.screen.height>=768){
 	  	var windowHeight = window.screen.height;
 	}else{
 	  	var windowHeight = $(window).height();
@@ -1335,3 +1335,5 @@ $(function () {
   };
 
 })( jQuery );
+
+
