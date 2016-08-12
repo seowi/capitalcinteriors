@@ -13,6 +13,10 @@ $(function () {
 	  	var windowHeight = $(window).height();
 	}
   	var windowWidth = $(window).width();
+  	if(isMobile && window.innerHeight > window.innerWidth){
+	  	var windowHeight = windowWidth;
+	  	var windowWidth = windowHeight;
+  	}
 	function resizeAdjustments(){
 		// Resize header
 			// If portrait
