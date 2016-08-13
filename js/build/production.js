@@ -180,7 +180,6 @@ $(function () {
 			wrapperHeight = wrapper.height();
 			wrapperWidth = wrapper.width();
 			wrapperRatio = wrapperWidth/wrapperHeight;
-			$(".modal").removeClass("init");
 		// Loop through each image to resize it
 		if(!isNaN(wrapperRatio)){
 			$('body').find('.portfolio-modal.' + modalClass + ' .modal-image .images img').each(function(){
@@ -189,31 +188,32 @@ $(function () {
 					$(this).removeClass("wide tall");
 					$(this).css("top","");
 				// Establish if the image should be stretched tall or wide
-					if(this.width/this.height < 1){
+					console.log($(this).width() + " " + $(this).height());
+					if($(this).width()/$(this).height() < 1){
 						// Portrait Image
 							$(this).attr("data-orientation","portrait");
 							// Calculate width, if height was set to 100%
 							calcHeight = wrapperHeight;
-							calcWidth = calcHeight * (this.width/this.height);
+							calcWidth = calcHeight * ($(this).width()/$(this).height());
 							if(calcWidth<=wrapperWidth){
 								imgClass = "tall";
 							}else{
 								imgClass = "wide";
-								calcHeight = wrapperWidth * (this.height/this.width)
+								calcHeight = wrapperWidth * ($(this).height()/$(this).width())
 							}
 					}else{
 						// Landscape Image
 							$(this).attr("data-orientation","landscape");
 							// Calculate height, if width was set to 100%
 							calcWidth = wrapperWidth;
-							calcHeight = calcWidth * (this.height/this.width);
+							calcHeight = calcWidth * ($(this).height()/$(this).width());
 							$(this).attr("data-calcHeight",calcHeight);
 							$(this).attr("data-wrapperHeight",wrapperHeight);
 							if(calcHeight<=wrapperHeight){
 								imgClass = "wide";
 							}else{
 								imgClass = "tall";
-								calcWith = wrapperHeight * (this.width/this.height);
+								calcWith = wrapperHeight * ($(this).width()/$(this).height());
 							}
 					}
 				// If wide, vertically center
@@ -226,6 +226,8 @@ $(function () {
 					$(this).addClass(imgClass);
 			})
 		}
+		// Reset modal
+		$(".modal").removeClass("init");
 	}
 	resizePortfolioImages("press");
 	resizePortfolioImages("project");
