@@ -156,7 +156,7 @@ $(function () {
 	    // Resize contact
 	    	contactHeight = windowHeight-170;
 		    if($("section#contact").height()<contactHeight){
-		    	$("section#contact").height(contactHeight);
+		    	// $("section#contact").height(contactHeight);
 		    }
 	}
 	resizeAdjustments();
@@ -238,10 +238,10 @@ $(function () {
 		}, 400);
 	});
 	$(document).on("click", "#press a" , function() {
-		resizePortfolioImages("press");
+		if(isMobile) resizePortfolioImages("press");
 	});
 	$(document).on("click", "#projects a" , function() {
-		resizePortfolioImages("project");
+		if(isMobile) resizePortfolioImages("project");
 	});
 
 
