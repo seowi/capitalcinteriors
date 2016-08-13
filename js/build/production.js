@@ -240,10 +240,10 @@ $(function () {
 		}, 400);
 	});
 	$(document).on("click", "#press a" , function() {
-		if(isMobile) resizePortfolioImages("press");
+		resizePortfolioImages("press");
 	});
 	$(document).on("click", "#projects a" , function() {
-		if(isMobile) resizePortfolioImages("project");
+		resizePortfolioImages("project");
 	});
 
 
