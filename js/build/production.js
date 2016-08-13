@@ -184,9 +184,6 @@ $(function () {
 		if(!isNaN(wrapperRatio)){
 			$('body').find('.portfolio-modal.' + modalClass + ' .modal-image .images img').each(function(){
 				if($(this).width()>0 && $(this).height()>0){
-					// Reset
-						$(this).removeClass("wide tall");
-						$(this).css("top","");
 					// Establish if the image should be stretched tall or wide
 						console.log($(this).width() + " " + $(this).height());
 						if($(this).width()/$(this).height() < 1){
@@ -216,6 +213,9 @@ $(function () {
 									calcWith = wrapperHeight * ($(this).width()/$(this).height());
 								}
 						}
+					// Reset
+						$(this).removeClass("wide tall");
+						$(this).css("top","");
 					// If wide, vertically center
 						// if( (wrapperRatio>1 && imgClass=="tall") || (wrapperRatio<1 && imgClass=="wide") ){
 						if(imgClass=="wide"){
