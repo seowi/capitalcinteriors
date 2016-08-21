@@ -238,7 +238,7 @@ $(function () {
 			   	pressPosition = pressTop - $(window).scrollTop();
 			   	pressPosition += $('#press .wrapper').height()/2;
 			   	pressPosition -= $(window).height()/2;
-			   	// if(pressPosition>-40 && pressPosition<40){
+			   	if(pressPosition>-100 && pressPosition<100){
 			   		pressScroll = +$("#press .wrapper").css("margin-left").replace("px","");
 					pressScrollNew = pressScroll + (delta * 1.5);
 			    	if(delta>0){
@@ -266,7 +266,7 @@ $(function () {
 					    	$("#press .wrapper").css("margin-left",correction);
 			    		}
 			    	}
-			   	// }
+			   	}
 			}
 		});
 

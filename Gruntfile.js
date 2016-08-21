@@ -38,6 +38,7 @@ module.exports = function(grunt) {
                     style: 'compressed'
                 },
                 files: {
+                    'css/admin.css': 'css/admin.scss',
                     'css/production.css': 'css/main.scss'
                 }
             } 

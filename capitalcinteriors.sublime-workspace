@@ -4,6 +4,78 @@
 		"selected_items":
 		[
 			[
+				"mobi",
+				"isMobile"
+			],
+			[
+				"padd",
+				"padding-left"
+			],
+			[
+				"widn",
+				"windowWidth"
+			],
+			[
+				"in",
+				"initial"
+			],
+			[
+				"bac",
+				"background"
+			],
+			[
+				"z",
+				"z-index"
+			],
+			[
+				"wrap",
+				"wrapperRatio"
+			],
+			[
+				"texal",
+				"text-align"
+			],
+			[
+				"bor",
+				"border-radius"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"port",
+				"portfolio-modal"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			],
+			[
+				"teal",
+				"text-align"
+			],
+			[
+				"cont",
+				"contactHeight"
+			],
+			[
+				"fons",
+				"font-size"
+			],
+			[
+				"textal",
+				"text-align"
+			],
+			[
+				"scro",
+				"scrollVal"
+			],
+			[
+				"wrapper",
+				"wrapperHeight"
+			],
+			[
 				"laborShow",
 				"laborShowBreakdownWrapper"
 			],
@@ -188,10 +260,6 @@
 				"invoiceID"
 			],
 			[
-				"padd",
-				"padding"
-			],
-			[
 				"_",
 				"_POST"
 			],
@@ -238,10 +306,6 @@
 			[
 				"sub",
 				"subTotal"
-			],
-			[
-				"in",
-				"invoiceTotal"
 			],
 			[
 				"labo",
@@ -450,70 +514,6 @@
 			[
 				"paddin",
 				"padding-bottom"
-			],
-			[
-				"nth",
-				"nth-of-type"
-			],
-			[
-				"arrkey",
-				"array_key_exists"
-			],
-			[
-				"resul",
-				"result_url"
-			],
-			[
-				"pos",
-				"position"
-			],
-			[
-				"scro",
-				"scrollTop"
-			],
-			[
-				"str",
-				"str_replace"
-			],
-			[
-				"web_artic",
-				"web_articles_content"
-			],
-			[
-				"au",
-				"default"
-			],
-			[
-				"con",
-				"console"
-			],
-			[
-				"add",
-				"addClass"
-			],
-			[
-				"cur",
-				"cursor"
-			],
-			[
-				"type",
-				"type"
-			],
-			[
-				"ty",
-				"type"
-			],
-			[
-				"fon",
-				"font-size"
-			],
-			[
-				"wi",
-				"width"
-			],
-			[
-				"border-r",
-				"border-radius"
 			]
 		]
 	},
@@ -523,7 +523,63 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 35543,
+				"buffer_size": 47060,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "vendor/bootstrap/css/bootstrap.css",
+			"settings":
+			{
+				"buffer_size": 146010,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "css/main.scss",
+			"settings":
+			{
+				"buffer_size": 13463,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "\n                <div class=\"col-md-4 col-sm-6 portfolio-item\">\n                    <a href=\"#portfolioModal2\" class=\"portfolio-link\" data-toggle=\"modal\">\n                        <div class=\"portfolio-hover\">\n                            <div class=\"portfolio-hover-content\">\n                                <i class=\"fa fa-plus fa-3x\"></i>\n                            </div>\n                        </div>\n                        <img src=\"projects/sothebys.jpg\" class=\"img-responsive\" alt=\"\">\n                    </a>\n                </div>\n                <div class=\"col-md-4 col-sm-6 portfolio-item\">\n                    <a href=\"#portfolioModal3\" class=\"portfolio-link\" data-toggle=\"modal\">\n                        <div class=\"portfolio-hover\">\n                            <div class=\"portfolio-hover-content\">\n                                <i class=\"fa fa-plus fa-3x\"></i>\n                            </div>\n                        </div>\n                        <img src=\"projects/scottsdale.jpg\" class=\"img-responsive\" alt=\"\">\n                    </a>\n                </div>\n                <div class=\"col-md-4 col-sm-6 portfolio-item\">\n                    <a href=\"#portfolioModal4\" class=\"portfolio-link\" data-toggle=\"modal\">\n                        <div class=\"portfolio-hover\">\n                            <div class=\"portfolio-hover-content\">\n                                <i class=\"fa fa-plus fa-3x\"></i>\n                            </div>\n                        </div>\n                        <img src=\"projects/rutherford.jpg\" class=\"img-responsive\" alt=\"\">\n                    </a>\n                </div>\n                <div class=\"col-md-4 col-sm-6 portfolio-item\">\n                    <a href=\"#portfolioModal6\" class=\"portfolio-link\" data-toggle=\"modal\">\n                        <div class=\"portfolio-hover\">\n                            <div class=\"portfolio-hover-content\">\n                                <i class=\"fa fa-plus fa-3x\"></i>\n                            </div>\n                        </div>\n                        <img src=\"projects/bistro.jpg\" class=\"img-responsive\" alt=\"\">\n                    </a>\n                </div>\n                <div class=\"col-md-4 col-sm-6 portfolio-item\">\n                    <a href=\"#portfolioModal6\" class=\"portfolio-link\" data-toggle=\"modal\">\n                        <div class=\"portfolio-hover\">\n                            <div class=\"portfolio-hover-content\">\n                                <i class=\"fa fa-plus fa-3x\"></i>\n                            </div>\n                        </div>\n                        <img src=\"projects/anson.jpg\" class=\"img-responsive\" alt=\"\">\n                    </a>\n                </div>\n\n\n\n                <div class=\"col-md-4 col-sm-6 portfolio-item\">\n                    <a href=\"#portfolioModal5\" class=\"portfolio-link\" data-toggle=\"modal\">\n                        <div class=\"portfolio-hover\">\n                            <div class=\"portfolio-hover-content\">\n                                <i class=\"fa fa-plus fa-3x\"></i>\n                            </div>\n                        </div>\n                        <img src=\"projects/piedaterrelili.jpg\" class=\"img-responsive\" alt=\"\">\n                    </a>\n                </div>\n                <div class=\"col-md-4 col-sm-6 portfolio-item\">\n                    <a href=\"#portfolioModal6\" class=\"portfolio-link\" data-toggle=\"modal\">\n                        <div class=\"portfolio-hover\">\n                            <div class=\"portfolio-hover-content\">\n                                <i class=\"fa fa-plus fa-3x\"></i>\n                            </div>\n                        </div>\n                        <img src=\"projects/oliver.jpg\" class=\"img-responsive\" alt=\"\">\n                    </a>\n                </div>\n                <div class=\"col-md-4 col-sm-6 portfolio-item\">\n                    <a href=\"#portfolioModal6\" class=\"portfolio-link\" data-toggle=\"modal\">\n                        <div class=\"portfolio-hover\">\n                            <div class=\"portfolio-hover-content\">\n                                <i class=\"fa fa-plus fa-3x\"></i>\n                            </div>\n                        </div>\n                        <img src=\"projects/chelseamodern.jpg\" class=\"img-responsive\" alt=\"\">\n                    </a>\n                </div>\n                <div class=\"col-md-4 col-sm-6 portfolio-item\">\n                    <a href=\"#portfolioModal6\" class=\"portfolio-link\" data-toggle=\"modal\">\n                        <div class=\"portfolio-hover\">\n                            <div class=\"portfolio-hover-content\">\n                                <i class=\"fa fa-plus fa-3x\"></i>\n                            </div>\n                        </div>\n                        <img src=\"projects/blanco.jpg\" class=\"img-responsive\" alt=\"\">\n                    </a>\n                </div>\n\n\n\n\n                <div class=\"col-md-4 col-sm-6 portfolio-item\">\n                    <a href=\"#portfolioModal6\" class=\"portfolio-link\" data-toggle=\"modal\">\n                        <div class=\"portfolio-hover\">\n                            <div class=\"portfolio-hover-content\">\n                                <i class=\"fa fa-plus fa-3x\"></i>\n                            </div>\n                        </div>\n                        <img src=\"projects/acapulco.jpg\" class=\"img-responsive\" alt=\"\">\n                    </a>\n                </div>",
+			"settings":
+			{
+				"buffer_size": 5423,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/general.js",
+			"settings":
+			{
+				"buffer_size": 13090,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/mobile.js",
+			"settings":
+			{
+				"buffer_size": 1,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/agency.js",
+			"settings":
+			{
+				"buffer_size": 1252,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "css/agency.css",
+			"settings":
+			{
+				"buffer_size": 16446,
 				"line_ending": "Unix"
 			}
 		}
@@ -535,14 +591,10 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 367.0,
-		"last_filter": "php",
+		"height": 392.0,
+		"last_filter": "",
 		"selected_items":
 		[
-			[
-				"php",
-				"Set Syntax: PHP"
-			],
 			[
 				"js",
 				"Set Syntax: JavaScript"
@@ -550,6 +602,10 @@
 			[
 				"css",
 				"Set Syntax: CSS"
+			],
+			[
+				"php",
+				"Set Syntax: PHP"
 			],
 			[
 				"html",
@@ -812,7 +868,7 @@
 				"Preferences: Browse Packages"
 			]
 		],
-		"width": 575.0
+		"width": 449.0
 	},
 	"console":
 	{
@@ -837,7 +893,11 @@
 	],
 	"file_history":
 	[
+		"/Users/jonty/Sites/capitalcinteriors/Gruntfile.js",
+		"/Users/jonty/Sites/capitalcinteriors/vendor/bootstrap/css/bootstrap.css",
 		"/Users/jonty/Sites/capitalcinteriors/index.html",
+		"/Users/jonty/Sites/capitalcinteriors/css/agency.css",
+		"/Users/jonty/Sites/capitalcinteriors/package.json",
 		"/Users/jonty/Sites/clover/js/laborAdd.js",
 		"/Users/jonty/Sites/clover/input/index.php",
 		"/Users/jonty/Sites/clover/includes/functions.php",
@@ -960,15 +1020,11 @@
 		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440845713/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/page-industry.php",
 		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440844786/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/footer.php",
 		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440845188/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/content.php",
-		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440843860/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/elements/awards-homepage.php",
-		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440843422/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/inc/functions.homepagehero.php",
-		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440841362/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-config.php",
-		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440840967/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/.htaccess",
-		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440839977/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/template-awards.php"
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440843860/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/elements/awards-homepage.php"
 	],
 	"find":
 	{
-		"height": 25.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -983,6 +1039,23 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"cons",
+			"h2",
+			"@",
+			"intro-heading",
+			"@",
+			"30px",
+			"radius",
+			"h2",
+			"section-heading",
+			"find",
+			"color:",
+			"subhead",
+			"portfoliomodal1",
+			".js",
+			"z-index",
+			"navbar-brand",
+			"@",
 			"format",
 			"console",
 			"0.1",
@@ -1093,24 +1166,7 @@
 			"<div class=\"box\">",
 			"<a",
 			"posted",
-			"classes",
-			"'host'",
-			"host'",
-			"dbuser",
-			"user",
-			"database",
-			"sra_display",
-			"unit",
-			"pass",
-			"autoconfig",
-			"img",
-			"<a",
-			".result",
-			"multipl",
-			"validate",
-			"clients",
-			"user",
-			"USER"
+			"classes"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1152,7 +1208,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 4,
 			"sheets":
 			[
 				{
@@ -1161,7 +1217,211 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 35543,
+						"buffer_size": 47060,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								28253,
+								28253
+							]
+						],
+						"settings":
+						{
+							"WordCount":
+							{
+								"changes": 5126,
+								"count": 367,
+								"modified": false,
+								"selection": false,
+								"status": -1,
+								"syntax": "plain text"
+							},
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1723.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "vendor/bootstrap/css/bootstrap.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 146010,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								47936,
+								47936
+							]
+						],
+						"settings":
+						{
+							"WordCount":
+							{
+								"changes": -1,
+								"modified": true,
+								"selection": true,
+								"status": -1,
+								"syntax": "css"
+							},
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 45022.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "css/main.scss",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13463,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4054,
+								4054
+							]
+						],
+						"settings":
+						{
+							"WordCount":
+							{
+								"changes": 1,
+								"count": 12,
+								"modified": true,
+								"selection": true,
+								"status": -1,
+								"syntax": "css"
+							},
+							"_anf_new": "",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/CSS/CSS.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 2714.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5423,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5400,
+								5400
+							]
+						],
+						"settings":
+						{
+							"WordCount":
+							{
+								"changes": 32,
+								"count": 0,
+								"modified": false,
+								"selection": false,
+								"status": -1,
+								"syntax": "plain text"
+							},
+							"default_dir": "/Users/jonty/Sites/capitalcinteriors",
+							"incomplete_sync": null,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1122.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "js/general.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13090,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10288,
+								10288
+							]
+						],
+						"settings":
+						{
+							"WordCount":
+							{
+								"changes": -1,
+								"modified": true,
+								"selection": true,
+								"status": -1,
+								"syntax": "javascript"
+							},
+							"_anf_new": "",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 4104.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "js/mobile.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1,
 						"regions":
 						{
 						},
@@ -1176,17 +1436,56 @@
 						{
 							"WordCount":
 							{
-								"changes": 0,
-								"count": 736,
-								"modified": false,
-								"selection": false,
+								"changes": -1,
+								"modified": true,
+								"selection": true,
 								"status": -1,
-								"syntax": "plain text"
+								"syntax": "javascript"
+							},
+							"_anf_new": "",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "js/agency.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1252,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								537,
+								537
+							]
+						],
+						"settings":
+						{
+							"WordCount":
+							{
+								"changes": -1,
+								"modified": true,
+								"selection": true,
+								"status": -1,
+								"syntax": "javascript"
 							},
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
@@ -1194,7 +1493,48 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "css/agency.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 16446,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6567,
+								6567
+							]
+						],
+						"settings":
+						{
+							"WordCount":
+							{
+								"changes": -1,
+								"modified": true,
+								"selection": true,
+								"status": -1,
+								"syntax": "css"
+							},
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4488.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
 					"type": "text"
 				}
 			]
@@ -1257,11 +1597,31 @@
 		"selected_items":
 		[
 			[
-				"ind",
-				"index.html"
+				"cssboot",
+				"vendor/bootstrap/css/bootstrap.css"
+			],
+			[
+				"css/boot",
+				"vendor/bootstrap/css/bootstrap.css"
 			],
 			[
 				"index",
+				"index.html"
+			],
+			[
+				"js/",
+				"js/agency.js"
+			],
+			[
+				"css/",
+				"css/agency.css"
+			],
+			[
+				"css",
+				"css/agency.css"
+			],
+			[
+				"ind",
 				"index.html"
 			],
 			[
@@ -1497,10 +1857,6 @@
 				"labor/index.php"
 			],
 			[
-				"js/",
-				"js/invoiceEdit.js"
-			],
-			[
 				"settin/in",
 				"settings/index.php"
 			],
@@ -1725,10 +2081,6 @@
 				"js/modal-ajax.js"
 			],
 			[
-				"css/",
-				"css/main.scss"
-			],
-			[
 				"scripts/invoice",
 				"scripts/editInvoice.action.php"
 			],
@@ -1755,18 +2107,6 @@
 			[
 				"issue",
 				"invoices/issueModal.php"
-			],
-			[
-				"invoiceac",
-				"scripts/editInvoice.action.php"
-			],
-			[
-				"scripts/in",
-				"scripts/editInvoice.action.php"
-			],
-			[
-				"laborm",
-				"labor/laborModal.php"
 			]
 		],
 		"width": 0.0
