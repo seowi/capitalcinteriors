@@ -121,6 +121,24 @@ $(function () {
 
 	$.scrollUp({topDistance: '1000'});
 
+	// Header background
+	function progressHeaderPhoto(){
+		// photos = ['bistro.jpg','blanco.jpg','sothebys.jpg','villasofia.jpg','chelseamodern.jpg'];
+		photos = $("header").attr("data-background-images").split(",");
+		console.log(photos);
+		currentIndex = $("header").attr("data-background");
+		if(currentIndex==(photos.length-1)){
+			nextIndex = 0;
+		}else{
+			nextIndex = +currentIndex + 1;
+		}
+		$("header").attr("data-background",nextIndex);
+		nextPhoto = photos[nextIndex];
+		$("header").css("background-image","url('img/projects/" + nextPhoto + "-p.jpg')");
+	}
+	setInterval(function(){ progressHeaderPhoto() }, 7000);
+
+
 	if(isMobile && window.screen.height<=768){
 	  	var windowHeight = window.screen.height;
 	}else{
@@ -134,25 +152,31 @@ $(function () {
 				windowHeight = 0.75*windowHeight;
 			}
 		    $("header .wrapper").height(windowHeight);
-	    	if(windowWidth>=768){
-			    textHeight = $("header .wrapper .intro-text").height();
-			    textMargin = (windowHeight - textHeight)/4;
-			    $("header .wrapper .intro-text").css("margin",textMargin + "px 0");
-			    $("header .wrapper .intro-text .intro-lead-in").css("margin",(textMargin) + "px 0");
-			}else{
-		    	$("header .intro-heading").height(windowWidth*0.2364924712);
-		    	if(windowWidth>=700){
-				    textHeight = $("header .wrapper .intro-text").height();
-				    textMargin = (windowHeight - textHeight)/4;
-				    $("header .wrapper .intro-text").css("margin",textMargin + "px 0");
-				    $("header .wrapper .intro-text .intro-lead-in").css("margin",textMargin + "px 0");
-		    	}else if(windowWidth>=600){
-				    textHeight = $("header .wrapper .intro-text").height();
-				    textMargin = (windowHeight - textHeight)/4;
-				    $("header .wrapper .intro-text").css("margin",textMargin + "px 0");
-				    $("header .wrapper .intro-text .intro-lead-in").css("margin",(textMargin+40) + "px 0");
-		    	}
-	    	}
+		    logoHeight = $("header .intro-logo").height();
+		    // $("header .intro-logo").css("margin",(-logoHeight/3) + "px 0");
+		    navHeight = $("#mainNav").outerHeight();
+		    textHeight = $("header .wrapper .intro-text").height();
+		    textMargin = (windowHeight - textHeight)/2;
+		    // $("header .wrapper .intro-text").css("margin",(textMargin) + "px auto " + textMargin + "px auto");
+		  //   	if(windowWidth>=768){
+				//     textHeight = $("header .wrapper .intro-text").height();
+				//     textMargin = (windowHeight - textHeight)/4;
+				//     $("header .wrapper .intro-text").css("margin",textMargin + "px auto");
+				//     $("header .wrapper .intro-text .intro-lead-in").css("margin",(textMargin) + "px auto");
+				// }else{
+			 //    	$("header .intro-heading").height(windowWidth*0.2364924712);
+			 //    	if(windowWidth>=700){
+				// 	    textHeight = $("header .wrapper .intro-text").height();
+				// 	    textMargin = (windowHeight - textHeight)/4;
+				// 	    $("header .wrapper .intro-text").css("margin",textMargin + "px auto");
+				// 	    $("header .wrapper .intro-text .intro-lead-in").css("margin",textMargin + "px auto");
+			 //    	}else if(windowWidth>=600){
+				// 	    textHeight = $("header .wrapper .intro-text").height();
+				// 	    textMargin = (windowHeight - textHeight)/4;
+				// 	    $("header .wrapper .intro-text").css("margin",textMargin + "px auto");
+				// 	    $("header .wrapper .intro-text .intro-lead-in").css("margin",(textMargin+40) + "px auto");
+			 //    	}
+		  //   	}
 	    // Resize contact
 	    	contactHeight = windowHeight-170;
 		    if($("section#contact").height()<contactHeight){
@@ -173,19 +197,20 @@ $(function () {
     // $("#projects .portfolio-item .portfolio-link").height(itemHeight);
 
 	// MAINTAIN PORTFOLIO ASPECT RATIO
-	function resizePortfolioImages(modalClass){
+	function resizePortfolioImages(modalID){
 		// Open modal in background and take measurements
-			$(".modal").addClass("init");
-			wrapper = $(".portfolio-modal." + modalClass + " .modal-image");
+			$(modalID).addClass("init");
+			wrapper = $(modalID + " .modal-image");
+			console.log(wrapper.parents(".modal").attr("id"));
 			wrapperHeight = wrapper.height();
 			wrapperWidth = wrapper.width();
 			wrapperRatio = wrapperWidth/wrapperHeight;
+			console.log(modalID + " " + wrapperWidth + " " + wrapperHeight);
 		// Loop through each image to resize it
 		if(!isNaN(wrapperRatio)){
-			$('body').find('.portfolio-modal.' + modalClass + ' .modal-image .images img').each(function(){
+			$('body').find(modalID + ' .modal-image .images img').each(function(){
 				if($(this).width()>0 && $(this).height()>0){
 					// Establish if the image should be stretched tall or wide
-						console.log($(this).width() + " " + $(this).height());
 						if($(this).width()/$(this).height() < 1){
 							// Portrait Image
 								$(this).attr("data-orientation","portrait");
@@ -230,8 +255,8 @@ $(function () {
 		// Reset modal
 		$(".modal").removeClass("init");
 	}
-	resizePortfolioImages("press");
-	resizePortfolioImages("project");
+	// resizePortfolioImages("press");
+	// resizePortfolioImages("project");
 	$( window ).on( "orientationchange", function( event ) {
 		$('body').css("opacity",0);
 		window.setTimeout(function() {
@@ -241,10 +266,12 @@ $(function () {
 		}, 400);
 	});
 	$(document).on("click", "#press a" , function() {
-		resizePortfolioImages("press");
+		modalID = $(this).attr("href");
+		resizePortfolioImages(modalID);
 	});
 	$(document).on("click", "#projects a" , function() {
-		resizePortfolioImages("project");
+		modalID = $(this).attr("href");
+		resizePortfolioImages(modalID);
 	});
 
 
@@ -402,9 +429,11 @@ $(function () {
 			if(topscroll>120){
 				$("nav#mainNav").fadeIn();
 				$("nav#mainNav .navbar-brand").fadeIn();
+				$("nav#mainNav .navbar-links").css("width","auto");
 			}else{
 				if($(window).width()<768) $("nav#mainNav").fadeOut();
 				$("nav#mainNav .navbar-brand").hide();
+				$("nav#mainNav .navbar-links").css("width","100%");
 			}
 		// Reveal press
 			pressOffset = $("#press").offset().top;

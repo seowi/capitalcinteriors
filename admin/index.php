@@ -24,6 +24,11 @@ function getPrimaryImage($project){
     return $value;
 }
 
+
+// echo "<pre>";
+// print_r($_POST);
+// echo "</pre>";
+
 // ini_set('display_errors', 1);
 // ini_set('display_startup_errors', 1);
 // error_reporting(E_ALL);
@@ -31,15 +36,46 @@ function getPrimaryImage($project){
     if(isset($_GET['checkURL'])){
         $URL = $_GET['checkURL'];
         $id = $_GET['id'];
+        $table = $_GET['type'];
         if( file_exists("../$URL") || is_dir("../$URL") || count(glob("$URL.*"))>0 ){
             echo 1;         
         }else{
-            $result = $db->query("SELECT id FROM projects WHERE URL='$URL' AND id!=$id;");
-            echo $result->num_rows;
+            // Check press table
+                $query = "SELECT id FROM press WHERE URL='$URL'";
+                if($table=="press") $query .= "AND id!=$id";
+                $result = $db->query($query);
+                $press = $result->num_rows;
+            // Check projects table
+                $query = "SELECT id FROM projects WHERE URL='$URL'";
+                if($table=="projects") $query .= "AND id!=$id";
+                $result = $db->query($query);
+                $projects = $result->num_rows;
+            // Sum
+                echo $press + $projects;
         }
         die;
     }
 
+    // Add featured image
+    
+    // Delete featured image
+    if(isset($_GET['deleteFeatured'])){
+        $query = "DELETE FROM featured WHERE filename='".$_GET['deleteFeatured']."'";
+        $db->query($query);
+        die;
+    }
+
+    if(isset($_GET['orderFeatured'])){
+        $featured = explode(",", trim($_GET['orderFeatured'],","));
+        $i = 1;
+        foreach ($featured as $feature) {
+            $query = "UPDATE featured SET `order`=$i WHERE filename='$feature';";
+            echo $query;
+            $db->query($query);
+            $i++;
+        }
+        die;
+    }
 
     if(isset($_GET['orderProjects'])){
         $projects = explode(",", trim($_GET['orderProjects'],","));
@@ -70,45 +106,63 @@ function getPrimaryImage($project){
         }
         if(empty($errors)==true) {
             // Make thumbnail
-            $img = $file_tmp;
-            $img_info = getimagesize($img);
-            $width = $img_info[0];
-            $height = $img_info[1];
-            switch ($img_info[2]) {
-              case IMAGETYPE_GIF  : $src = imagecreatefromgif($img);  break;
-              case IMAGETYPE_JPEG : $src = imagecreatefromjpeg($img); break;
-              case IMAGETYPE_PNG  : $src = imagecreatefrompng($img);  break;
-              default : $src = "";
-            }
-            $thumb_width = 720;
-            $thumb_height = 432;
-            $original_aspect = $width / $height;
-            $thumb_aspect = $thumb_width / $thumb_height;
-            if ( $original_aspect >= $thumb_aspect ){
-                $new_height = $thumb_height;
-                $new_width = $width / ($height / $thumb_height);
-            }else{
-                $new_width = $thumb_width;
-                $new_height = $height / ($width / $thumb_width);
-            }
-            $thumb = imagecreatetruecolor( $thumb_width, $thumb_height );
-            imagecopyresampled($thumb,
-                                $src,
-                                0 - ($new_width - $thumb_width) * 0.5, 
-                                0 - ($new_height - $thumb_height) * 0.5, 
-                                0, 0,
-                                $new_width, $new_height,
-                                $width, $height);
-            $image_name = $file_base."-p.jpg";
-            imagejpeg($thumb, "../img/projects/$image_name");
-            chmod("../img/projects/$image_name", 0777);
+                $img = $file_tmp;
+                $img_info = getimagesize($img);
+                $width = $img_info[0];
+                $height = $img_info[1];
+                switch ($img_info[2]) {
+                  case IMAGETYPE_GIF  : $src = imagecreatefromgif($img);  break;
+                  case IMAGETYPE_JPEG : $src = imagecreatefromjpeg($img); break;
+                  case IMAGETYPE_PNG  : $src = imagecreatefrompng($img);  break;
+                  default : $src = "";
+                }
+                if(!isset($_POST['featured'])){
+                    $thumb_width = 720;
+                    $thumb_height = 432;
+                }else{
+                    $thumb_width = $width;
+                    $thumb_height = $width*(432/720);
+                }
+                $original_aspect = $width / $height;
+                $thumb_aspect = $thumb_width / $thumb_height;
+                if ( $original_aspect >= $thumb_aspect ){
+                    $new_height = $thumb_height;
+                    $new_width = $width / ($height / $thumb_height);
+                }else{
+                    $new_width = $thumb_width;
+                    $new_height = $height / ($width / $thumb_width);
+                }
+                $thumb = imagecreatetruecolor( $thumb_width, $thumb_height );
+                imagecopyresampled($thumb,
+                                    $src,
+                                    0 - ($new_width - $thumb_width) * 0.5, 
+                                    0 - ($new_height - $thumb_height) * 0.5, 
+                                    0, 0,
+                                    $new_width, $new_height,
+                                    $width, $height);
+                $image_name = $file_base."-p.jpg";
+                imagejpeg($thumb, "../img/projects/$image_name");
+                chmod("../img/projects/$image_name", 0777);
             // Upload original file
-            move_uploaded_file($file_tmp,"../img/projects/".$file_name);
-            echo $file_base;
+            if(!isset($_POST['featured'])){
+                // move_uploaded_file($file_tmp,"../img/projects/".$file_name);
+                move_uploaded_file($file_tmp,"../img/projects/".$file_base.".jpg");
+            }
         }else{
             echo $errors[0];
         }
-        die;
+        if(isset($_POST['featured']) && $_POST['featured']==1){
+            $result = $db->query("SELECT `order` FROM featured ORDER BY `order` DESC LIMIT 1;");
+            $order = mysqli_fetch_row($result)[0];
+            $order++;
+            $query = "INSERT INTO featured (`filename`,`order`) VALUES ('$file_base',$order);";
+            $db->query($query);
+        }else{
+            if(empty($errors)==true){
+                echo $file_base;
+            }
+            die;
+        }
     }
 
     if(isset($_POST['action']) && $_POST['action']=="edit"){
@@ -157,6 +211,45 @@ function getPrimaryImage($project){
         $db->query($query);
 
     }
+
+    if(isset($_POST['action']) && $_POST['action']=="press"){
+        // echo "<pre>";
+        // print_r($_POST);
+        // echo "</pre>";
+        $article = escapeArray($_POST);
+
+        if($article['id']==0){
+            // Get largest order
+            $result = $db->query("SELECT `order` FROM press ORDER BY `order` DESC LIMIT 1;");
+            $order = mysqli_fetch_row($result)[0];
+            $order++;
+            // Insert new project
+            $query = "INSERT INTO press (`order`) VALUES ($order);";
+            $db->query($query);
+            $article['id'] = $db->insert_id;
+        }
+
+        // Remove all images
+        $query = "DELETE FROM press_images WHERE press=".$article['id'];
+        $db->query($query);
+        // Add images
+        $images = explode(",", trim($article['images'],","));
+        $i = 1;
+        foreach ($images as $image) {
+            $query = "INSERT INTO press_images (`press`,`filename`,`order`) VALUES (".$article['id'].",'$image',$i);";
+            $db->query($query);
+            $i++;
+        }
+        // Update details
+        $query = "UPDATE press SET ";
+        $query .= "`title`='".$article['title']."', ";
+        $query .= "`url`='".$article['url']."', ";
+        $query .= "`icon`='".$article['icon']."', ";
+        $query .= "`deleted`='".$article['deleted']."' ";
+        $query .= "WHERE id=".$article['id'].";";
+        $db->query($query);
+
+    }
 ?>
 
 <!DOCTYPE html>
@@ -196,11 +289,97 @@ function getPrimaryImage($project){
 
 <body id="page-admin">
 
-
-    <section id="projects" class="content">
+    <section id="featured" class="content">
         <div class="box box-info portfolio">
             <div class="box-header" style="border-bottom: 1px solid #ccc;">
-                <h2 class="box-title" style="zoom: 1.5;"><i class="fa fa-file-image-o"></i> &nbsp; Projects</h2>
+                <h2 class="box-title" style="zoom: 1.5;"><i class="fa fa-star-o"></i> &nbsp; Splash Images</h2>
+            </div>
+            <form action="" method="post" enctype="multipart/form-data" style="opacity: 0; height: 0;">
+                <input type="file" name="image" />
+                <input type="hidden" name="featured" value="1">
+            </form>
+            <div class="box-body" style="background: #eee; padding: 10px 25px;">
+                <ul class="sortable featured row no-gutter">
+
+                    <?php 
+                    $result = $db->query("SELECT * FROM featured ORDER BY `order` ASC");
+                    while($featured = mysqli_fetch_assoc($result)):
+                    ?>
+                        <li class="col-md-2 featured-image" data-id="<?=$featured['filename']?>">
+                            <div class="image-hover">
+                                <div class="image-hover-content">
+                                    <div class="row no-gutter" style="margin: 0 30px;">
+                                        <div class="col-md-6">
+                                            <a href="../img/projects/<?=$featured['filename']?>-p.jpg" target="_blank">
+                                                <i class="fa fa-search-plus" data-toggle="tooltip" data-placement="top" title="View"></i>
+                                            </a>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <a href="#" class="image-delete">
+                                                <i class="fa fa-trash-o" data-toggle="tooltip" data-placement="top" title="Delete"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <img src="../img/projects/<?=$featured['filename']?>-p.jpg" class="img-responsive" >
+                        </li>
+                    <?php endwhile; ?>
+                        <li class="col-md-2 featured-new">
+                            <div class="image-hover" style="opacity: 1">
+                                <div class="image-hover-content" style="margin-top: -20px;">
+                                    <i class="fa fa-plus fa-2x"></i>
+                                    <i class="fa fa-refresh fa-spin fa-2x" style="display: none"></i>
+                                </div>
+                            </div>
+                            <img src="../img/blank35.png" class="img-responsive" style="width: 100%">
+                        </li>
+
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="press" class="content">
+        <div class="box box-info portfolio">
+            <div class="box-header" style="border-bottom: 1px solid #ccc;">
+                <h2 class="box-title" style="zoom: 1.5;"><i class="fa fa-file-image-o"></i> &nbsp; Press</h2>
+                <div style="float: right;">
+                    <a href="#modal-press-0" class="portfolio-link" data-toggle="modal">
+                        <button class="btn btn-block btn-default btn-sm"><i class="fa fa-plus-circle"></i> &nbsp; New</button>
+                    </a>
+                </div>
+            </div>
+            <div class="box-body" style="background: #eee; padding: 10px 25px;">
+                <ul class="sortable press row no-gutter">
+                    <?php 
+                    $press = array();
+                    $result = $db->query("SELECT * FROM press WHERE deleted=0 ORDER BY `order` ASC");
+                    while($article = mysqli_fetch_assoc($result)){
+                        $press[] = $article;
+                    }
+                    foreach($press as $article):
+                    ?>
+                    <li class="col-md-1 portfolio-item">
+                        <a href="#modal-press-<?=$article['id']?>" class="portfolio-link" data-toggle="modal">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content">
+                                    <i class="fa fa-file-image-o fa-3x"></i>
+                                </div>
+                            </div>
+                            <img src="../img/projects/<?=$article['icon']?>.jpg" style="width: 100%;" class="img-responsive" alt="">
+                        </a>
+                    </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="content" style="margin-bottom: 1000px;">
+        <div class="box box-info portfolio">
+            <div class="box-header" style="border-bottom: 1px solid #ccc;">
+                <h2 class="box-title" style="zoom: 1.5;"><i class="fa fa-home"></i> &nbsp; Projects</h2>
                 <div style="float: right;">
                     <a href="#modal-edit-0" class="portfolio-link" data-toggle="modal">
                         <button class="btn btn-block btn-default btn-sm"><i class="fa fa-plus-circle"></i> &nbsp; New</button>
@@ -258,8 +437,9 @@ function getPrimaryImage($project){
     ?>
 
     <?php foreach($projects as $project): ?>
-        <div id="modal-edit-<?=$project['id']?>" class="modal project-edit">
+        <div id="modal-edit-<?=$project['id']?>" class="modal modal-edit project-edit">
         <form id="project-edit-<?=$project['id']?>" action="" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="type" value="projects">
             <input type="hidden" name="action" value="edit">
             <input type="hidden" name="id" value="<?=$project['id']?>">
             <input type="hidden" name="images">
@@ -341,7 +521,7 @@ function getPrimaryImage($project){
                                             <div class="image-hover-content">
                                                 <div class="row no-gutter" style="margin: 0 15px;">
                                                     <div class="col-md-4">
-                                                        <a href="../img/projects/<?=$image['filename']?>.jpg" target="_blank">
+                                                        <a href="../img/projects/<?=$image['filename']?>.jpg" class="image-view" target="_blank">
                                                             <i class="fa fa-search-plus" data-toggle="tooltip" data-placement="top" title="View"></i>
                                                         </a>
                                                     </div>
@@ -352,6 +532,135 @@ function getPrimaryImage($project){
                                                         <i class="fa fa-star"></i>
                                                     </div>
                                                     <div class="col-md-4">
+                                                        <a href="#" class="image-delete">
+                                                            <i class="fa fa-trash-o" data-toggle="tooltip" data-placement="top" title="Delete"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <img src="../img/projects/<?=$image['filename']?>-p.jpg" class="img-responsive" >
+                                    </li>
+                                <?php endwhile; ?>
+                                <li class="col-md-4 image-new" style="padding: 5px;">
+                                    <div class="image-hover" style="opacity: 1">
+                                        <div class="image-hover-content" style="margin-top: -20px;">
+                                            <i class="fa fa-plus fa-2x"></i>
+                                            <i class="fa fa-refresh fa-spin fa-2x" style="display: none"></i>
+                                        </div>
+                                    </div>
+                                    <img src="../img/blank35.png" class="img-responsive" style="width: 100%">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-danger project-delete pull-left">Delete</button>
+                        <button type="submit" class="btn btn-primary" style="background: #fec503; border-color: #fec503;">Save</button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </form>
+        <form class="image-upload" action="" method="post" enctype="multipart/form-data" style="opacity: 0;">
+            <input type="file" name="image" />
+        </form>
+        </div>
+    <?php endforeach; ?>
+
+    <?php 
+        $new = array();
+        $new['id'] = 0;
+        $new['title'] = "";
+        $new['url'] = "";
+        $new['icon'] = "000000";
+        array_unshift($press,$new);
+    ?>
+
+    <?php foreach($press as $article): ?>
+        <div id="modal-press-<?=$article['id']?>" class="modal modal-edit press-edit">
+        <form id="press-edit-<?=$article['id']?>" action="" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="type" value="press">
+            <input type="hidden" name="action" value="press">
+            <input type="hidden" name="id" value="<?=$article['id']?>">
+            <input type="hidden" name="images">
+            <input type="hidden" name="deleted" value="0">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title"><?= ($article['id']==0) ? "New" : "Edit" ?> Press Article</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row ">
+                            <div class="col-md-9">
+                                <div class="row ">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Article Title</label>
+                                            <input type="text" class="form-control" name="title" value="<?=$article['title']?>">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>URL</label>
+                                            <span class="label-help url-validate url-available" <?php if($article['url']!="") echo "style='display: block;'"?>>
+                                                <i class="fa fa-check"></i>
+                                                That URL is available
+                                            </span>
+                                            <span class="label-help url-validate url-taken">
+                                                <i class="fa fa-close"></i>
+                                                That URL is not available
+                                            </span>
+                                            <div>
+                                                <span style="line-height: 33px;">www.capitalcinteriors.com/</span>
+                                                <input type="text" class="form-control" name="url" style="display: inline-block; width: 250px; float: right;" value="<?=$article['url']?>">  
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <label>Publication Icon</label>
+                                <div class="modal-press-icon <?php if($article['id']==0) echo 'new'?>">
+                                    <div class="image-hover">
+                                        <div class="image-hover-content">
+                                            <div class="row no-gutter" style="margin-top: -8px;">
+                                                <div class="col-md-12">
+                                                    <a href="#" class="icon-new" target="_blank">
+                                                        <i class="fa fa-refresh fa-2x" data-toggle="tooltip" data-placement="top" title="Replace"></i>
+                                                        <i class="fa fa-plus fa-2x"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <img src="../img/projects/<?=$article['icon']?>.jpg" style="width: 100%;" class="article-icon img-responsive" alt="">
+                                    <input type="hidden" name="icon" value="<?=$article['icon']?>">
+                                </div>
+                            </div>
+                        </div>
+                        <label>Images</label>
+                        <span class="label-help">Drag/drop to re-order. Hover over image for additional options.</span>
+                        <div class="well" style="padding: 5px 10px;">
+                            <ul class="sortable row no-gutter" style="margin: 0 -5px;">
+                                <?php 
+                                $query = "SELECT * FROM press_images WHERE press=".$article['id']." ORDER BY `order` ASC";
+                                $result = $db->query($query);
+                                while($image = mysqli_fetch_assoc($result)):
+                                ?>
+                                    <li class="col-md-4 project-image" data-id="<?=$image['filename']?>" style="padding: 5px; <?php if($article['id']==0) echo "display: none;";?>">
+                                        <div class="image-hover">
+                                            <div class="image-hover-content">
+                                                <div class="row no-gutter" style="margin: 0 15px;">
+                                                    <div class="col-md-6">
+                                                        <a href="../img/projects/<?=$image['filename']?>.jpg" class="image-view" target="_blank">
+                                                            <i class="fa fa-search-plus" data-toggle="tooltip" data-placement="top" title="View"></i>
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-md-6">
                                                         <a href="#" class="image-delete">
                                                             <i class="fa fa-trash-o" data-toggle="tooltip" data-placement="top" title="Delete"></i>
                                                         </a>
