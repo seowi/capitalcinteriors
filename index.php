@@ -1,3 +1,20 @@
+<?php
+
+$host= "127.0.0.1";
+$dbuser ="root";
+$dbpass = "";
+$dbname = "ocassioh_capitalcinteriors";
+$db = new mysqli($host, $dbuser, $dbpass, $dbname) or die(mysql_error());
+
+function getPrimaryImage($project){
+    global $db;
+    $result = $db->query("SELECT filename FROM projects_images WHERE `primary`=1 AND project = '$project';");
+    $value = mysqli_fetch_row($result)[0];
+    return $value;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,7 +68,7 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right navbar-links">
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
@@ -78,25 +95,26 @@
     </nav>
 
     <!-- Header -->
-    <header>
+    <?php 
+    $featured = array();
+    $result = $db->query("SELECT * FROM featured ORDER BY `order` ASC");
+    while($image = mysqli_fetch_assoc($result)){
+        $featured[] = $image['filename'];
+    }
+    ?>
+    <header data-background="0" data-background-images="<?=implode(",", $featured)?>" style="background-image: url('img/projects/<?=$featured[0]?>-p.jpg');">
         <div class="wrapper">
             <div class="container">
                 <div class="intro-text">
-                    <div class="intro-heading" style="visibility: hidden;">
-                        Capital C<br/>Interiors
-                    </div>
-                    <div class="intro-lead-in" style="visibility: hidden;">
-                        "The character of a space is achieved by the marriage of scale, light and texture. The challenge is to harness them in a composition that generates clarity."
-                        <div class="name-center">Juan Carretero, founder</div>
-                    </div>
-                    <a id="headerButton" href="#about" class="page-scroll btn btn-xl" style="visibility: hidden;">See how we do it &nbsp; <i class="icon fa fa-arrow-circle-down"></i></a>
+                    <!-- <img class="intro-logo" src="img/logo_home_shadow.png" alt="" style="width: 60%;"> -->
+                    &nbsp;
+                    <a id="headerButton" href="#about" class="page-scroll btn btn-xl" style="visibility: hidden;">How we do it &nbsp; <i class="icon fa fa-arrow-circle-down"></i></a>
                 </div>
             </div>
             <div class="name-right">Juan Carretero, founder</div>
         </div>
     </header>
 
-    <!-- Services Section -->
     <section id="about">
         <div class="container">
             <div class="row">
@@ -119,7 +137,6 @@
         </div>
     </section>
 
-    <!-- Portfolio Grid Section -->
     <section id="press" class="portfolio bg-light-gray">
         <div class="wrapper">
             <div class="container">
@@ -277,6 +294,28 @@
         </div>
     </section>
 
+    <section id="about" style="display: none;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-7" style="text-align: justify;">
+                    <h2 class="section-heading" style="text-align: right;">
+                        Personal design.<br/>Professional Service.
+                    </h2>
+                    <p>Our principal, Juan Carretero has been in business in the USA for over 10 years holding credentials in Architecture, Interior Design and Real Estate Project Management.</p>
+                    <p>We have worked in different countries and cultures; these experiences have given us a deep appreciation for local craftsmanship and tradition.</p>
+                    <p>As an award winning professional firm, we have been published in many different publications throughout the world. “Tailored, collected, inviting, timeless, exciting, fresh, comfortable, beautiful and inspiring” are only some of the ways in our job has been reviewed.</p>
+                    <p>Please contact us. We welcome the opportunity to work together with you to create a very special place of your own.</p>
+                </div>
+                <div class="col-lg-5 map">
+                    
+                </div>
+                <div class="col-md-12 about-map">
+                    <img src="img/map.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Portfolio Grid Section -->
     <section id="projects" class="portfolio bg-light-gray">
         <div class="container">
@@ -287,171 +326,38 @@
                 </div>
             </div>
             <div class="row">
+                <?php 
+                $projects = array();
+                $result = $db->query("SELECT * FROM projects WHERE deleted=0 ORDER BY `order` ASC");
+                while($project = mysqli_fetch_assoc($result)){
+                    $projects[] = $project;
+                }
+                foreach($projects as $project):
+                ?>
                 <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
+                    <a href="#project-modal-<?=$project['id']?>" class="portfolio-link" data-toggle="modal">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
                                 <img src="img/logo_white50.png" style="width: 60px;" alt="">
                                 <div class="details-button">View Project</div>
                             </div>
                         </div>
-                        <img src="projects/villasofia.jpg" class="img-responsive" alt="">
+                        <img src="img/projects/<?=getPrimaryImage($project['id'])?>-p.jpg" class="img-responsive" alt="">
                     </a>
                     <div class="portfolio-caption">
-                        <h4>Villa Sofia</h4>
-                        <p class="text-muted">Hudson, NY</p>
+                        <h4><?=$project['title']?></h4>
+                        <p class="text-muted">
+                            <?php
+                                if($project['subtitle']==""){
+                                    echo "&nbsp;";
+                                }else{
+                                    echo $project['subtitle'];
+                                }
+                            ?>
+                        </p>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <img src="img/logo_white50.png" style="width: 60px;" alt="">
-                                <div class="details-button">View Project</div>
-                            </div>
-                        </div>
-                        <img src="projects/sothebys.jpg" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Library</h4>
-                        <p class="text-muted">Sotheby's Designer Showhouse</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <img src="img/logo_white50.png" style="width: 60px;" alt="">
-                                <div class="details-button">View Project</div>
-                            </div>
-                        </div>
-                        <img src="projects/scottsdale.jpg" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Scottsdale</h4>
-                        <p class="text-muted">Arizona</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <img src="img/logo_white50.png" style="width: 60px;" alt="">
-                                <div class="details-button">View Project</div>
-                            </div>
-                        </div>
-                        <img src="projects/rutherford.jpg" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>One Rutherford</h4>
-                        <p class="text-muted">Manhattan, NY</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <img src="img/logo_white50.png" style="width: 60px;" alt="">
-                                <div class="details-button">View Project</div>
-                            </div>
-                        </div>
-                        <img src="projects/bistro.jpg" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Country Bistro</h4>
-                        <p class="text-muted">Mexico City</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <img src="img/logo_white50.png" style="width: 60px;" alt="">
-                                <div class="details-button">View Project</div>
-                            </div>
-                        </div>
-                        <img src="projects/anson.jpg" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Anson 11</h4>
-                        <p class="text-muted">El Paso, Texas</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <img src="img/logo_white50.png" style="width: 60px;" alt="">
-                                <div class="details-button">View Project</div>
-                            </div>
-                        </div>
-                        <img src="projects/piedaterrelili.jpg" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Pied a Terre Lili</h4>
-                        <p class="text-muted">A modern condo</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <img src="img/logo_white50.png" style="width: 60px;" alt="">
-                                <div class="details-button">View Project</div>
-                            </div>
-                        </div>
-                        <img src="projects/oliver.jpg" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Oliver</h4>
-                        <p class="text-muted">New York City</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <img src="img/logo_white50.png" style="width: 60px;" alt="">
-                                <div class="details-button">View Project</div>
-                            </div>
-                        </div>
-                        <img src="projects/chelseamodern.jpg" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Chelsea Modern</h4>
-                        <p class="text-muted">New York City</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <img src="img/logo_white50.png" style="width: 60px;" alt="">
-                                <div class="details-button">View Project</div>
-                            </div>
-                        </div>
-                        <img src="projects/blanco.jpg" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Blanco</h4>
-                        <p class="text-muted">Something</p>
-                    </div>
-                </div>
-                <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <img src="img/logo_white50.png" style="width: 60px;" alt="">
-                                <div class="details-button">View Project</div>
-                            </div>
-                        </div>
-                        <img src="projects/acapulco.jpg" class="img-responsive" alt="">
-                    </a>
-                    <div class="portfolio-caption">
-                        <h4>Weekend Getaway</h4>
-                        <p class="text-muted">Acapulco, Mexico</p>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
@@ -649,11 +555,9 @@
 
 
 
-    <!-- Portfolio Modals -->
-    <!-- Use the modals below to showcase details about your portfolio projects! -->
-
-    <!-- Portfolio Modal 1 -->
-    <div class="portfolio-modal project modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- PROJECTS -->
+    <?php foreach($projects as $project): ?>
+    <div class="portfolio-modal project modal fade" id="project-modal-<?=$project['id']?>" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="container">
@@ -679,37 +583,38 @@
                                 </button>
                             </div>
                             <div class="images">
-                                <img class="img-responsive img-centered" src="projects/oliver1.jpg" alt="">
-                                <img class="img-responsive img-centered" src="projects/oliver2.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="projects/oliver3.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="projects/oliver4.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="projects/oliver5.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="projects/oliver6.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="projects/oliver7.jpg" alt="" style="display: none;">
+                                <?php 
+                                $result = $db->query("SELECT * FROM projects_images WHERE project=".$project['id']." ORDER BY `order` ASC");
+                                $i=1;
+                                while($image = mysqli_fetch_assoc($result)):
+                                ?>
+                                    <img class="img-responsive img-centered" src="img/projects/<?=$image['filename']?>.jpg" alt="" <?php if($i>1) echo "style='display: none'"?>>
+                                <?php $i++; endwhile; ?>
                             </div>
                         </div>
                         <div class="col-lg-4 modal-desc">
                             <div>
-                                <h2>Oliver</h2>
-                                <p class="item-intro text-muted">New York City</p>
+                                <h2><?=$project['title']?></h2>
+                                <p class="item-intro text-muted"><?=$project['subtitle']?></p>
                                 <hr>
                                 <div class="item-category">
-                                    <i class="fa fa-building"></i>&nbsp; Apartment
+                                    <i class="fa fa-building"></i>&nbsp; <?=$project['category']?>
                                 </div>
                                 <hr>
                                 <p class="item-text">
-                                    Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!
+                                    <?=$project['desc']?>
                                 </p>
                                 <div class="buttons">
                                     <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-envelope"></i>&nbsp; Ask us about this project</button>
                                 </div>
                                 <hr>
                                     <ul class="tags">
-                                        <li><a href="#" class="tag">Contemporary</a></li>
-                                        <li><a href="#" class="tag">Open-plan</a></li>
-                                        <li><a href="#" class="tag">Color</a></li>
-                                        <li><a href="#" class="tag">City apartment</a></li>
-                                        <li><a href="#" class="tag">Eat-in kitchen</a></li>
+                                        <?php
+                                            $tags = explode(",", trim($project['tags'],","));
+                                            foreach ($tags as $tag) {
+                                                echo '<li><a href="#" class="tag">'.$tag.'</a></li>';
+                                            }
+                                        ?>
                                     </ul>
                                 <hr>
                                 <div class="item-subheading">
@@ -746,6 +651,7 @@
             </div>
         </div>
     </div>
+    <?php endforeach; ?>
 
     <!-- Press Modal -->
     <div class="portfolio-modal press modal fade" id="pressModal1" tabindex="-1" role="dialog" aria-hidden="true">
