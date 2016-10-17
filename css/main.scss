@@ -2,6 +2,10 @@ html{
 	background: #eeeeee;
 }
 
+::-webkit-scrollbar { 
+display: none; 
+}
+
 body{
 	visibility: hidden;
 	-webkit-transition: opacity 0.1s;
@@ -175,7 +179,7 @@ header{
 	.wrapper{
 	    height: 706px;
 	    background: url("../img/logo_home_shadow.png");
-	    background-size: auto 50%;
+	    background-size: 100% auto;
 		background-repeat: no-repeat;
 	    background-position: center center;
 		position: relative;
@@ -193,6 +197,7 @@ header{
 			/*background-position: 100% calc(100% + 220px);*/
 		}
 		@media (min-width: 600px) { 
+		    background-size: auto 50%;
 			/*background-image: url('../img/header-juan.png');*/
 			/*background-size: 580px;*/
 			/*background-position: calc(100% + 30px) 100%;*/
@@ -225,6 +230,7 @@ header{
 		position: absolute;
 		bottom: 45px;
 		magrin: 0;
+		margin-left: -15px;
 		padding: 0;
 		width: 100%;
 		text-align: center;
@@ -233,7 +239,7 @@ header{
 		}
 		@media (max-width: 768px) and (orientation: landscape) {
 			text-align: center;
-			height: 100%;
+			/*height: 100%;*/
 		}
 		.intro-heading{
 			display: none;
@@ -281,9 +287,9 @@ header{
 			    padding: 20px 40px;
 			}
 			@media (max-width: 768px) and (orientation: landscape) {
-				position: absolute;
-				bottom: 25px;
-				right: 0;
+				/*position: absolute;*/
+				/*bottom: 25px;*/
+				/*right: 0;*/
 			}
 		}
 		.intro-lead-in{
@@ -398,6 +404,21 @@ section{
 			width: 100%;
 		}
     }
+    .about-juan{
+		@media (min-width: 650px){
+	    	display: none;
+		}
+		padding: 0;
+		margin: 0 -10px -50px;
+		overflow: hidden;
+		.img-wrapper{
+			margin: 0 -100px -50px -100px;
+		}
+		img{
+			width: 100%;
+		}
+    }
+
 }
 
 #press{
@@ -447,6 +468,9 @@ section{
 	}
 	h3{
 		max-width: 40%;
+		@media (max-width: 600px){
+			max-width: 90%;
+		}
 		margin: 0 auto 60px auto;
 	}
 	.portfolio-item{
@@ -624,6 +648,15 @@ footer{
 					background-position: calc( 100% - 15px ) center;
 				}
 			}
+			.img-wrapper{
+				height: 100%;
+				span[class^=PIN]{
+					position: absolute;
+					z-index: 9;
+					bottom: 30px;
+					margin-left: -34px;
+				}
+			}
 			.images img{
 				max-width: 100%;
 				max-height: 100%;
@@ -637,6 +670,7 @@ footer{
 				}
 			}
 			.social-buttons{
+				display: none;
 				position: absolute;
 				z-index: 2;
 				bottom: 25px;
