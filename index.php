@@ -2,7 +2,7 @@
 
 $host= "127.0.0.1";
 $dbuser ="root";
-$dbpass = "";
+$dbpass = "Record";
 $dbname = "ocassioh_capitalcinteriors";
 $db = new mysqli($host, $dbuser, $dbpass, $dbname) or die(mysql_error());
 
@@ -11,6 +11,36 @@ function getPrimaryImage($project){
     $result = $db->query("SELECT filename FROM projects_images WHERE `primary`=1 AND project = '$project';");
     $value = mysqli_fetch_row($result)[0];
     return $value;
+}
+
+
+function get_string_between($string, $start, $end){
+    $string = ' ' . $string;
+    $ini = strpos($string, $start);
+    if ($ini == 0) return '';
+    $ini += strlen($start);
+    $len = strpos($string, $end, $ini) - $ini;
+    return substr($string, $ini, $len);
+}
+
+$rootURI = rtrim($_SERVER['REQUEST_URI'],'/')."/";
+$rootURI = "/capitalcinteriors/";
+
+// echo "<pre>";
+// print_r($_SERVER);
+// echo "</pre>";
+
+if(isset($_GET['url'])) {
+    $url = $_GET['url'];
+    $result = $db->query("SELECT id FROM projects WHERE url='$url';");
+    if($result->num_rows){
+        $projectOnLoad = mysqli_fetch_row($result)[0];
+    }else{
+        $result = $db->query("SELECT id FROM press WHERE url='$url';");
+        if($result->num_rows){
+            $pressOnLoad = mysqli_fetch_row($result)[0];
+        }
+    }
 }
 
 ?>
@@ -52,7 +82,7 @@ function getPrimaryImage($project){
 
 </head>
 
-<body id="page-top" class="index">
+<body id="page-top" class="index" data-root="<?=$rootURI?>">
 
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -152,7 +182,7 @@ function getPrimaryImage($project){
                 foreach($press as $article):
                 ?>
                 <div class="portfolio-item">
-                    <a href="#press-modal-<?=$article['id']?>" data-url="<?=$article['url']?>" data-title="<?=$article['title']?>" class="portfolio-link" data-toggle="modal">
+                    <a href="#press-modal-<?=$article['id']?>" data-url="<?=$rootURI.$article['url']?>" data-title="<?=$article['title']?>" class="portfolio-link" data-toggle="modal" <?php if(isset($pressOnLoad) && $pressOnLoad==$article['id']) echo 'data-onLoad';?>>
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
                                 <i class="fa fa-file-image-o fa-3x"></i>
@@ -207,7 +237,7 @@ function getPrimaryImage($project){
                 foreach($projects as $project):
                 ?>
                 <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#project-modal-<?=$project['id']?>" data-url="<?=$project['url']?>" data-title="<?=$project['title']?>" class="portfolio-link" data-toggle="modal">
+                    <a href="#project-modal-<?=$project['id']?>" data-url="<?=$rootURI.$project['url']?>" data-title="<?=$project['title']?>" class="portfolio-link" data-toggle="modal" <?php if(isset($projectOnLoad) && $projectOnLoad==$project['id']) echo 'data-onLoad';?>>
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
                                 <img src="img/logo_white50.png" style="width: 60px;" alt="">
@@ -255,7 +285,7 @@ function getPrimaryImage($project){
             </div>
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-12">
-                    <form name="sentMessage" id="contactForm" novalidate>
+                    <form name="sentMessage" id="contactForm" novalidate method="get" action="">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -304,8 +334,13 @@ function getPrimaryImage($project){
         </div>
     </section>
 
-
-    <!-- Contact Section -->
+<?php
+    $instagram = file_get_contents('https://www.instagram.com/juanjocarr/');
+    $instagramJSON = get_string_between($instagram, 'window._sharedData = ', ';</script>');
+    $instagramArray = json_decode($instagramJSON,true);
+    $instagramMedia = $instagramArray['entry_data']['ProfilePage'][0]['user']['media']['nodes'];
+?>
+    <!-- Instagram Section -->
     <section id="instagram" class="portfolio">
         <div class="container">
             <div class="row">
@@ -314,86 +349,18 @@ function getPrimaryImage($project){
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-3 col-sm-4 col-xs-6 portfolio-item">
-                    <a href="https://www.instagram.com/p/BIyj-tKBCV6/" target="_blank" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-external-link fa-3x"></i>
+                <?php foreach ($instagramMedia as $photo): ?>
+                    <div class="col-md-3 col-sm-4 col-xs-6 portfolio-item">
+                        <a href="https://www.instagram.com/p/<?=$photo['code']?>/" target="_blank" class="portfolio-link" data-toggle="modal">
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content">
+                                    <i class="fa fa-external-link fa-3x"></i>
+                                </div>
                             </div>
-                        </div>
-                        <img src="instagram/instagram1.jpg" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-4 col-xs-6 portfolio-item">
-                    <a href="https://www.instagram.com/p/BIqogR9hnm2/" target="_blank" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-external-link fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="instagram/instagram2.jpg" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-4 col-xs-6 portfolio-item">
-                    <a href="https://www.instagram.com/p/BIkLgGxB-Yh/" target="_blank" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-external-link fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="instagram/instagram3.jpg" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-4 col-xs-6 portfolio-item">
-                    <a href="https://www.instagram.com/p/BIiO68SBCjD/" target="_blank" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-external-link fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="instagram/instagram4.jpg" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-4 col-xs-6 portfolio-item">
-                    <a href="https://www.instagram.com/p/BIiOuQkhF1w/" target="_blank" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-external-link fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="instagram/instagram5.jpg" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-4 col-xs-6 portfolio-item">
-                    <a href="https://www.instagram.com/p/BIgJVi-hVif/" target="_blank" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-external-link fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="instagram/instagram6.jpg" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-4 col-xs-6 portfolio-item">
-                    <a href="https://www.instagram.com/p/BIfbyhRhr9o/" target="_blank" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-external-link fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="instagram/instagram7.jpg" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="col-md-3 col-sm-4 col-xs-6 portfolio-item">
-                    <a href="https://www.instagram.com/p/BId-HrZBgRh/" target="_blank" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-external-link fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="instagram/instagram8.jpg" class="img-responsive" alt="">
-                    </a>
-                </div>
+                            <img src="<?=$photo['thumbnail_src']?>" class="img-responsive" alt="">
+                        </a>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
@@ -429,7 +396,7 @@ function getPrimaryImage($project){
 
     <!-- PROJECTS -->
     <?php foreach($projects as $project): ?>
-    <div class="portfolio-modal project modal fade" id="project-modal-<?=$project['id']?>" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="portfolio-modal project modal fade" id="project-modal-<?=$project['id']?>" data-url="<?=$project['url']?>" data-id="<?=$project['id']?>" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="container">
@@ -530,7 +497,7 @@ function getPrimaryImage($project){
 
     <!-- Press Modal -->
     <?php foreach($press as $article): ?>
-    <div class="portfolio-modal press modal fade" id="press-modal-<?=$article['id']?>" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="portfolio-modal press modal fade" id="press-modal-<?=$article['id']?>" data-url="<?=$article['url']?>" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="container">

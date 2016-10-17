@@ -288,9 +288,23 @@ $(function () {
 		ChangeUrl('Capital C Interiors - ' + title,url);
 	});
 	$('.modal').on('hidden.bs.modal', function () {
-		alert('close');
+		url = $("body").data("root");
+		ChangeUrl('Capital C Interiors',url);
 	})
 
+	// Modal load/redirect
+	if($("a[data-toggle='modal'][data-onLoad]").length==1){
+		$("a[data-toggle='modal'][data-onLoad]").trigger("click");
+	}
+    $(window).on('popstate', function() {
+    	path = window.location.pathname.replace(/\//g, '').replace("capitalcinteriors","");
+    	if(path==''){
+    		$(".modal:visible").modal("hide");
+    	}else{
+    		$(".modal[data-url='" + path + "']").modal("show");
+    	}
+
+    });
 
 
 
