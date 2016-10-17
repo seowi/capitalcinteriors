@@ -31,6 +31,7 @@ function getPrimaryImage($project){
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
+
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
@@ -130,8 +131,10 @@ function getPrimaryImage($project){
                 <div class="col-lg-5 map">
                     
                 </div>
-                <div class="col-md-12 about-map">
-                    <img src="img/map.png" alt="">
+                <div class="col-md-12 about-juan">
+                    <div class="img-wrapper">
+                        <img src="img/header-juan-center.png" alt="">
+                    </div>
                 </div>
             </div>
         </div>
@@ -140,156 +143,25 @@ function getPrimaryImage($project){
     <section id="press" class="portfolio bg-light-gray">
         <div class="wrapper">
             <div class="container">
+                <?php 
+                $press = array();
+                $result = $db->query("SELECT * FROM press WHERE deleted=0 ORDER BY `order` ASC");
+                while($article = mysqli_fetch_assoc($result)){
+                    $press[] = $article;
+                }
+                foreach($press as $article):
+                ?>
                 <div class="portfolio-item">
-                    <a href="#pressModal1" class="portfolio-link" data-toggle="modal">
+                    <a href="#press-modal-<?=$article['id']?>" data-url="<?=$article['url']?>" data-title="<?=$article['title']?>" class="portfolio-link" data-toggle="modal">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
                                 <i class="fa fa-file-image-o fa-3x"></i>
                             </div>
                         </div>
-                        <img src="http://carreterodesign.com/wp-content/uploads/2014/08/thumb-240x240.png" class="img-responsive" alt="">
+                        <img src="img/projects/<?=$article['icon']?>.jpg" class="img-responsive" alt="">
                     </a>
                 </div>
-                <div class="portfolio-item">
-                    <a href="#pressModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-file-image-o fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="http://carreterodesign.com/wp-content/uploads/2014/08/housebeautiful-240x240.png" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="portfolio-item">
-                    <a href="#pressModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-file-image-o fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="http://carreterodesign.com/wp-content/uploads/2012/10/elleDecor_logo1.jpg" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="portfolio-item">
-                    <a href="#pressModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-file-image-o fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="http://carreterodesign.com/wp-content/uploads/2012/10/AD_logo1.jpg" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="portfolio-item">
-                    <a href="#pressModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-file-image-o fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="http://carreterodesign.com/wp-content/uploads/2012/10/casaVogue_logo1.jpg" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="portfolio-item">
-                    <a href="#pressModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-file-image-o fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="http://carreterodesign.com/wp-content/uploads/2012/10/monocle_logo1.jpg" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="portfolio-item">
-                    <a href="#pressModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-file-image-o fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="http://carreterodesign.com/wp-content/uploads/2013/08/DOM_logo-240x240.jpg" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="portfolio-item">
-                    <a href="#pressModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-file-image-o fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="http://carreterodesign.com/wp-content/uploads/2013/08/homeDesign_logo-240x240.jpg" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="portfolio-item">
-                    <a href="#pressModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-file-image-o fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="http://carreterodesign.com/wp-content/uploads/2013/08/russia_bestInteriors_logo-240x240.jpg" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="portfolio-item">
-                    <a href="#pressModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-file-image-o fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="http://carreterodesign.com/wp-content/uploads/2012/10/casasYgente_logo1.jpg" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="portfolio-item">
-                    <a href="#pressModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-file-image-o fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="http://carreterodesign.com/wp-content/uploads/2012/10/hospitalityDesign_logo1.jpg" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="portfolio-item">
-                    <a href="#pressModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-file-image-o fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="http://carreterodesign.com/wp-content/uploads/2012/10/casaViva1.jpg" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="portfolio-item">
-                    <a href="#pressModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-file-image-o fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="http://carreterodesign.com/wp-content/uploads/2012/10/theIndependent_logo1.jpg" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="portfolio-item">
-                    <a href="#pressModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-file-image-o fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="http://carreterodesign.com/wp-content/uploads/2012/10/habitat.jpg" class="img-responsive" alt="">
-                    </a>
-                </div>
-                <div class="portfolio-item">
-                    <a href="#pressModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="portfolio-hover">
-                            <div class="portfolio-hover-content">
-                                <i class="fa fa-file-image-o fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="http://carreterodesign.com/wp-content/uploads/2012/10/NYspaces_logo1.jpg" class="img-responsive" alt="">
-                    </a>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </section>
@@ -335,7 +207,7 @@ function getPrimaryImage($project){
                 foreach($projects as $project):
                 ?>
                 <div class="col-md-4 col-sm-6 portfolio-item">
-                    <a href="#project-modal-<?=$project['id']?>" class="portfolio-link" data-toggle="modal">
+                    <a href="#project-modal-<?=$project['id']?>" data-url="<?=$project['url']?>" data-title="<?=$project['title']?>" class="portfolio-link" data-toggle="modal">
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
                                 <img src="img/logo_white50.png" style="width: 60px;" alt="">
@@ -588,7 +460,10 @@ function getPrimaryImage($project){
                                 $i=1;
                                 while($image = mysqli_fetch_assoc($result)):
                                 ?>
-                                    <img class="img-responsive img-centered" src="img/projects/<?=$image['filename']?>.jpg" alt="" <?php if($i>1) echo "style='display: none'"?>>
+                                    <div class="img-wrapper">
+                                        <img class="img-responsive img-centered" src="img/projects/<?=$image['filename']?>.jpg" alt="">
+                                        <a data-pin-do="buttonPin" data-pin-tall="true" data-pin-save="true" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fcapitalcinteriors.com%2F<?=$project['url']?>&media=http%3A%2F%2Flocalhost%2Fimg%2Fprojects%2F<?=$image['filename']?>.jpg&description=<?=$project['title']?> - <?=$project['subtitle']?>"></a>
+                                    </div>
                                 <?php $i++; endwhile; ?>
                             </div>
                         </div>
@@ -654,7 +529,8 @@ function getPrimaryImage($project){
     <?php endforeach; ?>
 
     <!-- Press Modal -->
-    <div class="portfolio-modal press modal fade" id="pressModal1" tabindex="-1" role="dialog" aria-hidden="true">
+    <?php foreach($press as $article): ?>
+    <div class="portfolio-modal press modal fade" id="press-modal-<?=$article['id']?>" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="container">
@@ -680,27 +556,15 @@ function getPrimaryImage($project){
                                 </button>
                             </div>
                             <div class="images">
-                                <img class="img-responsive img-centered" src="press/lonny1.jpg" alt="">
-                                <img class="img-responsive img-centered" src="press/lonny2.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="press/lonny3.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="press/lonny4.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="press/lonny5.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="press/lonny6.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="press/lonny7.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="press/lonny8.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="press/lonny9.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="press/lonny10.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="press/lonny11.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="press/lonny12.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="press/lonny13.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="press/lonny14.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="press/lonny15.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="press/lonny16.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="press/lonny17.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="press/lonny18.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="press/lonny19.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="press/lonny20.jpg" alt="" style="display: none;">
-                                <img class="img-responsive img-centered" src="press/lonny21.jpg" alt="" style="display: none;">
+                                <?php 
+                                $result = $db->query("SELECT * FROM press_images WHERE press=".$article['id']." ORDER BY `order` ASC");
+                                $i=1;
+                                while($image = mysqli_fetch_assoc($result)):
+                                ?>
+                                    <div class="img-wrapper">
+                                        <img class="img-responsive img-centered" src="img/projects/<?=$image['filename']?>.jpg" alt="">
+                                    </div>
+                                <?php $i++; endwhile; ?>
                             </div>
                         </div>
                     </div>
@@ -708,6 +572,7 @@ function getPrimaryImage($project){
             </div>
         </div>
     </div>
+    <?php endforeach; ?>
 
 
     <!-- jQuery -->
@@ -722,6 +587,8 @@ function getPrimaryImage($project){
     <script type='text/javascript' src='plugins/mousewheel/jquery.mousewheel.min.js'></script>
     <!-- scrollup -->
     <script type='text/javascript' src='plugins/scrollup/src/jquery.scrollUp.js'></script>
+    <!-- Pinterest -->
+    <script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
 
     <script src="js/build/production.min.js"></script>
 
