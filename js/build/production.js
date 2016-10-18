@@ -191,9 +191,11 @@ $(function () {
 		    }
 	    // Resize in-progress
 	    	if(windowWidth>991){
-		    	ipHeight = $("a[href^='#project-modal']:first").height();
-		    	$("#in-progress a").height(ipHeight);
-		    	$("#in-progress-img").css("margin-top",(-ipHeight/2)+"px");
+	    		setTimeout(function(){ 
+		    		ipHeight = $("a[href^='#project-modal']:first").height();
+			    	$("#in-progress a").height(ipHeight);
+			    	$("#in-progress-img").css("margin-top",(-ipHeight/2)+"px");
+		    	}, 1000);
 	    	}
 	}
 	resizeAdjustments();
