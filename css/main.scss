@@ -755,8 +755,39 @@ footer{
 	height: 100%;
 }
 
-
-
+#in-progress{
+	margin-bottom: -1px;
+	a{
+		overflow: hidden;
+		height: 160px;
+	}
+	.col-sm-9 .text-muted{
+		display: block;
+	}
+	.col-sm-9 .text-muted.sm{
+		display: none;
+	}
+	#in-progress-img{
+		width: 100%;
+	}
+}
+@media (max-width: 991px) {
+	#in-progress{
+		margin-bottom: 30px;
+		a{
+			height: auto;
+		}
+		.col-sm-9 .text-muted{
+			display: none;
+		}
+		.col-sm-9 .text-muted.sm{
+			display: block;
+		}
+		#in-progress-img{
+			width: auto;
+		}
+	}
+}
 
 
 footer{

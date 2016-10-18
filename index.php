@@ -2,7 +2,8 @@
 
 $host= "127.0.0.1";
 $dbuser ="root";
-$dbpass = "Record";
+// $dbpass = "Record";
+$dbpass = "";
 $dbname = "ocassioh_capitalcinteriors";
 $db = new mysqli($host, $dbuser, $dbpass, $dbname) or die(mysql_error());
 
@@ -25,6 +26,8 @@ function get_string_between($string, $start, $end){
 
 $rootURI = rtrim($_SERVER['REQUEST_URI'],'/')."/";
 $rootURI = "/capitalcinteriors/";
+$rootURI = "/";
+$HOST = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST']."/";
 
 // echo "<pre>";
 // print_r($_SERVER);
@@ -230,13 +233,16 @@ if(isset($_GET['url'])) {
             <div class="row">
                 <?php 
                 $projects = array();
+                $inProgress = array();
                 $result = $db->query("SELECT * FROM projects WHERE deleted=0 ORDER BY `order` ASC");
                 while($project = mysqli_fetch_assoc($result)){
                     $projects[] = $project;
+                    if($project['category']=="In-Progress") $inProgress[] = $project;
                 }
+                $i=1;
                 foreach($projects as $project):
                 ?>
-                <div class="col-md-4 col-sm-6 portfolio-item">
+                <div class="col-md-4 col-sm-6 portfolio-item" <?php if($project['category']=="In-Progress") echo "style='display:none'" ?>>
                     <a href="#project-modal-<?=$project['id']?>" data-url="<?=$rootURI.$project['url']?>" data-title="<?=$project['title']?>" class="portfolio-link" data-toggle="modal" <?php if(isset($projectOnLoad) && $projectOnLoad==$project['id']) echo 'data-onLoad';?>>
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
@@ -259,7 +265,35 @@ if(isset($_GET['url'])) {
                         </p>
                     </div>
                 </div>
-                <?php endforeach; ?>
+                <?php if($i==3): ?>
+                    <div id="in-progress" class="col-md-8 col-sm-6 portfolio-item">
+                        <a href="#project-modal-<?=$inProgress[0]['id']?>" data-url="<?=$rootURI.$inProgress[0]['url']?>" data-title="<?=$inProgress[0]['title']?>" class="portfolio-link" data-toggle="modal" <?php if(isset($projectOnLoad) && $projectOnLoad==$inProgress[0]['id']) echo 'data-onLoad';?>>
+                            <div class="portfolio-hover">
+                                <div class="portfolio-hover-content">
+                                    <img src="img/logo_white50.png" style="width: 60px;" alt="">
+                                    <div class="details-button">View Projects</div>
+                                </div>
+                            </div>
+                            <img id="in-progress-img" src="img/projects/<?=getPrimaryImage($inProgress[0]['id'])?>-p.jpg" class="img-responsive" alt="">
+                        </a>
+                        <div class="portfolio-caption">
+                            <div class="row">
+                                <div class="col-md-1 col-sm-3 col-xs-3">
+                                    <i class="fa fa-wrench fa-3x" style="margin-top: -3px;"></i>
+                                </div>
+                                <div class="col-md-11 col-sm-9 col-xs-9" style="text-align: left;">
+                                    <h4>In-Progress Projects</h4>
+                                    <p class="text-muted">
+                                        Designs, sketches and mock-ups from some of our ongoing work.
+                                    </p>
+                                    <p class="text-muted sm">
+                                        Designs &amp; sketches
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; $i++; endforeach; ?>
             </div>
         </div>
     </section>
@@ -396,7 +430,7 @@ if(isset($_GET['url'])) {
 
     <!-- PROJECTS -->
     <?php foreach($projects as $project): ?>
-    <div class="portfolio-modal project modal fade" id="project-modal-<?=$project['id']?>" data-url="<?=$project['url']?>" data-id="<?=$project['id']?>" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="portfolio-modal project modal fade" id="project-modal-<?=$project['id']?>" data-url="<?=$project['url']?>" data-title="<?=$project['title']?>" data-id="<?=$project['id']?>" data-category="<?=$project['category']?>" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="container">
@@ -429,7 +463,7 @@ if(isset($_GET['url'])) {
                                 ?>
                                     <div class="img-wrapper">
                                         <img class="img-responsive img-centered" src="img/projects/<?=$image['filename']?>.jpg" alt="">
-                                        <a data-pin-do="buttonPin" data-pin-tall="true" data-pin-save="true" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fcapitalcinteriors.com%2F<?=$project['url']?>&media=http%3A%2F%2Flocalhost%2Fimg%2Fprojects%2F<?=$image['filename']?>.jpg&description=<?=$project['title']?> - <?=$project['subtitle']?>"></a>
+                                        <a data-pin-do="buttonPin" data-pin-tall="true" data-pin-save="true" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fcapitalcinteriors.com%2F<?=$project['url']?>&media=<?=urlencode($HOST)?>img%2Fprojects%2F<?=$image['filename']?>.jpg&description=<?=$project['title']?> - <?=$project['subtitle']?>"></a>
                                     </div>
                                 <?php $i++; endwhile; ?>
                             </div>
@@ -440,7 +474,17 @@ if(isset($_GET['url'])) {
                                 <p class="item-intro text-muted"><?=$project['subtitle']?></p>
                                 <hr>
                                 <div class="item-category">
-                                    <i class="fa fa-building"></i>&nbsp; <?=$project['category']?>
+                                    <?php
+                                        $category = $project['category'];
+                                        if($category=="Apartment") $catIcon = "building";
+                                        if($category=="Commercial") $catIcon = "bank";
+                                        if($category=="Hotel") $catIcon = "bed";
+                                        if($category=="House") $catIcon = "home";
+                                        if($category=="Restaurant") $catIcon = "cutlery";
+                                        if($category=="Retail") $catIcon = "shopping-bag";
+                                        if($category=="In-Progress") $catIcon = "wrench";
+                                    ?>
+                                    <i class="fa fa-<?=$catIcon?>"></i>&nbsp; <?=$project['category']?>
                                 </div>
                                 <hr>
                                 <p class="item-text">
@@ -450,6 +494,7 @@ if(isset($_GET['url'])) {
                                     <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-envelope"></i>&nbsp; Ask us about this project</button>
                                 </div>
                                 <hr>
+                                <?php if($tags!=''): ?>
                                     <ul class="tags">
                                         <?php
                                             $tags = explode(",", trim($project['tags'],","));
@@ -459,6 +504,8 @@ if(isset($_GET['url'])) {
                                         ?>
                                     </ul>
                                 <hr>
+                                <?php endif; ?>
+                                <!--
                                 <div class="item-subheading">
                                     <i class="fa fa-paint-brush"></i>&nbsp; Color palette
                                 </div>
@@ -485,6 +532,7 @@ if(isset($_GET['url'])) {
                                         <img src="projects/piedaterrelili.jpg" class="img-responsive" alt="">
                                     </div>
                                 </div>
+                                -->
                                 <br>
                             </div>
                         </div>

@@ -189,6 +189,12 @@ $(function () {
 		    if($("section#contact").height()<contactHeight){
 		    	// $("section#contact").height(contactHeight);
 		    }
+	    // Resize in-progress
+	    	if(windowWidth>991){
+		    	ipHeight = $("a[href^='#project-modal']:first").height();
+		    	$("#in-progress a").height(ipHeight);
+		    	$("#in-progress-img").css("margin-top",(-ipHeight/2)+"px");
+	    	}
 	}
 	resizeAdjustments();
 	$( window ).resize(function() {
@@ -294,7 +300,7 @@ $(function () {
 
 	// Modal load/redirect
 	if($("a[data-toggle='modal'][data-onLoad]").length==1){
-		$("a[data-toggle='modal'][data-onLoad]").trigger("click");
+		$("a[data-toggle='modal'][data-onLoad]:last").trigger("click");
 	}
     $(window).on('popstate', function() {
     	path = window.location.pathname.replace(/\//g, '').replace("capitalcinteriors","");
@@ -320,6 +326,18 @@ $(function () {
     		// Progress index in whichever direction
 			if(direction=="previous"){
 				if(currentIndex==1){
+					if($(".portfolio-modal[data-category='In-Progress']:visible").length>0){
+						prev = $(".portfolio-modal[data-category='In-Progress']:visible").prevAll(".portfolio-modal[data-category='In-Progress']:first");
+						if(prev.length==0){
+							prev = $(".portfolio-modal[data-category='In-Progress']:visible").nextAll(".portfolio-modal[data-category='In-Progress']:last");
+						}
+						$(".portfolio-modal[data-category='In-Progress']:visible").removeClass('fade').modal('hide').addClass('fade');
+						modalID = prev.data("id");
+						prev.removeClass('fade');
+						$("a[href='#project-modal-" + modalID + "']:first").trigger("click");
+						prev.addClass('fade');
+						return;
+					}
 					nextImg = imgCount;
 				}else{
 					nextImg = currentIndex - 1;
@@ -335,6 +353,18 @@ $(function () {
 				}, 100);
 			}else{
 				if(currentIndex==imgCount){
+					if($(".portfolio-modal[data-category='In-Progress']:visible").length>0){
+						next = $(".portfolio-modal[data-category='In-Progress']:visible").nextAll(".portfolio-modal[data-category='In-Progress']:first");
+						if(next.length==0){
+							next = $(".portfolio-modal[data-category='In-Progress']:visible").prevAll(".portfolio-modal[data-category='In-Progress']:last");
+						}
+						$(".portfolio-modal[data-category='In-Progress']:visible").removeClass('fade').modal('hide').addClass('fade');
+						modalID = next.data("id");
+						next.removeClass('fade');
+						$("a[href='#project-modal-" + modalID + "']:first").trigger("click");
+						next.addClass('fade');
+						return;
+					}
 					nextImg = 1;
 				}else{
 					nextImg = currentIndex + 1;

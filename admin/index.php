@@ -477,6 +477,7 @@ function getPrimaryImage($project){
                                         <option <?php if($project['category']=="House") echo "selected" ?>>House</option>
                                         <option <?php if($project['category']=="Restaurant") echo "selected" ?>>Restaurant</option>
                                         <option <?php if($project['category']=="Retail") echo "selected" ?>>Retail</option>
+                                        <option <?php if($project['category']=="In-Progress") echo "selected" ?>>In-Progress</option>
                                     </select>
                                 </div>
                             </div>
