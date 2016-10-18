@@ -1,9 +1,9 @@
 <?php
 
 $host= "127.0.0.1";
-$dbuser ="root";
+$dbuser ="ocassioh";
 // $dbpass = "Record";
-$dbpass = "";
+$dbpass = "REDACTED";
 $dbname = "ocassioh_capitalcinteriors";
 $db = new mysqli($host, $dbuser, $dbpass, $dbname) or die(mysql_error());
 
@@ -26,7 +26,7 @@ function get_string_between($string, $start, $end){
 
 $rootURI = rtrim($_SERVER['REQUEST_URI'],'/')."/";
 $rootURI = "/capitalcinteriors/";
-$rootURI = "/";
+// $rootURI = "/";
 $HOST = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST']."/";
 
 // echo "<pre>";
