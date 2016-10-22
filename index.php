@@ -29,7 +29,7 @@ function get_string_between($string, $start, $end){
 
 $rootURI = rtrim($_SERVER['REQUEST_URI'],'/')."/";
 $rootURI = "/capitalcinteriors/";
-$HOST = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST']."/";
+$HOST = "http://".$_SERVER['HTTP_HOST'];
 
 // $rootURI = "/";
 
@@ -250,7 +250,7 @@ if(isset($_GET['url'])) {
                 foreach($projects as $project):
                 ?>
                 <div class="col-md-4 col-sm-6 portfolio-item" <?php if($project['category']=="In-Progress") echo "style='display:none'" ?>>
-                    <a href="#project-modal-<?=$project['id']?>" data-url="<?=$rootURI.$project['url']?>" data-title="<?=$project['title']?>" class="portfolio-link" data-toggle="modal" <?php if(isset($projectOnLoad) && $projectOnLoad==$project['id']) echo 'data-onLoad';?>>
+                    <a href="#<?=$project['id']?>-<?=$project['url']?>" data-url="<?=$rootURI.$project['url']?>" data-title="<?=$project['title']?>" class="portfolio-link" data-toggle="modal" <?php if(isset($projectOnLoad) && $projectOnLoad==$project['id']) echo 'data-onLoad';?>>
                         <div class="portfolio-hover">
                             <div class="portfolio-hover-content">
                                 <img src="img/logo_white50.png" style="width: 60px;" alt="">
@@ -437,7 +437,7 @@ if(isset($_GET['url'])) {
 
     <!-- PROJECTS -->
     <?php foreach($projects as $project): ?>
-    <div class="portfolio-modal project modal fade" id="project-modal-<?=$project['id']?>" data-url="<?=$project['url']?>" data-title="<?=$project['title']?>" data-id="<?=$project['id']?>" data-category="<?=$project['category']?>" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="portfolio-modal project modal fade" id="<?=$project['id']?>-<?=$project['url']?>" data-url="<?=$project['url']?>" data-title="<?=$project['title']?>" data-id="<?=$project['id']?>" data-category="<?=$project['category']?>" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="container">
@@ -470,7 +470,7 @@ if(isset($_GET['url'])) {
                                 ?>
                                     <div class="img-wrapper">
                                         <img class="project-image img-responsive img-centered" src="img/projects/<?=$image['filename']?>.jpg" alt="">
-                                        <a href="http://pinterest.com/pin/create/button/?url=https%3A%2F%2Fcapitalcinteriors.com%2F<?=$project['url']?>&media=<?=urlencode($HOST."img/projects/".$image['filename'])?>&description=<?=$project['title']?> - <?=$project['subtitle']?>" target="_blank" class="pin-it-button" count-layout="horizontal">
+                                        <a href="http://pinterest.com/pin/create/button/?url=https%3A%2F%2Fcapitalcinteriors.com%2F<?=$project['url']?>&media=<?=urlencode($HOST.$rootURI."img/projects/".$image['filename'].".jpg")?>&description=<?=$project['title']?> - <?=$project['subtitle']?>" target="_blank" class="pin-it-button" count-layout="horizontal">
                                             <img border="0" src="img/pin.png" title="Pin It" />
                                         </a>
                                         <!-- <a data-pin-do="buttonPin" data-pin-tall="true" data-pin-save="true" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fcapitalcinteriors.com%2F<?=$project['url']?>&media=<?=urlencode($HOST)?>img%2Fprojects%2F<?=$image['filename']?>.jpg&description=<?=$project['title']?> - <?=$project['subtitle']?>"></a> -->
