@@ -468,6 +468,30 @@ $(function () {
 		if(topscroll>(pressOffset-windowHeight))
 			$("#press .container.init").removeClass("init");
 
+	// CONTACT FORM
+	$(document).on("submit", "#emailForm" , function(e) {
+		$("#emailForm button[type='submit']").html("Sending...");
+		$.ajax({
+			type: "GET",
+			url: "",
+			data: $("#emailForm").serialize(),
+			success: function(data){
+				console.log(data);
+				if(data==""){
+					$("#emailForm").trigger("reset");
+					$("#emailForm button[type='submit']").html("Sent, thank you!");
+		    		setTimeout(function(){ 
+			    		$("#emailForm button[type='submit']").html("Send Message");
+			    	}, 5000);
+				}else{
+					alert(data);
+					$("#emailForm button[type='submit']").html("Send Message");
+				}
+			}
+		});
+		e.preventDefault();
+		return false;
+	});
 
 
 });
