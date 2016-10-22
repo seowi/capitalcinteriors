@@ -192,7 +192,7 @@ $(function () {
 	    // Resize in-progress
 	    	if(windowWidth>991){
 	    		setTimeout(function(){ 
-		    		ipHeight = $("a[href^='#project-modal']:first").height();
+		    		ipHeight = $("#projects a.portfolio-link:first").height();
 			    	$("#in-progress a").height(ipHeight);
 			    	$("#in-progress-img").css("margin-top",(-ipHeight/2)+"px");
 		    	}, 1000);
@@ -336,7 +336,7 @@ $(function () {
 						$(".portfolio-modal[data-category='In-Progress']:visible").removeClass('fade').modal('hide').addClass('fade');
 						modalID = prev.data("id");
 						prev.removeClass('fade');
-						$("a[href='#project-modal-" + modalID + "']:first").trigger("click");
+						$("a.portfolio-link[href^='#" + modalID + "']:first").trigger("click");
 						prev.addClass('fade');
 						return;
 					}
@@ -363,7 +363,7 @@ $(function () {
 						$(".portfolio-modal[data-category='In-Progress']:visible").removeClass('fade').modal('hide').addClass('fade');
 						modalID = next.data("id");
 						next.removeClass('fade');
-						$("a[href='#project-modal-" + modalID + "']:first").trigger("click");
+						$("a.portfolio-link[href^='#" + modalID + "']:first").trigger("click");
 						next.addClass('fade');
 						return;
 					}
