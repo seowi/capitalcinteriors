@@ -108,7 +108,7 @@ $(function () {
 			wrapperRatio = wrapperWidth/wrapperHeight;
 		// Loop through each image to resize it
 		if(!isNaN(wrapperRatio)){
-			$('body').find(modalID + ' .modal-image .images .img-wrapper img').each(function(){
+			$('body').find(modalID + ' .modal-image .images .img-wrapper img.project-image').each(function(){
 				if($(this).width()>0 && $(this).height()>0){
 					// Establish if the image should be stretched tall or wide
 						if($(this).width()/$(this).height() < 1){
@@ -340,11 +340,15 @@ $(function () {
 			    	if(delta>0){
 			    		if(currentMousePos.y>(pressTop-pressOverlap)){
 				    		if(pressScroll<0){
+				    			$('.press_nav_left').fadeIn();
+				    			$('.press_nav_right').fadeIn();
 						    	$("#press .wrapper").css("margin-left",pressScrollNew);
 								event.preventDefault();
 				    		}
 			    		}
 					   	if(pressScroll>0){
+			    			$('.press_nav_left').fadeOut();
+			    			$('.press_nav_right').fadeIn();
 					   		$("#press .wrapper").css("margin-left",0);
 					   	}
 			    	}else{
@@ -352,11 +356,14 @@ $(function () {
 			    		desiredPosition = $(window).width()-$("#press .portfolio-item:last-child").width();
 			    		if(currentMousePos.y<(pressBottom+pressOverlap)){
 				    		if(lastElementPosition>desiredPosition){
+				    			$('.press_nav_right').fadeIn();
+				    			$('.press_nav_left').fadeIn();
 						    	$("#press .wrapper").css("margin-left",pressScrollNew);
 								event.preventDefault();
 				    		}
 			    		}
 			    		if(lastElementPosition<desiredPosition){
+			    			$('.press_nav_right').fadeOut();
 			    			overshoot = desiredPosition - lastElementPosition;
 			    			correction = pressScroll + overshoot;
 					    	$("#press .wrapper").css("margin-left",correction);
@@ -365,6 +372,59 @@ $(function () {
 			   	}
 			}
 		});
+
+	// MANUALLY SCROLL PRESS
+	$('.press_nav_left').each(function () {
+		var hovered = false;
+		var loop = window.setInterval(function () {
+			if (hovered) {
+		   		pressScroll = +$("#press .wrapper").css("margin-left").replace("px","");
+	    		if(pressScroll<0){
+	    			newMargin = pressScroll+60;
+	    			newMargin = Math.min(newMargin,0);
+					$("#press .wrapper").animate({ marginLeft: newMargin}, 80);
+	    			$('.press_nav_right').fadeIn();
+	    		}else{
+	    			$('.press_nav_left').fadeOut();
+	    		}
+			}
+		}, 100);
+		$(this).hover(
+			function () {
+				hovered = true;
+			},
+			function () {
+				hovered = false;
+			}
+		);
+	});
+	$('.press_nav_right').each(function () {
+		var hovered = false;
+		var loop = window.setInterval(function () {
+			if (hovered) {
+	    		lastElementPosition = $("#press .portfolio-item:last-child").position().left + 25;
+	    		desiredPosition = $(window).width()-$("#press .portfolio-item:last-child").width();
+	    		if(lastElementPosition>desiredPosition){
+	    			pressScroll = +$("#press .wrapper").css("margin-left").replace("px","");
+	    			newMargin = pressScroll-60;
+	    			maxMargin = pressScroll + (desiredPosition - lastElementPosition);
+	    			newMargin = Math.max(newMargin,maxMargin);
+					$("#press .wrapper").animate({ marginLeft: newMargin}, 80);
+	    			$('.press_nav_left').fadeIn();
+	    		}else{
+	    			$('.press_nav_right').fadeOut();
+	    		}
+			}
+		}, 100);
+		$(this).hover(
+			function () {
+				hovered = true;
+			},
+			function () {
+				hovered = false;
+			}
+		);
+	});
 
     // SCROLL
     $("#press .container").addClass("init");

@@ -111,14 +111,15 @@ nav#mainNav{
 	.navbar-brand{
 		display: none;
 		color: white;
-		background-image: url(../img/logo_nav.png);
+		background-image: url(../img/logo_nav_full.png);
 		background-repeat: no-repeat;
 		background-position: 0 center;
-		font-size: 15px;
+		font-size: 0;
 	    height: 40px;
 	    line-height: 10px;
 	    margin: 6px 0 6px 6px;
-	    background-size: 47px;
+	    background-size: 287px;
+	    width: 300px;
 	    padding-left: 60px;
 		@media (min-width: 800px) {
 			/*background-size: 50px;*/
@@ -178,7 +179,7 @@ header{
 	transition: background 1s linear;
 	.wrapper{
 	    height: 706px;
-	    background: url("../img/logo_home_shadow.png");
+	    background: url("../img/logo_home_stacked_shadow.png");
 	    background-size: 100% auto;
 		background-repeat: no-repeat;
 	    background-position: center center;
@@ -434,6 +435,39 @@ section{
 	    width: auto;
 	    overflow-x: scroll;
 	    overflow-y: hidden;
+	    .press_nav_right{
+		    background: url(../img/press_arrow_right.png) center right no-repeat;
+		    height: 100%;
+		    width: 280px;
+		    position: absolute;
+		    top: 0;
+		    right: 0;
+		    z-index: 4;
+			-webkit-transition: right 0.5s;
+			-webkit-transition-timing-function: ease;
+		    transition: right 0.5s;
+			transition-timing-function: ease;
+		    &:hover{
+		    	right: -20px;
+		    }
+	    }
+	    .press_nav_left{
+	    	display: none;
+		    background: url(../img/press_arrow_left.png) center left no-repeat;
+		    height: 100%;
+		    width: 280px;
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    z-index: 4;
+			-webkit-transition: left 0.5s;
+			-webkit-transition-timing-function: ease;
+		    transition: left 0.5s;
+			transition-timing-function: ease;
+		    &:hover{
+		    	left: -20px;
+		    }
+	    }
 		.container{
 			&.init{
 				padding-left: 40%;
@@ -601,6 +635,14 @@ footer{
 	/*position: fixed;*/
 	padding: 0 !important;
 	width: 100%;
+	.pin-it-button{
+		position: absolute;
+		z-index: 999;
+		bottom: 30px;
+		img{
+			width: auto;
+		}
+	}
 	.container{
 		width: 100%;
 		.close-modal{
