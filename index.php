@@ -174,7 +174,7 @@ if(isset($_GET['url'])) {
                 <div class="intro-text">
                     <!-- <img class="intro-logo" src="img/logo_home_shadow.png" alt="" style="width: 60%;"> -->
                     &nbsp;
-                    <a id="headerButton" href="#about" class="page-scroll btn btn-xl" style="visibility: hidden;">How we do it &nbsp; <i class="icon fa fa-arrow-circle-down"></i></a>
+                    <a id="headerButton" href="#about" class="page-scroll btn btn-xl" style="visibility: hidden;">See what we do &nbsp; <i class="icon fa fa-arrow-circle-down"></i></a>
                 </div>
             </div>
             <div class="name-right">Juan Carretero, founder</div>
