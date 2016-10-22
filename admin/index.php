@@ -1,9 +1,14 @@
 <?php
 
 $host= "127.0.0.1";
-$dbuser ="root";
-$dbpass = "";
+$dbuser ="ocassioh";
+// $dbpass = "Record";
+$dbpass = "REDACTED";
 $dbname = "ocassioh_capitalcinteriors";
+
+// $dbuser = "root";
+// $dbpass = "";
+
 $db = new mysqli($host, $dbuser, $dbpass, $dbname) or die(mysql_error());
 
 function escapeArray($array){
