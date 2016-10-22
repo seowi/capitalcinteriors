@@ -10,12 +10,15 @@ if(isset($_GET['message'])){
         echo "Please complete all fields";
         die;
     }
+    $headers = 'From: capitalcinteriors@jonty.us' . "\r\n" .
+        'Reply-To: ' . $email . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
     $message = wordwrap($message,70);
-    $body = "Name: ".$email;
-    $body .= "Email: ".$email;
+    $body = "Name: ".$name."\r\n\r\n";
+    $body .= "Email: ".$email."\r\n\r\n";
     $body .= $message;
     
-    $sent = mail("jonty.usborne@gmail.com","New message from capitalcinteriors.com",$body);
+    $sent = mail("jonty.usborne@gmail.com","New message from capitalcinteriors.com",$body,$headers);
     if(!$sent) echo "Sorry, there was a problem sending your message";
     // echo "<pre>";
     // print_r($_GET);
