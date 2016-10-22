@@ -58,7 +58,7 @@ $rootURI = rtrim($_SERVER['REQUEST_URI'],'/')."/";
 $rootURI = "/capitalcinteriors/";
 $HOST = "http://".$_SERVER['HTTP_HOST'];
 
-// $rootURI = "/";
+$rootURI = "/";
 
 
 // echo "<pre>";
@@ -614,7 +614,7 @@ if(isset($_GET['url'])) {
                                 while($image = mysqli_fetch_assoc($result)):
                                 ?>
                                     <div class="img-wrapper">
-                                        <img class="img-responsive img-centered" src="img/projects/<?=$image['filename']?>.jpg" alt="">
+                                        <img class="project-image img-responsive img-centered" src="img/projects/<?=$image['filename']?>.jpg" alt="">
                                     </div>
                                 <?php $i++; endwhile; ?>
                             </div>
