@@ -274,7 +274,7 @@ if(isset($_GET['url'])) {
                 </div>
                 <?php if($i==3): ?>
                     <div id="in-progress" class="col-md-8 col-sm-6 portfolio-item">
-                        <a href="#project-modal-<?=$inProgress[0]['id']?>" data-url="<?=$rootURI.$inProgress[0]['url']?>" data-title="<?=$inProgress[0]['title']?>" class="portfolio-link" data-toggle="modal" <?php if(isset($projectOnLoad) && $projectOnLoad==$inProgress[0]['id']) echo 'data-onLoad';?>>
+                        <a href="#<?=$inProgress[0]['id']?>-<?=$inProgress[0]['url']?>" data-url="<?=$rootURI.$inProgress[0]['url']?>" data-title="<?=$inProgress[0]['title']?>" class="portfolio-link" data-toggle="modal" <?php if(isset($projectOnLoad) && $projectOnLoad==$inProgress[0]['id']) echo 'data-onLoad';?>>
                             <div class="portfolio-hover">
                                 <div class="portfolio-hover-content">
                                     <img src="img/logo_white50.png" style="width: 60px;" alt="">
