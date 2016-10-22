@@ -5,6 +5,10 @@ $dbuser ="ocassioh";
 // $dbpass = "Record";
 $dbpass = "REDACTED";
 $dbname = "ocassioh_capitalcinteriors";
+
+// $dbuser = "root";
+// $dbpass = "";
+
 $db = new mysqli($host, $dbuser, $dbpass, $dbname) or die(mysql_error());
 
 function getPrimaryImage($project){
@@ -13,7 +17,6 @@ function getPrimaryImage($project){
     $value = mysqli_fetch_row($result)[0];
     return $value;
 }
-
 
 function get_string_between($string, $start, $end){
     $string = ' ' . $string;
@@ -26,8 +29,10 @@ function get_string_between($string, $start, $end){
 
 $rootURI = rtrim($_SERVER['REQUEST_URI'],'/')."/";
 $rootURI = "/capitalcinteriors/";
-// $rootURI = "/";
 $HOST = $_SERVER['REQUEST_SCHEME']."://".$_SERVER['HTTP_HOST']."/";
+
+// $rootURI = "/";
+
 
 // echo "<pre>";
 // print_r($_SERVER);
@@ -175,6 +180,8 @@ if(isset($_GET['url'])) {
 
     <section id="press" class="portfolio bg-light-gray">
         <div class="wrapper">
+            <div class="press_nav_left"></div>
+            <div class="press_nav_right"></div>
             <div class="container">
                 <?php 
                 $press = array();
@@ -462,8 +469,11 @@ if(isset($_GET['url'])) {
                                 while($image = mysqli_fetch_assoc($result)):
                                 ?>
                                     <div class="img-wrapper">
-                                        <img class="img-responsive img-centered" src="img/projects/<?=$image['filename']?>.jpg" alt="">
-                                        <a data-pin-do="buttonPin" data-pin-tall="true" data-pin-save="true" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fcapitalcinteriors.com%2F<?=$project['url']?>&media=<?=urlencode($HOST)?>img%2Fprojects%2F<?=$image['filename']?>.jpg&description=<?=$project['title']?> - <?=$project['subtitle']?>"></a>
+                                        <img class="project-image img-responsive img-centered" src="img/projects/<?=$image['filename']?>.jpg" alt="">
+                                        <a href="http://pinterest.com/pin/create/button/?url=https%3A%2F%2Fcapitalcinteriors.com%2F<?=$project['url']?>&media=<?=urlencode($HOST."img/projects/".$image['filename'])?>&description=<?=$project['title']?> - <?=$project['subtitle']?>" target="_blank" class="pin-it-button" count-layout="horizontal">
+                                            <img border="0" src="img/pin.png" title="Pin It" />
+                                        </a>
+                                        <!-- <a data-pin-do="buttonPin" data-pin-tall="true" data-pin-save="true" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fcapitalcinteriors.com%2F<?=$project['url']?>&media=<?=urlencode($HOST)?>img%2Fprojects%2F<?=$image['filename']?>.jpg&description=<?=$project['title']?> - <?=$project['subtitle']?>"></a> -->
                                     </div>
                                 <?php $i++; endwhile; ?>
                             </div>
@@ -603,7 +613,6 @@ if(isset($_GET['url'])) {
     <!-- scrollup -->
     <script type='text/javascript' src='plugins/scrollup/src/jquery.scrollUp.js'></script>
     <!-- Pinterest -->
-    <script type="text/javascript" async src="//assets.pinterest.com/js/pinit.js"></script>
 
     <script src="js/build/production.min.js"></script>
 
