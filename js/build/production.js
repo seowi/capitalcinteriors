@@ -211,6 +211,38 @@ $(function () {
     // itemHeight = itemWidth * (3/5);
     // $("#projects .portfolio-item .portfolio-link").height(itemHeight);
 
+
+	function getImageSize(img, callback){
+	    img = $(img);
+
+	    var wait = setInterval(function(){        
+	        var w = img.width(),
+	            h = img.height();
+
+	        if(w && h){
+	            done(w, h);
+	        }
+	    }, 0);
+
+	    var onLoad;
+	    img.on('load', onLoad = function(){
+	        done(img.width(), img.height());
+	    });
+
+
+	    var isDone = false;
+	    function done(){
+	        if(isDone){
+	            return;
+	        }
+	        isDone = true;
+
+	        clearInterval(wait);
+	        img.off('load', onLoad);
+
+	        callback.apply(this, arguments);
+	    }
+	}
 	// MAINTAIN PORTFOLIO ASPECT RATIO
 	function resizePortfolioImages(modalID){
 		// Open modal in background and take measurements
@@ -223,47 +255,50 @@ $(function () {
 		// Loop through each image to resize it
 		if(!isNaN(wrapperRatio)){
 			$('body').find(modalID + ' .modal-image .images .img-wrapper img.project-image').each(function(){
-				if($(this).width()>0 && $(this).height()>0){
-					// Establish if the image should be stretched tall or wide
-						if($(this).width()/$(this).height() < 1){
-							// Portrait Image
-								$(this).attr("data-orientation","portrait");
-								// Calculate width, if height was set to 100%
-								calcHeight = wrapperHeight;
-								calcWidth = calcHeight * ($(this).width()/$(this).height());
-								if(calcWidth<=wrapperWidth){
-									imgClass = "tall";
-								}else{
-									imgClass = "wide";
-									calcHeight = wrapperWidth * ($(this).height()/$(this).width())
-								}
-						}else{
-							// Landscape Image
-								$(this).attr("data-orientation","landscape");
-								// Calculate height, if width was set to 100%
-								calcWidth = wrapperWidth;
-								calcHeight = calcWidth * ($(this).height()/$(this).width());
-								$(this).attr("data-calcHeight",calcHeight);
-								$(this).attr("data-wrapperHeight",wrapperHeight);
-								if(calcHeight<=wrapperHeight){
-									imgClass = "wide";
-								}else{
-									imgClass = "tall";
-									calcWith = wrapperHeight * ($(this).width()/$(this).height());
-								}
-						}
-					// Reset
-						$(this).removeClass("wide tall");
-						$(this).css("top","");
-					// If wide, vertically center
-						// if( (wrapperRatio>1 && imgClass=="tall") || (wrapperRatio<1 && imgClass=="wide") ){
-						if(imgClass=="wide"){
-							topOffset = wrapperHeight/2 - calcHeight/2;
-							$(this).css("top",topOffset + "px");
-						}
-					// Update class
-						$(this).addClass(imgClass);
-				}
+				// console.log($(this).attr('src'));
+				getImageSize($(this), function(imgWidth, imgHeight){
+					if(imgWidth>0 && imgHeight>0){
+						// Establish if the image should be stretched tall or wide
+							if(imgWidth/imgHeight < 1){
+								// Portrait Image
+									$(this).attr("data-orientation","portrait");
+									// Calculate width, if height was set to 100%
+									calcHeight = wrapperHeight;
+									calcWidth = calcHeight * (imgWidth/imgHeight);
+									if(calcWidth<=wrapperWidth){
+										imgClass = "tall";
+									}else{
+										imgClass = "wide";
+										calcHeight = wrapperWidth * (imgHeight/imgWidth)
+									}
+							}else{
+								// Landscape Image
+									$(this).attr("data-orientation","landscape");
+									// Calculate height, if width was set to 100%
+									calcWidth = wrapperWidth;
+									calcHeight = calcWidth * (imgHeight/imgWidth);
+									$(this).attr("data-calcHeight",calcHeight);
+									$(this).attr("data-wrapperHeight",wrapperHeight);
+									if(calcHeight<=wrapperHeight){
+										imgClass = "wide";
+									}else{
+										imgClass = "tall";
+										calcWith = wrapperHeight * (imgWidth/imgHeight);
+									}
+							}
+						// Reset
+							$(this).removeClass("wide tall");
+							$(this).css("top","");
+						// If wide, vertically center
+							// if( (wrapperRatio>1 && imgClass=="tall") || (wrapperRatio<1 && imgClass=="wide") ){
+							if(imgClass=="wide"){
+								topOffset = wrapperHeight/2 - calcHeight/2;
+								$(this).css("top",topOffset + "px");
+							}
+						// Update class
+							$(this).addClass(imgClass);
+					}
+				});
 			})
 		}
 		// Reset modal
