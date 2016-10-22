@@ -491,7 +491,7 @@ $(function () {
 	$('.press_nav_left').each(function () {
 		var hovered = false;
 		var loop = window.setInterval(function () {
-			if (hovered && $(window).width()<800) {
+			if (hovered && $(window).width()>800) {
 		   		pressScroll = +$("#press .wrapper").css("margin-left").replace("px","");
 	    		if(pressScroll<0){
 	    			newMargin = pressScroll+60;
@@ -515,7 +515,7 @@ $(function () {
 	$('.press_nav_right').each(function () {
 		var hovered = false;
 		var loop = window.setInterval(function () {
-			if (hovered && $(window).width()<800) {
+			if (hovered && $(window).width()>800) {
 	    		lastElementPosition = $("#press .portfolio-item:last-child").position().left + 25;
 	    		desiredPosition = $(window).width()-$("#press .portfolio-item:last-child").width();
 	    		if(lastElementPosition>desiredPosition){
