@@ -494,9 +494,10 @@ if(isset($_GET['url'])) {
                                 $result = $db->query("SELECT * FROM projects_images WHERE project=".$project['id']." ORDER BY `order` ASC");
                                 $i=1;
                                 while($image = mysqli_fetch_assoc($result)):
+                                    list($imgWidth, $imgHeight) = getimagesize("img/projects/".$image['filename'].".jpg");
                                 ?>
                                     <div class="img-wrapper">
-                                        <img class="project-image img-responsive img-centered" src="img/projects/<?=$image['filename']?>.jpg" alt="">
+                                        <img data-width="<?=$imgWidth?>" data-height="<?=$imgHeight?>" class="project-image img-responsive img-centered" src="img/projects/<?=$image['filename']?>.jpg" alt="">
                                         <a href="http://pinterest.com/pin/create/button/?url=https%3A%2F%2Fcapitalcinteriors.com%2F<?=$project['url']?>&media=<?=urlencode($HOST.$rootURI."img/projects/".$image['filename'].".jpg")?>&description=<?=$project['title']?> - <?=$project['subtitle']?>" target="_blank" class="pin-it-button" count-layout="horizontal">
                                             <img border="0" src="img/pin.png" title="Pin It" />
                                         </a>
@@ -612,9 +613,10 @@ if(isset($_GET['url'])) {
                                 $result = $db->query("SELECT * FROM press_images WHERE press=".$article['id']." ORDER BY `order` ASC");
                                 $i=1;
                                 while($image = mysqli_fetch_assoc($result)):
+                                    list($imgWidth, $imgHeight) = getimagesize("img/projects/".$image['filename'].".jpg");
                                 ?>
                                     <div class="img-wrapper">
-                                        <img class="project-image img-responsive img-centered" src="img/projects/<?=$image['filename']?>.jpg" alt="">
+                                        <img data-width="<?=$imgWidth?>" data-height="<?=$imgHeight?>" class="project-image img-responsive img-centered" src="img/projects/<?=$image['filename']?>.jpg" alt="">
                                     </div>
                                 <?php $i++; endwhile; ?>
                             </div>
