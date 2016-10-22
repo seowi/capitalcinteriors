@@ -33,8 +33,8 @@ $dbuser ="ocassioh";
 $dbpass = "REDACTED";
 $dbname = "ocassioh_capitalcinteriors";
 
-// $dbuser = "root";
-// $dbpass = "";
+$dbuser = "root";
+$dbpass = "";
 
 $db = new mysqli($host, $dbuser, $dbpass, $dbname) or die(mysql_error());
 
@@ -58,7 +58,7 @@ $rootURI = rtrim($_SERVER['REQUEST_URI'],'/')."/";
 $rootURI = "/capitalcinteriors/";
 $HOST = "http://".$_SERVER['HTTP_HOST'];
 
-// $rootURI = "/";
+$rootURI = "/";
 
 
 // echo "<pre>";

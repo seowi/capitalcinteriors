@@ -1,5 +1,8 @@
 <?php
 
+// username: juan
+// password: wildings
+
 $host= "127.0.0.1";
 $dbuser ="ocassioh";
 // $dbpass = "Record";
