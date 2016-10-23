@@ -144,8 +144,9 @@ $(function () {
 
 		var image = new Image();
 		image.onload = function () {
-		   console.info("Image loaded !");
-			$("header").css("background-image","url('img/projects/" + nextPhoto + "-p.jpg')");
+			setTimeout(function(){ 
+				$("header").css("background-image","url('img/projects/" + nextPhoto + "-p.jpg')");
+	    	}, 500);
 		}
 		image.src = 'img/projects/' + nextPhoto + '-p.jpg';
 
