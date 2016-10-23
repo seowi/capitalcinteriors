@@ -32,7 +32,7 @@ $(function () {
 		image.onload = function () {
 			setTimeout(function(){ 
 				$("header").css("background-image","url('img/projects/" + nextPhoto + "-p.jpg')");
-	    	}, 500);
+	    	}, 1000);
 		}
 		image.src = 'img/projects/' + nextPhoto + '-p.jpg';
 
