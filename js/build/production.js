@@ -129,6 +129,15 @@ $(function () {
 
 	$.scrollUp({topDistance: '1000'});
 
+	// Preload background images
+	function loadImages(photos) {
+	    $.each(photos, function(key,photo){
+	        $('<img/>')[0].src = 'img/projects/" + photo + "-p.jpg';
+	    });
+	}
+	photos = $("header").attr("data-background-images").split(",");
+	loadImages(photos);
+
 	// Header background
 	function progressHeaderPhoto(){
 		// photos = ['bistro.jpg','blanco.jpg','sothebys.jpg','villasofia.jpg','chelseamodern.jpg'];
@@ -212,37 +221,6 @@ $(function () {
     // $("#projects .portfolio-item .portfolio-link").height(itemHeight);
 
 
-	function getImageSize(img, callback){
-	    img = $(img);
-
-	    var wait = setInterval(function(){        
-	        var w = img.width(),
-	            h = img.height();
-
-	        if(w && h){
-	            done(w, h);
-	        }
-	    }, 0);
-
-	    var onLoad;
-	    img.on('load', onLoad = function(){
-	        done(img.width(), img.height());
-	    });
-
-
-	    var isDone = false;
-	    function done(){
-	        if(isDone){
-	            return;
-	        }
-	        isDone = true;
-
-	        clearInterval(wait);
-	        img.off('load', onLoad);
-
-	        callback.apply(this, arguments);
-	    }
-	}
 	// MAINTAIN PORTFOLIO ASPECT RATIO
 	function resizePortfolioImages(modalID){
 		// Open modal in background and take measurements
