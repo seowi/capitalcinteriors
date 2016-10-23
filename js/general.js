@@ -15,15 +15,6 @@ $(function () {
 
 	$.scrollUp({topDistance: '1000'});
 
-	// Preload background images
-	function loadImages(photos) {
-	    $.each(photos, function(key,photo){
-	        $('<img/>')[0].src = 'img/projects/" + photo + "-p.jpg';
-	    });
-	}
-	photos = $("header").attr("data-background-images").split(",");
-	loadImages(photos);
-
 	// Header background
 	function progressHeaderPhoto(){
 		// photos = ['bistro.jpg','blanco.jpg','sothebys.jpg','villasofia.jpg','chelseamodern.jpg'];
@@ -36,7 +27,14 @@ $(function () {
 		}
 		$("header").attr("data-background",nextIndex);
 		nextPhoto = photos[nextIndex];
-		$("header").css("background-image","url('img/projects/" + nextPhoto + "-p.jpg')");
+
+		var image = new Image();
+		image.onload = function () {
+		   console.info("Image loaded !");
+			$("header").css("background-image","url('img/projects/" + nextPhoto + "-p.jpg')");
+		}
+		image.src = 'img/projects/' + nextPhoto + '-p.jpg';
+
 	}
 	setInterval(function(){ progressHeaderPhoto() }, 7000);
 
