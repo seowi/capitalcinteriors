@@ -288,6 +288,7 @@ header{
 			}
 			@media (max-width: 800px) {
 				zoom: 0.6;
+				opacity: 1 !important;
 			}
 			@media (max-width: 768px) and (orientation: landscape) {
 				/*position: absolute;*/
