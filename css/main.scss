@@ -286,6 +286,9 @@ header{
 			@media (min-width: 330px){
 			    padding: 20px 40px;
 			}
+			@media (max-width: 800px) {
+				zoom: 0.6;
+			}
 			@media (max-width: 768px) and (orientation: landscape) {
 				/*position: absolute;*/
 				/*bottom: 25px;*/
