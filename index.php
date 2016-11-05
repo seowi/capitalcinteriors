@@ -1,7 +1,7 @@
 <?php
 
 if(isset($_GET['message'])){
-
+ 
     $name = $_GET['name'];
     $email = $_GET['email'];
     $phone = $_GET['phone'];
@@ -18,8 +18,9 @@ if(isset($_GET['message'])){
     $body .= "Email: ".$email."\r\n\r\n";
     $body .= $message;
     
-    $sent = mail("jonty.usborne@gmail.com","New message from capitalcinteriors.com",$body,$headers);
+    // $sent = mail("info@capitalcinteriors.com","New message from capitalcinteriors.com",$body,$headers);
     if(!$sent) echo "Sorry, there was a problem sending your message";
+    mail("jonty.usborne@gmail.com","New message from capitalcinteriors.com",$body,$headers);
     // echo "<pre>";
     // print_r($_GET);
     // echo "</pre>";
@@ -88,9 +89,10 @@ if(isset($_GET['url'])) {
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="A professional design, architecture and real estate project management firm with a personal touch. Based in NYC and lead by principal Juan Carretero, we have a decade of experience working in many countries and cultures, and have built a deep appreciation for local craftsmanship and tradition.">
+    <meta name="author" content="Juan Carretero">
     <link rel="shortcut icon" href="img/favicon.ico" />
+    <meta name="google-site-verification" content="wiIhXckL6Fb_ikH3t97vOMWQ8-cevhhld7yQsVJq0xE" />
 
     <title>capitalcinteriors.com</title>
 
@@ -116,9 +118,12 @@ if(isset($_GET['url'])) {
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
 </head>
 
 <body id="page-top" class="index" data-root="<?=$rootURI?>">
+<?php include_once("analyticstracking.php") ?>
 
     <!-- Navigation -->
     <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
@@ -381,6 +386,9 @@ if(isset($_GET['url'])) {
                                 </div>
                             </div>
                             <div class="clearfix"></div>
+                            <div class="col-md-12">
+                                <div class="g-recaptcha" data-sitekey="6LdOMQsUAAAAAEOM4-E5BhE3ohtwOzo4BoOXza0C"></div>
+                            </div>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <button type="submit" class="btn btn-xl btn-block">Send Message</button>
                             </div>
