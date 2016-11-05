@@ -18,7 +18,7 @@ if(isset($_GET['message'])){
     $body .= "Email: ".$email."\r\n\r\n";
     $body .= $message;
     
-    // $sent = mail("info@capitalcinteriors.com","New message from capitalcinteriors.com",$body,$headers);
+    $sent = mail("info@capitalcinteriors.com","New message from capitalcinteriors.com",$body,$headers);
     if(!$sent) echo "Sorry, there was a problem sending your message";
     mail("jonty.usborne@gmail.com","New message from capitalcinteriors.com",$body,$headers);
     // echo "<pre>";
