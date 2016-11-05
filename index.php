@@ -386,7 +386,7 @@ if(isset($_GET['url'])) {
                                 </div>
                             </div>
                             <div class="clearfix"></div>
-                            <div class="col-md-12">
+                            <div class="col-md-12 recaptcha" style="display: none; transform: scale(0.88); transform-origin: 0 0; margin-bottom: 10px;">
                                 <div class="g-recaptcha" data-sitekey="6LdOMQsUAAAAAEOM4-E5BhE3ohtwOzo4BoOXza0C"></div>
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12">

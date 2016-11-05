@@ -596,7 +596,16 @@ $(function () {
 			$("#press .container.init").removeClass("init");
 
 	// CONTACT FORM
+	$(document).on("keydown", "#emailForm input" , function(e) {
+		$("#emailForm .recaptcha").show();
+	});
 	$(document).on("submit", "#emailForm" , function(e) {
+		captcha = grecaptcha.getResponse();
+		console.log("captcha: " + captcha);
+		if(captcha==""){
+			alert("Please complete the 'reCAPTCHA' check so we know you're not a robot.");
+			return false;
+		}
 		$("#emailForm button[type='submit']").html("Sending...");
 		$.ajax({
 			type: "GET",
