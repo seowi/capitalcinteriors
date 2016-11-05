@@ -2,6 +2,11 @@
 
 if(isset($_GET['message'])){
  
+    $captcha = $_GET['g-recaptcha-response'];
+    if(strlen($captcha)<1){
+        echo "Please complete the 'reCAPTCHA' check so we know you're not a robot.";
+        die;
+    }
     $name = $_GET['name'];
     $email = $_GET['email'];
     $phone = $_GET['phone'];
@@ -388,6 +393,7 @@ if(isset($_GET['url'])) {
                             <div class="clearfix"></div>
                             <div class="col-md-12 recaptcha" style="display: none; transform: scale(0.88); transform-origin: 0 0; margin-bottom: 10px;">
                                 <div class="g-recaptcha" data-sitekey="6LdOMQsUAAAAAEOM4-E5BhE3ohtwOzo4BoOXza0C"></div>
+                                <input id="captchaInput" type="hidden" name="captcha" value="0">
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12">
                                 <button type="submit" class="btn btn-xl btn-block">Send Message</button>
