@@ -492,6 +492,7 @@ $(function () {
 			alert("Please complete the 'reCAPTCHA' check so we know you're not a robot.");
 			return false;
 		}
+		$("#captchaInput").val(1);
 		$("#emailForm button[type='submit']").html("Sending...");
 		$.ajax({
 			type: "GET",
