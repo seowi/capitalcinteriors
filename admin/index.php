@@ -4,7 +4,7 @@
 // password: wildings
 
 $host= "127.0.0.1";
-$dbuser ="ocassioh";
+$dbuser ="ocassioh_cci";
 // $dbpass = "Record";
 include("../../../capitalcinteriors_password.php");
 $dbname = "ocassioh_capitalcinteriors";
