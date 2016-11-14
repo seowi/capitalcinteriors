@@ -36,7 +36,7 @@ if(isset($_GET['message'])){
 $host= "127.0.0.1";
 $dbuser ="ocassioh";
 // $dbpass = "Record";
-$dbpass = "REDACTED";
+include("../../capitalcinteriors_password.php");
 $dbname = "ocassioh_capitalcinteriors";
 
 // $dbuser = "root";
