@@ -13,6 +13,12 @@ function ChangeUrl(title, url) {
 
 $(function () {
 
+	// Load modals via ajax
+	$.get( "modals.php", function( data ) {
+		$( "#modals-wrapper" ).html( data );
+		console.log( data );
+	});
+
 	$.scrollUp({topDistance: '1000'});
 
 	// Header background
