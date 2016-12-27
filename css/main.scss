@@ -184,7 +184,7 @@ header{
 	    background-position: center center;
 		position: relative;
 		text-align: center;
-		/*background-image: url('../img/header-juan-center.png');*/
+		/*background-image: url('../img/header-juan-center.jpg');*/
 		@media (min-width: 330px) {
 			/*background-size: 750px;*/
 			/*background-position: center calc(100% + 130px);*/
@@ -198,7 +198,7 @@ header{
 		}
 		@media (min-width: 600px) { 
 		    background-size: auto 50%;
-			/*background-image: url('../img/header-juan.png');*/
+			/*background-image: url('../img/header-juan.jpg');*/
 			/*background-size: 580px;*/
 			/*background-position: calc(100% + 30px) 100%;*/
 			@media (orientation: landscape) {
@@ -393,7 +393,7 @@ section{
 
 #about{
 	@media (min-width: 1000px){
-	    background-image: url("../img/header-juan.png");
+	    background-image: url("../img/header-juan.jpg");
 	}
     background-repeat: no-repeat;
     background-size: 60%;
