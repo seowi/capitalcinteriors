@@ -13,11 +13,6 @@ function ChangeUrl(title, url) {
 
 $(function () {
 
-	// Load modals via ajax
-	$.get( "modals.php", function( data ) {
-		$( "#modals-wrapper" ).html( data );
-	});
-
 	// Load instagram via ajax
 	$.get( "instagram.php", function( data ) {
 		$( "#instagram .ajax" ).html( data );
@@ -189,6 +184,14 @@ $(function () {
 			resizePortfolioImages("project");
 			$('body').css("opacity",1);
 		}, 400);
+	});
+	$(document).on("mouseover", "#press a, #projects a" , function() {
+		if($(".project.modal").length == 0 ){
+			// Load modals via ajax
+			$.get( "modals.php", function( data ) {
+				$( "#modals-wrapper" ).html( data );
+			});
+		}
 	});
 	$(document).on("click", "#press a" , function() {
 		modalID = $(this).attr("href");
