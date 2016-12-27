@@ -4,6 +4,58 @@
 		"selected_items":
 		[
 			[
+				"hove",
+				"hovered"
+			],
+			[
+				"roo",
+				"rootURI"
+			],
+			[
+				"pres",
+				"pressScroll"
+			],
+			[
+				"fade",
+				"fadeOut"
+			],
+			[
+				"_s",
+				"_SERVER"
+			],
+			[
+				"array",
+				"array"
+			],
+			[
+				"curre",
+				"currentIndex"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"pro",
+				"project"
+			],
+			[
+				"pos",
+				"_POST"
+			],
+			[
+				"file",
+				"file_base"
+			],
+			[
+				"proj",
+				"projects"
+			],
+			[
+				"ba",
+				"background"
+			],
+			[
 				"mobi",
 				"isMobile"
 			],
@@ -38,10 +90,6 @@
 			[
 				"bor",
 				"border-radius"
-			],
-			[
-				"ba",
-				"background-color"
 			],
 			[
 				"port",
@@ -170,10 +218,6 @@
 			[
 				"ex",
 				"expense-edit"
-			],
-			[
-				"file",
-				"filename_i"
 			],
 			[
 				"fil",
@@ -420,10 +464,6 @@
 				"releaseVideos"
 			],
 			[
-				"pres",
-				"lad-president2"
-			],
-			[
 				"articl",
 				"articleCat"
 			],
@@ -474,112 +514,44 @@
 			[
 				"last",
 				"lastShowId"
-			],
-			[
-				"las",
-				"lastShowId"
-			],
-			[
-				"starttim",
-				"startTime"
-			],
-			[
-				"endtim",
-				"endTime"
-			],
-			[
-				"Y",
-				"Y"
-			],
-			[
-				"start",
-				"startTimestamp"
-			],
-			[
-				"shoid",
-				"ShowPageId"
-			],
-			[
-				"showpage",
-				"ShowPageId"
-			],
-			[
-				"showName",
-				"showName"
-			],
-			[
-				"shofb",
-				"showFb"
-			],
-			[
-				"paddin",
-				"padding-bottom"
 			]
 		]
 	},
 	"buffers":
 	[
 		{
-			"file": "index.html",
+			"contents": "<?php\n\nif(isset($_GET['message'])){\n \n    $captcha = $_GET['g-recaptcha-response'];\n    if(strlen($captcha)<1){\n        echo \"Please complete the 'reCAPTCHA' check so we know you're not a robot.\";\n        die;\n    }\n    $name = $_GET['name'];\n    $email = $_GET['email'];\n    $phone = $_GET['phone'];\n    $message = $_GET['message'];\n    if($name==\"\" || $email==\"\" || $phone==\"\" || $message==\"\"){\n        echo \"Please complete all fields\";\n        die;\n    }\n    $headers = 'From: capitalcinteriors@jonty.us' . \"\\r\\n\" .\n        'Reply-To: ' . $email . \"\\r\\n\" .\n        'X-Mailer: PHP/' . phpversion();\n    $message = wordwrap($message,70);\n    $body = \"Name: \".$name.\"\\r\\n\\r\\n\";\n    $body .= \"Email: \".$email.\"\\r\\n\\r\\n\";\n    $body .= $message;\n    \n    $sent = mail(\"info@capitalcinteriors.com\",\"New message from capitalcinteriors.com\",$body,$headers);\n    if(!$sent) echo \"Sorry, there was a problem sending your message\";\n    mail(\"jonty.usborne@gmail.com\",\"New message from capitalcinteriors.com\",$body,$headers);\n    // echo \"<pre>\";\n    // print_r($_GET);\n    // echo \"</pre>\";\n    die;\n}\n\n\n$host= \"127.0.0.1\";\n$dbuser =\"ocassioh_cci\";\n// $dbpass = \"Record\";\ninclude(\"../../capitalcinteriors_password.php\");\n$dbname = \"ocassioh_capitalcinteriors\";\n\n// $dbuser = \"root\";\n// $dbpass = \"\";\n\n$db = new mysqli($host, $dbuser, $dbpass, $dbname) or die(mysql_error());\n\nfunction getPrimaryImage($project){\n    global $db;\n    $result = $db->query(\"SELECT filename FROM projects_images WHERE `primary`=1 AND project = '$project';\");\n    $value = mysqli_fetch_row($result)[0];\n    return $value;\n}\n\nfunction get_string_between($string, $start, $end){\n    $string = ' ' . $string;\n    $ini = strpos($string, $start);\n    if ($ini == 0) return '';\n    $ini += strlen($start);\n    $len = strpos($string, $end, $ini) - $ini;\n    return substr($string, $ini, $len);\n}\n\n$rootURI = rtrim($_SERVER['REQUEST_URI'],'/').\"/\";\n$rootURI = \"/capitalcinteriors/\";\n$HOST = \"http://\".$_SERVER['HTTP_HOST'];\n\n$rootURI = \"/\";\n\n\n// echo \"<pre>\";\n// print_r($_SERVER);\n// echo \"</pre>\";\n\nif(isset($_GET['url'])) {\n    $url = $_GET['url'];\n    $result = $db->query(\"SELECT id FROM projects WHERE url='$url';\");\n    if($result->num_rows){\n        $projectOnLoad = mysqli_fetch_row($result)[0];\n    }else{\n        $result = $db->query(\"SELECT id FROM press WHERE url='$url';\");\n        if($result->num_rows){\n            $pressOnLoad = mysqli_fetch_row($result)[0];\n        }\n    }\n}\n\n?>\n\n<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n\n    <meta charset=\"utf-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <meta name=\"description\" content=\"A professional design, architecture and real estate project management firm with a personal touch. Based in NYC and lead by principal Juan Carretero, we have a decade of experience working in many countries and cultures, and have built a deep appreciation for local craftsmanship and tradition.\">\n    <meta name=\"author\" content=\"Juan Carretero\">\n    <link rel=\"shortcut icon\" href=\"img/favicon.ico\" />\n    <meta name=\"google-site-verification\" content=\"wiIhXckL6Fb_ikH3t97vOMWQ8-cevhhld7yQsVJq0xE\" />\n\n    <title>capitalcinteriors.com</title>\n\n    <!-- Bootstrap Core CSS -->\n    <link href=\"vendor/bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\">\n\n\n    <!-- Custom Fonts -->\n    <link href=\"vendor/font-awesome/css/font-awesome.min.css\" rel=\"stylesheet\" type=\"text/css\">\n    <link href=\"https://fonts.googleapis.com/css?family=Montserrat:400,700\" rel=\"stylesheet\" type=\"text/css\">\n    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>\n    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>\n    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>\n\n    <!-- Theme CSS -->\n    <link href=\"css/agency.css\" rel=\"stylesheet\">\n    <link href=\"css/production.css\" rel=\"stylesheet\">\n\n    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->\n    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->\n    <!--[if lt IE 9]>\n        <script src=\"https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js\"></script>\n        <script src=\"https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js\"></script>\n    <![endif]-->\n\n    <script src='https://www.google.com/recaptcha/api.js'></script>\n\n</head>\n\n<body id=\"page-top\" class=\"index\" data-root=\"<?=$rootURI?>\">\n<?php include_once(\"analyticstracking.php\") ?>\n\n    <!-- Navigation -->\n    <nav id=\"mainNav\" class=\"navbar navbar-default navbar-custom navbar-fixed-top\">\n        <div class=\"container\">\n            <!-- Brand and toggle get grouped for better mobile display -->\n            <div class=\"navbar-header page-scroll\">\n                <button type=\"button\" class=\"navbar-toggle\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\">\n                    <span class=\"sr-only\">Toggle navigation</span> Menu <i class=\"fa fa-bars\"></i>\n                </button>\n                <a class=\"navbar-brand page-scroll\" href=\"#page-top\">\n                    Capital C Interiors\n                </a>\n            </div>\n\n            <!-- Collect the nav links, forms, and other content for toggling -->\n            <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">\n                <ul class=\"nav navbar-nav navbar-right navbar-links\">\n                    <li class=\"hidden\">\n                        <a href=\"#page-top\"></a>\n                    </li>\n                    <li>\n                        <a class=\"page-scroll\" href=\"#about\">About</a>\n                    </li>\n                    <li>\n                        <a class=\"page-scroll\" href=\"#press\">Press</a>\n                    </li>\n                    <li>\n                        <a class=\"page-scroll\" href=\"#projects\">Projects</a>\n                    </li>\n                    <li>\n                        <a class=\"page-scroll\" href=\"#contact\">Contact</a>\n                    </li>\n                    <li>\n                        <a class=\"page-scroll\" href=\"#instagram\"><i class=\"fa fa-instagram\"></i></a>\n                    </li>\n                </ul>\n            </div>\n            <!-- /.navbar-collapse -->\n        </div>\n        <!-- /.container-fluid -->\n    </nav>\n\n    <!-- Header -->\n    <?php \n    $featured = array();\n    $result = $db->query(\"SELECT * FROM featured ORDER BY `order` ASC\");\n    while($image = mysqli_fetch_assoc($result)){\n        $featured[] = $image['filename'];\n    }\n    ?>\n    <header data-background=\"0\" data-background-images=\"<?=implode(\",\", $featured)?>\" style=\"background-image: url('img/projects/<?=$featured[0]?>-p.jpg');\">\n        <div class=\"wrapper\">\n            <div class=\"container\">\n                <div class=\"intro-text\">\n                    <!-- <img class=\"intro-logo\" src=\"img/logo_home_shadow.png\" alt=\"\" style=\"width: 60%;\"> -->\n                    &nbsp;\n                    <a id=\"headerButton\" href=\"#about\" class=\"page-scroll btn btn-xl\" style=\"visibility: hidden;\">See what we do &nbsp; <i class=\"icon fa fa-arrow-circle-down\"></i></a>\n                </div>\n            </div>\n            <div class=\"name-right\">Juan Carretero, founder</div>\n        </div>\n    </header>\n\n    <section id=\"about\">\n        <div class=\"container\">\n            <div class=\"row\">\n                <div class=\"col-md-7\" style=\"text-align: justify;\">\n                    <h2 class=\"section-heading\" style=\"text-align: right;\">\n                        Personal design.<br/>Professional Service.\n                    </h2>\n                    <p>Our principal, Juan Carretero has been in business in the USA for over 10 years holding credentials in Architecture, Interior Design and Real Estate Project Management.</p>\n                    <p>We have worked in different countries and cultures; these experiences have given us a deep appreciation for local craftsmanship and tradition.</p>\n                    <p>As an award winning professional firm, we have been published in many different publications throughout the world. “Tailored, collected, inviting, timeless, exciting, fresh, comfortable, beautiful and inspiring” are only some of the ways in our job has been reviewed.</p>\n                    <p>Please contact us. We welcome the opportunity to work together with you to create a very special place of your own.</p>\n                </div>\n                <div class=\"col-lg-5 map\">\n                    \n                </div>\n                <div class=\"col-md-12 about-juan\">\n                    <div class=\"img-wrapper\">\n                        <img src=\"img/header-juan-center.png\" alt=\"\">\n                    </div>\n                </div>\n            </div>\n        </div>\n    </section>\n\n    <section id=\"press\" class=\"portfolio bg-light-gray\">\n        <div class=\"wrapper\">\n            <div class=\"press_nav_left\"></div>\n            <div class=\"press_nav_right\"></div>\n            <div class=\"container\">\n                <?php \n                $press = array();\n                $result = $db->query(\"SELECT * FROM press WHERE deleted=0 ORDER BY `order` ASC\");\n                while($article = mysqli_fetch_assoc($result)){\n                    $press[] = $article;\n                }\n                foreach($press as $article):\n                ?>\n                <div class=\"portfolio-item\">\n                    <a href=\"#press-modal-<?=$article['id']?>\" data-url=\"<?=$rootURI.$article['url']?>\" data-title=\"<?=$article['title']?>\" class=\"portfolio-link\" data-toggle=\"modal\" <?php if(isset($pressOnLoad) && $pressOnLoad==$article['id']) echo 'data-onLoad';?>>\n                        <div class=\"portfolio-hover\">\n                            <div class=\"portfolio-hover-content\">\n                                <i class=\"fa fa-file-image-o fa-3x\"></i>\n                            </div>\n                        </div>\n                        <img src=\"img/projects/<?=$article['icon']?>.jpg\" class=\"img-responsive\" alt=\"\">\n                    </a>\n                </div>\n                <?php endforeach; ?>\n            </div>\n        </div>\n    </section>\n\n    <section id=\"about\" style=\"display: none;\">\n        <div class=\"container\">\n            <div class=\"row\">\n                <div class=\"col-md-7\" style=\"text-align: justify;\">\n                    <h2 class=\"section-heading\" style=\"text-align: right;\">\n                        Personal design.<br/>Professional Service.\n                    </h2>\n                    <p>Our principal, Juan Carretero has been in business in the USA for over 10 years holding credentials in Architecture, Interior Design and Real Estate Project Management.</p>\n                    <p>We have worked in different countries and cultures; these experiences have given us a deep appreciation for local craftsmanship and tradition.</p>\n                    <p>As an award winning professional firm, we have been published in many different publications throughout the world. “Tailored, collected, inviting, timeless, exciting, fresh, comfortable, beautiful and inspiring” are only some of the ways in our job has been reviewed.</p>\n                    <p>Please contact us. We welcome the opportunity to work together with you to create a very special place of your own.</p>\n                </div>\n                <div class=\"col-lg-5 map\">\n                    \n                </div>\n                <div class=\"col-md-12 about-map\">\n                    <img src=\"img/map.png\" alt=\"\">\n                </div>\n            </div>\n        </div>\n    </section>\n\n    <!-- Portfolio Grid Section -->\n    <section id=\"projects\" class=\"portfolio bg-light-gray\">\n        <div class=\"container\">\n            <div class=\"row\">\n                <div class=\"col-lg-12 text-center\">\n                    <h1 class=\"section-heading\">Projects</h1>\n                    <h3 class=\"section-subheading text-muted\">From design to construction, installation and furnishing, here is some of work we're most proud of...</h3>\n                </div>\n            </div>\n            <div class=\"row\">\n                <?php \n                $projects = array();\n                $inProgress = array();\n                $result = $db->query(\"SELECT * FROM projects WHERE deleted=0 ORDER BY `order` ASC\");\n                while($project = mysqli_fetch_assoc($result)){\n                    $projects[] = $project;\n                    if($project['category']==\"In-Progress\") $inProgress[] = $project;\n                }\n                $i=1;\n                foreach($projects as $project):\n                ?>\n                <div class=\"col-md-4 col-sm-6 portfolio-item\" <?php if($project['category']==\"In-Progress\") echo \"style='display:none'\" ?>>\n                    <a href=\"#<?=$project['id']?>-<?=$project['url']?>\" data-url=\"<?=$rootURI.$project['url']?>\" data-title=\"<?=$project['title']?>\" class=\"portfolio-link\" data-toggle=\"modal\" <?php if(isset($projectOnLoad) && $projectOnLoad==$project['id']) echo 'data-onLoad';?>>\n                        <div class=\"portfolio-hover\">\n                            <div class=\"portfolio-hover-content\">\n                                <img src=\"img/logo_white50.png\" style=\"width: 60px;\" alt=\"\">\n                                <div class=\"details-button\">View Project</div>\n                            </div>\n                        </div>\n                        <img src=\"img/projects/<?=getPrimaryImage($project['id'])?>-p.jpg\" class=\"img-responsive\" alt=\"\">\n                    </a>\n                    <div class=\"portfolio-caption\">\n                        <h4><?=$project['title']?></h4>\n                        <p class=\"text-muted\">\n                            <?php\n                                if($project['subtitle']==\"\"){\n                                    echo \"&nbsp;\";\n                                }else{\n                                    echo $project['subtitle'];\n                                }\n                            ?>\n                        </p>\n                    </div>\n                </div>\n                <?php if($i==3): ?>\n                    <div id=\"in-progress\" class=\"col-md-8 col-sm-6 portfolio-item\">\n                        <a href=\"#<?=$inProgress[0]['id']?>-<?=$inProgress[0]['url']?>\" data-url=\"<?=$rootURI.$inProgress[0]['url']?>\" data-title=\"<?=$inProgress[0]['title']?>\" class=\"portfolio-link\" data-toggle=\"modal\" <?php if(isset($projectOnLoad) && $projectOnLoad==$inProgress[0]['id']) echo 'data-onLoad';?>>\n                            <div class=\"portfolio-hover\">\n                                <div class=\"portfolio-hover-content\">\n                                    <img src=\"img/logo_white50.png\" style=\"width: 60px;\" alt=\"\">\n                                    <div class=\"details-button\">View Projects</div>\n                                </div>\n                            </div>\n                            <img id=\"in-progress-img\" src=\"img/projects/<?=getPrimaryImage($inProgress[0]['id'])?>-p.jpg\" class=\"img-responsive\" alt=\"\">\n                        </a>\n                        <div class=\"portfolio-caption\">\n                            <div class=\"row\">\n                                <div class=\"col-md-1 col-sm-3 col-xs-3\">\n                                    <i class=\"fa fa-wrench fa-3x\" style=\"margin-top: -3px;\"></i>\n                                </div>\n                                <div class=\"col-md-11 col-sm-9 col-xs-9\" style=\"text-align: left;\">\n                                    <h4>In-Progress Projects</h4>\n                                    <p class=\"text-muted\">\n                                        Designs, sketches and mock-ups from some of our ongoing work.\n                                    </p>\n                                    <p class=\"text-muted sm\">\n                                        Designs &amp; sketches\n                                    </p>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                <?php endif; $i++; endforeach; ?>\n            </div>\n        </div>\n    </section>\n\n    <section id=\"quote\">\n        <div class=\"container\">\n            <div class=\"quote\">\n                \"A space that meets your personal goals of comfort, aesthetics and personality is what we strive for. Our vision should be in harmony with your own style and sensibility.\"\n            </div>\n            <div class=\"author\">\n                Juan Carretero\n            </div>\n        </div>\n    </section>\n\n    <!-- Contact Section -->\n    <section id=\"contact\">\n        <div class=\"container\">\n            <div class=\"row\">\n                <div class=\"col-lg-12 text-center\">\n                    <h2 class=\"section-heading\">Contact Us</h2>\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-lg-6 col-md-6 col-sm-12\">\n                    <form id=\"emailForm\" novalidate method=\"get\" action=\"<?=$rootURI?>\">\n                        <div class=\"row\">\n                            <div class=\"col-md-12\">\n                                <div class=\"form-group\">\n                                    <input name=\"name\" type=\"text\" class=\"form-control\" placeholder=\"Your Name *\" id=\"name\" required data-validation-required-message=\"Please enter your name.\">\n                                    <p class=\"help-block text-danger\"></p>\n                                </div>\n                            </div>\n                            <div class=\"col-md-6\">\n                                <div class=\"form-group\">\n                                    <input name=\"email\" type=\"email\" class=\"form-control\" placeholder=\"Your Email *\" id=\"email\" required data-validation-required-message=\"Please enter your email address.\">\n                                    <p class=\"help-block text-danger\"></p>\n                                </div>\n                            </div>\n                            <div class=\"col-md-6\">\n                                <div class=\"form-group\">\n                                    <input name=\"phone\" type=\"tel\" class=\"form-control\" placeholder=\"Your Phone *\" id=\"phone\" required data-validation-required-message=\"Please enter your phone number.\">\n                                    <p class=\"help-block text-danger\"></p>\n                                </div>\n                            </div>\n                            <div class=\"col-md-12\">\n                                <div class=\"form-group\">\n                                    <textarea name=\"message\" class=\"form-control\" placeholder=\"Your Message *\" id=\"message\" required data-validation-required-message=\"Please enter a message.\"></textarea>\n                                    <p class=\"help-block text-danger\"></p>\n                                </div>\n                            </div>\n                            <div class=\"clearfix\"></div>\n                            <div class=\"col-md-12 recaptcha\" style=\"display: none; transform: scale(0.88); transform-origin: 0 0; margin-bottom: 10px;\">\n                                <div class=\"g-recaptcha\" data-sitekey=\"6LdOMQsUAAAAAEOM4-E5BhE3ohtwOzo4BoOXza0C\"></div>\n                                <input id=\"captchaInput\" type=\"hidden\" name=\"captcha\" value=\"0\">\n                            </div>\n                            <div class=\"col-md-6 col-sm-6 col-xs-12\">\n                                <button type=\"submit\" class=\"btn btn-xl btn-block\">Send Message</button>\n                            </div>\n                            <div class=\"col-md-6 col-sm-6 col-xs-12 text-center\">\n                                <div class=\"details\">\n                                    <a href=\"mailto:info@capitalcinteriors.com\">info@capitalcinteriors.com</a><br/>\n                                    +1 212 228 0468\n                                </div>\n                            </div>\n                        </div>\n                    </form>\n                </div>\n                <div class=\"col-lg-6 col-md-6 col-sm-12\">\n                    <div class=\"map-overlay\" onClick=\"style.pointerEvents='none'\"></div>\n                    <div class=\"map\">\n                        <script type=\"text/javascript\" src=\"http://maps.google.com/maps/api/js?sensor=false&key=AIzaSyBhyyaFxrsQUkZPKCCoYGUn0j3AMEU0cbs\"></script><div style=\"overflow:hidden;height:400px;width:100%;\"><div id=\"gmap_canvas\" style=\"height:400px;width:100%;\"><style>#gmap_canvas img{max-width:none!important;background:none!important}</style><a class=\"google-map-code\" href=\"\" id=\"get-map-data\"></a></div></div><script type=\"text/javascript\"> function init_map(){var myOptions = {zoom:14,center:new google.maps.LatLng(40.7287089,-73.98941509999997),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById(\"gmap_canvas\"), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(40.7287089, -73.98941509999997)});infowindow = new google.maps.InfoWindow({content:\"<b>Capital C Interiors</b><br/>23 East 7th St<br/>Ground Floor<br/>New York, NY<br/>10003\" });google.maps.event.addListener(marker, \"click\", function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </section>\n\n<?php\n    $instagram = file_get_contents('https://www.instagram.com/juanjocarr/');\n    $instagramJSON = get_string_between($instagram, 'window._sharedData = ', ';</script>');\n    $instagramArray = json_decode($instagramJSON,true);\n    $instagramMedia = $instagramArray['entry_data']['ProfilePage'][0]['user']['media']['nodes'];\n?>\n    <!-- Instagram Section -->\n    <section id=\"instagram\" class=\"portfolio\">\n        <div class=\"container\">\n            <div class=\"row\">\n                <div class=\"col-lg-12 text-center\">\n                    <h2 class=\"section-heading\"><i class=\"fa fa-instagram\"></i>&nbsp;juanjocarr</h2>\n                </div>\n            </div>\n            <div class=\"row\">\n                <?php foreach ($instagramMedia as $photo): ?>\n                    <div class=\"col-md-3 col-sm-4 col-xs-6 portfolio-item\">\n                        <a href=\"https://www.instagram.com/p/<?=$photo['code']?>/\" target=\"_blank\" class=\"portfolio-link\" data-toggle=\"modal\">\n                            <div class=\"portfolio-hover\">\n                                <div class=\"portfolio-hover-content\">\n                                    <i class=\"fa fa-external-link fa-3x\"></i>\n                                </div>\n                            </div>\n                            <img src=\"<?=$photo['thumbnail_src']?>\" class=\"img-responsive\" alt=\"\">\n                        </a>\n                    </div>\n                <?php endforeach; ?>\n            </div>\n        </div>\n    </section>\n\n    <footer>\n        <div class=\"container\">\n            <div class=\"row\">\n                <div class=\"col-md-4 text-left\">\n                    <span class=\"copyright\">2016 &copy; Capital C Interiors</span>\n                </div>\n                <div class=\"col-md-4\">\n                    <ul class=\"list-inline social-buttons\" style=\"display: none;\">\n                        <li><a href=\"#\"><i class=\"fa fa-twitter\"></i></a>\n                        </li>\n                        <li><a href=\"#\"><i class=\"fa fa-facebook\"></i></a>\n                        </li>\n                        <li><a href=\"#\"><i class=\"fa fa-linkedin\"></i></a>\n                        </li>\n                    </ul>\n                </div>\n                <div class=\"col-md-4 text-right footer-email\">\n                    <ul class=\"list-inline quicklinks\">\n                        <li><a href=\"mailto:info@capitalcinteriors.com\">info@capitalcinteriors.com</a>\n                        </li>\n                    </ul>\n                </div>\n            </div>\n        </div>\n    </footer>\n\n\n\n\n    <!-- PROJECTS -->\n    <?php foreach($projects as $project): ?>\n    <div class=\"portfolio-modal project modal fade\" id=\"<?=$project['id']?>-<?=$project['url']?>\" data-url=\"<?=$project['url']?>\" data-title=\"<?=$project['title']?>\" data-id=\"<?=$project['id']?>\" data-category=\"<?=$project['category']?>\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\">\n        <div class=\"modal-dialog\">\n            <div class=\"modal-content\">\n                <div class=\"container\">\n                    <div class=\"close-modal\" data-dismiss=\"modal\">\n                        <div class=\"lr\">\n                            <div class=\"rl\">\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-lg-8 modal-image\">\n                            <div class=\"image-nav nav-left\"></div>\n                            <div class=\"image-nav nav-right\"></div>\n                            <div class=\"social-buttons\">\n                                <a href=\"projects/oliver1.jpg\" target=\"_blank\" class=\"image-zoom btn btn-primary\">\n                                    <i class=\"fa fa-search-plus fa-2x\"></i>\n                                </a>\n                                <button type=\"button\" class=\"btn btn-primary\">\n                                    <i class=\"fa fa-facebook fa-2x\"></i>\n                                </button>\n                                <button type=\"button\" class=\"btn btn-primary\">\n                                    <i class=\"fa fa-twitter fa-2x\"></i>\n                                </button>\n                            </div>\n                            <div class=\"images\">\n                                <?php \n                                $result = $db->query(\"SELECT * FROM projects_images WHERE project=\".$project['id'].\" ORDER BY `order` ASC\");\n                                $i=1;\n                                while($image = mysqli_fetch_assoc($result)):\n                                    list($imgWidth, $imgHeight) = getimagesize(\"img/projects/\".$image['filename'].\".jpg\");\n                                ?>\n                                    <div class=\"img-wrapper\">\n                                        <img data-width=\"<?=$imgWidth?>\" data-height=\"<?=$imgHeight?>\" class=\"project-image img-responsive img-centered\" src=\"img/projects/<?=$image['filename']?>.jpg\" alt=\"\">\n                                        <a href=\"http://pinterest.com/pin/create/button/?url=https%3A%2F%2Fcapitalcinteriors.com%2F<?=$project['url']?>&media=<?=urlencode($HOST.$rootURI.\"img/projects/\".$image['filename'].\".jpg\")?>&description=<?=$project['title']?> - <?=$project['subtitle']?>\" target=\"_blank\" class=\"pin-it-button\" count-layout=\"horizontal\">\n                                            <img border=\"0\" src=\"img/pin.png\" title=\"Pin It\" />\n                                        </a>\n                                        <!-- <a data-pin-do=\"buttonPin\" data-pin-tall=\"true\" data-pin-save=\"true\" href=\"https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fcapitalcinteriors.com%2F<?=$project['url']?>&media=<?=urlencode($HOST)?>img%2Fprojects%2F<?=$image['filename']?>.jpg&description=<?=$project['title']?> - <?=$project['subtitle']?>\"></a> -->\n                                    </div>\n                                <?php $i++; endwhile; ?>\n                            </div>\n                        </div>\n                        <div class=\"col-lg-4 modal-desc\">\n                            <div>\n                                <h2><?=$project['title']?></h2>\n                                <p class=\"item-intro text-muted\"><?=$project['subtitle']?></p>\n                                <hr>\n                                <div class=\"item-category\">\n                                    <?php\n                                        $category = $project['category'];\n                                        if($category==\"Apartment\") $catIcon = \"building\";\n                                        if($category==\"Commercial\") $catIcon = \"bank\";\n                                        if($category==\"Hotel\") $catIcon = \"bed\";\n                                        if($category==\"House\") $catIcon = \"home\";\n                                        if($category==\"Restaurant\") $catIcon = \"cutlery\";\n                                        if($category==\"Retail\") $catIcon = \"shopping-bag\";\n                                        if($category==\"In-Progress\") $catIcon = \"wrench\";\n                                    ?>\n                                    <i class=\"fa fa-<?=$catIcon?>\"></i>&nbsp; <?=$project['category']?>\n                                </div>\n                                <hr>\n                                <p class=\"item-text\">\n                                    <?=$project['desc']?>\n                                </p>\n                                <div class=\"buttons\">\n                                    <button type=\"button\" class=\"btn btn-primary\" data-dismiss=\"modal\"><i class=\"fa fa-envelope\"></i>&nbsp; Ask us about this project</button>\n                                </div>\n                                <hr>\n                                <?php if($tags!=''): ?>\n                                    <ul class=\"tags\">\n                                        <?php\n                                            $tags = explode(\",\", trim($project['tags'],\",\"));\n                                            foreach ($tags as $tag) {\n                                                echo '<li><a href=\"#\" class=\"tag\">'.$tag.'</a></li>';\n                                            }\n                                        ?>\n                                    </ul>\n                                <hr>\n                                <?php endif; ?>\n                                <!--\n                                <div class=\"item-subheading\">\n                                    <i class=\"fa fa-paint-brush\"></i>&nbsp; Color palette\n                                </div>\n                                    <div class=\"colors\">\n                                        <span style=\"background-color: #fece00;\"></span>\n                                        <span style=\"background-color: #88679e;\"></span>\n                                        <span style=\"background-color: #0762a9;\"></span>\n                                        <span style=\"background-color: #b1c607;\"></span>\n                                        <span style=\"background-color: #2a3b45;\"></span>\n                                        <span style=\"background-color: #a3adaf;\"></span>\n                                    </div>\n                                <hr>\n                                <div class=\"item-subheading\">\n                                    <i class=\"fa fa-bars\"></i>&nbsp; More projects like this one\n                                </div>\n                                <div class=\"row narrow\">\n                                    <div class=\"col-lg-4 col-md-3 col-sm-3 col-xs-3\">\n                                        <img src=\"projects/chelseamodern.jpg\" class=\"img-responsive\" alt=\"\">\n                                    </div>\n                                    <div class=\"col-lg-4 col-md-3 col-sm-3 col-xs-3\">\n                                        <img src=\"projects/rutherford.jpg\" class=\"img-responsive\" alt=\"\">\n                                    </div>\n                                    <div class=\"col-lg-4 col-md-3 col-sm-3 col-xs-3\">\n                                        <img src=\"projects/piedaterrelili.jpg\" class=\"img-responsive\" alt=\"\">\n                                    </div>\n                                </div>\n                                -->\n                                <br>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <?php endforeach; ?>\n\n    <!-- Press Modal -->\n    <?php foreach($press as $article): ?>\n    <div class=\"portfolio-modal press modal fade\" id=\"press-modal-<?=$article['id']?>\" data-url=\"<?=$article['url']?>\" tabindex=\"-1\" role=\"dialog\" aria-hidden=\"true\">\n        <div class=\"modal-dialog\">\n            <div class=\"modal-content\">\n                <div class=\"container\">\n                    <div class=\"close-modal\" data-dismiss=\"modal\">\n                        <div class=\"lr\">\n                            <div class=\"rl\">\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-lg-12 modal-image\">\n                            <div class=\"image-nav nav-left\"></div>\n                            <div class=\"image-nav nav-right\"></div>\n                            <div class=\"social-buttons\">\n                                <a href=\"projects/oliver1.jpg\" target=\"_blank\" class=\"image-zoom btn btn-primary\">\n                                    <i class=\"fa fa-search-plus fa-2x\"></i>\n                                </a>\n                                <button type=\"button\" class=\"btn btn-primary\">\n                                    <i class=\"fa fa-facebook fa-2x\"></i>\n                                </button>\n                                <button type=\"button\" class=\"btn btn-primary\">\n                                    <i class=\"fa fa-twitter fa-2x\"></i>\n                                </button>\n                            </div>\n                            <div class=\"images\">\n                                <?php \n                                $result = $db->query(\"SELECT * FROM press_images WHERE press=\".$article['id'].\" ORDER BY `order` ASC\");\n                                $i=1;\n                                while($image = mysqli_fetch_assoc($result)):\n                                    list($imgWidth, $imgHeight) = getimagesize(\"img/projects/\".$image['filename'].\".jpg\");\n                                ?>\n                                    <div class=\"img-wrapper\">\n                                        <img data-width=\"<?=$imgWidth?>\" data-height=\"<?=$imgHeight?>\" class=\"project-image img-responsive img-centered\" src=\"img/projects/<?=$image['filename']?>.jpg\" alt=\"\">\n                                    </div>\n                                <?php $i++; endwhile; ?>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n    <?php endforeach; ?>\n\n\n    <!-- jQuery -->\n    <script src=\"vendor/jquery/jquery.min.js\"></script>\n    <!-- Bootstrap Core JavaScript -->\n    <script src=\"vendor/bootstrap/js/bootstrap.min.js\"></script>\n    <!-- Plugin JavaScript -->\n    <script src=\"http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js\"></script>\n    <!-- ScrollReveal -->\n    <script src=\"https://cdn.jsdelivr.net/scrollreveal.js/3.3.1/scrollreveal.min.js\"></script>\n    <!-- mousewheel -->\n    <script type='text/javascript' src='plugins/mousewheel/jquery.mousewheel.min.js'></script>\n    <!-- scrollup -->\n    <script type='text/javascript' src='plugins/scrollup/src/jquery.scrollUp.js'></script>\n    <!-- Pinterest -->\n\n    <script src=\"js/build/production.min.js\"></script>\n\n\n</body>\n\n</html>\n",
+			"file": "index.php",
+			"file_size": 35520,
+			"file_write_time": 131236336840000000,
 			"settings":
 			{
-				"buffer_size": 47060,
+				"buffer_size": 35512,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "vendor/bootstrap/css/bootstrap.css",
+			"file": "/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1479504964/jonty/home2/ocassioh/public_html/index.php",
 			"settings":
 			{
-				"buffer_size": 146010,
+				"buffer_size": 26379,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "css/main.scss",
+			"contents": "Incoming Mail Server:\nmail.uniradiobath.com\n\nSupported Ports:\n143 (IMAP), 110 (POP3)\n\nOutgoing Mail Server:\nmail.uniradiobath.com\n\nSupported Port:\n26 (server requires authentication)",
 			"settings":
 			{
-				"buffer_size": 13463,
-				"line_ending": "Unix"
+				"buffer_size": 182,
+				"line_ending": "Unix",
+				"name": "Incoming Mail Server:"
 			}
 		},
 		{
-			"contents": "\n                <div class=\"col-md-4 col-sm-6 portfolio-item\">\n                    <a href=\"#portfolioModal2\" class=\"portfolio-link\" data-toggle=\"modal\">\n                        <div class=\"portfolio-hover\">\n                            <div class=\"portfolio-hover-content\">\n                                <i class=\"fa fa-plus fa-3x\"></i>\n                            </div>\n                        </div>\n                        <img src=\"projects/sothebys.jpg\" class=\"img-responsive\" alt=\"\">\n                    </a>\n                </div>\n                <div class=\"col-md-4 col-sm-6 portfolio-item\">\n                    <a href=\"#portfolioModal3\" class=\"portfolio-link\" data-toggle=\"modal\">\n                        <div class=\"portfolio-hover\">\n                            <div class=\"portfolio-hover-content\">\n                                <i class=\"fa fa-plus fa-3x\"></i>\n                            </div>\n                        </div>\n                        <img src=\"projects/scottsdale.jpg\" class=\"img-responsive\" alt=\"\">\n                    </a>\n                </div>\n                <div class=\"col-md-4 col-sm-6 portfolio-item\">\n                    <a href=\"#portfolioModal4\" class=\"portfolio-link\" data-toggle=\"modal\">\n                        <div class=\"portfolio-hover\">\n                            <div class=\"portfolio-hover-content\">\n                                <i class=\"fa fa-plus fa-3x\"></i>\n                            </div>\n                        </div>\n                        <img src=\"projects/rutherford.jpg\" class=\"img-responsive\" alt=\"\">\n                    </a>\n                </div>\n                <div class=\"col-md-4 col-sm-6 portfolio-item\">\n                    <a href=\"#portfolioModal6\" class=\"portfolio-link\" data-toggle=\"modal\">\n                        <div class=\"portfolio-hover\">\n                            <div class=\"portfolio-hover-content\">\n                                <i class=\"fa fa-plus fa-3x\"></i>\n                            </div>\n                        </div>\n                        <img src=\"projects/bistro.jpg\" class=\"img-responsive\" alt=\"\">\n                    </a>\n                </div>\n                <div class=\"col-md-4 col-sm-6 portfolio-item\">\n                    <a href=\"#portfolioModal6\" class=\"portfolio-link\" data-toggle=\"modal\">\n                        <div class=\"portfolio-hover\">\n                            <div class=\"portfolio-hover-content\">\n                                <i class=\"fa fa-plus fa-3x\"></i>\n                            </div>\n                        </div>\n                        <img src=\"projects/anson.jpg\" class=\"img-responsive\" alt=\"\">\n                    </a>\n                </div>\n\n\n\n                <div class=\"col-md-4 col-sm-6 portfolio-item\">\n                    <a href=\"#portfolioModal5\" class=\"portfolio-link\" data-toggle=\"modal\">\n                        <div class=\"portfolio-hover\">\n                            <div class=\"portfolio-hover-content\">\n                                <i class=\"fa fa-plus fa-3x\"></i>\n                            </div>\n                        </div>\n                        <img src=\"projects/piedaterrelili.jpg\" class=\"img-responsive\" alt=\"\">\n                    </a>\n                </div>\n                <div class=\"col-md-4 col-sm-6 portfolio-item\">\n                    <a href=\"#portfolioModal6\" class=\"portfolio-link\" data-toggle=\"modal\">\n                        <div class=\"portfolio-hover\">\n                            <div class=\"portfolio-hover-content\">\n                                <i class=\"fa fa-plus fa-3x\"></i>\n                            </div>\n                        </div>\n                        <img src=\"projects/oliver.jpg\" class=\"img-responsive\" alt=\"\">\n                    </a>\n                </div>\n                <div class=\"col-md-4 col-sm-6 portfolio-item\">\n                    <a href=\"#portfolioModal6\" class=\"portfolio-link\" data-toggle=\"modal\">\n                        <div class=\"portfolio-hover\">\n                            <div class=\"portfolio-hover-content\">\n                                <i class=\"fa fa-plus fa-3x\"></i>\n                            </div>\n                        </div>\n                        <img src=\"projects/chelseamodern.jpg\" class=\"img-responsive\" alt=\"\">\n                    </a>\n                </div>\n                <div class=\"col-md-4 col-sm-6 portfolio-item\">\n                    <a href=\"#portfolioModal6\" class=\"portfolio-link\" data-toggle=\"modal\">\n                        <div class=\"portfolio-hover\">\n                            <div class=\"portfolio-hover-content\">\n                                <i class=\"fa fa-plus fa-3x\"></i>\n                            </div>\n                        </div>\n                        <img src=\"projects/blanco.jpg\" class=\"img-responsive\" alt=\"\">\n                    </a>\n                </div>\n\n\n\n\n                <div class=\"col-md-4 col-sm-6 portfolio-item\">\n                    <a href=\"#portfolioModal6\" class=\"portfolio-link\" data-toggle=\"modal\">\n                        <div class=\"portfolio-hover\">\n                            <div class=\"portfolio-hover-content\">\n                                <i class=\"fa fa-plus fa-3x\"></i>\n                            </div>\n                        </div>\n                        <img src=\"projects/acapulco.jpg\" class=\"img-responsive\" alt=\"\">\n                    </a>\n                </div>",
+			"file": "/Users/jonty/Desktop/dash/bbcrd/client_manifest-events.mpd",
 			"settings":
 			{
-				"buffer_size": 5423,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/general.js",
-			"settings":
-			{
-				"buffer_size": 13090,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/mobile.js",
-			"settings":
-			{
-				"buffer_size": 1,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/agency.js",
-			"settings":
-			{
-				"buffer_size": 1252,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "css/agency.css",
-			"settings":
-			{
-				"buffer_size": 16446,
+				"buffer_size": 5308,
 				"line_ending": "Unix"
 			}
 		}
@@ -596,12 +568,12 @@
 		"selected_items":
 		[
 			[
-				"js",
-				"Set Syntax: JavaScript"
-			],
-			[
 				"css",
 				"Set Syntax: CSS"
+			],
+			[
+				"js",
+				"Set Syntax: JavaScript"
 			],
 			[
 				"php",
@@ -868,7 +840,7 @@
 				"Preferences: Browse Packages"
 			]
 		],
-		"width": 449.0
+		"width": 485.0
 	},
 	"console":
 	{
@@ -893,10 +865,25 @@
 	],
 	"file_history":
 	[
+		"/Users/jonty/Desktop/dash/source2.mp4",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1479159967/jonty/home2/ocassioh/public_html/capitalcinteriors/admin/index.php",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1479159435/jonty/home2/ocassioh/public_html/capitalcinteriors/index.php",
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1479158747/jonty/home2/ocassioh/capitalcinteriors_password.php",
+		"/Users/jonty/Sites/capitalcinteriors/index.php",
+		"/Users/jonty/Sites/capitalcinteriors/admin/index.php",
 		"/Users/jonty/Sites/capitalcinteriors/Gruntfile.js",
-		"/Users/jonty/Sites/capitalcinteriors/vendor/bootstrap/css/bootstrap.css",
-		"/Users/jonty/Sites/capitalcinteriors/index.html",
 		"/Users/jonty/Sites/capitalcinteriors/css/agency.css",
+		"/Users/jonty/Sites/capitalcinteriors/sras.php",
+		"/Users/jonty/Sites/capitalcinteriors/css/main.scss",
+		"/Users/jonty/Sites/capitalcinteriors/css/admin.scss",
+		"/Users/jonty/Sites/capitalcinteriors/admin/admin.js",
+		"/Users/jonty/Sites/capitalcinteriors/js/general.js",
+		"/Users/jonty/Sites/capitalcinteriors/css/admin.css",
+		"/Users/jonty/Sites/capitalcinteriors/index.html",
+		"/Users/jonty/Sites/simonusborne/site/font-awesome/css/font-awesome.css",
+		"/Users/jonty/Sites/capitalcinteriors/js/mobile.js",
+		"/Users/jonty/Sites/capitalcinteriors/js/agency.js",
+		"/Users/jonty/Sites/capitalcinteriors/vendor/bootstrap/css/bootstrap.css",
 		"/Users/jonty/Sites/capitalcinteriors/package.json",
 		"/Users/jonty/Sites/clover/js/laborAdd.js",
 		"/Users/jonty/Sites/clover/input/index.php",
@@ -1005,22 +992,7 @@
 		"/Users/jonty/Sites/clover/includes/modals.php",
 		"/Users/jonty/Sites/clover/client-details.php",
 		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440852624/su9urb/u/u/su9urb/public_html/BathDecides.php",
-		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440852106/jonty/home2/ocassioh/public_html/uniradiobath/.htaccess",
-		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440847383/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/elements/loop-single.php",
-		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440847314/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/taxonomy-section.php",
-		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440846021/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/content-ask.php",
-		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440846606/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/header.php",
-		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440846585/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/template-homepage.php",
-		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440846453/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/archive-ask.php",
-		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440846414/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/taxonomy-regions.php",
-		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440846378/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/taxonomy-section.php",
-		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440846314/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/inc/cpt.ask.php",
-		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440846011/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/inc/functions.ask.php",
-		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440845806/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/inc/helper.mediainfo.feeds.php",
-		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440845713/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/page-industry.php",
-		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440844786/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/footer.php",
-		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440845188/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/content.php",
-		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440843860/sra/var/www/vhosts/studentradio.org.uk/s537841289.websitehome.co.uk/wp-content/themes/studentradio/association/elements/awards-homepage.php"
+		"/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1440852106/jonty/home2/ocassioh/public_html/uniradiobath/.htaccess"
 	],
 	"find":
 	{
@@ -1031,6 +1003,7 @@
 		"height": 93.0,
 		"where_history":
 		[
+			"/Users/jonty/Sites/capitalcinteriors",
 			"/Users/jonty/Sites/uniradiobath"
 		]
 	},
@@ -1039,6 +1012,24 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"2oE69834",
+			"2oE",
+			"val",
+			"contact",
+			"form",
+			"project-modal",
+			"portfolio-link",
+			"project-modal",
+			"press",
+			"img",
+			"trigger",
+			"console.log",
+			"map",
+			"133",
+			"console",
+			"each",
+			"button",
+			"#eeeeee",
 			"cons",
 			"h2",
 			"@",
@@ -1148,25 +1139,7 @@
 			"currency",
 			"cost-value",
 			"rate",
-			"click",
-			"your ques",
-			"wp_related_posts",
-			"has_post_thumbnail",
-			"mediainfo_feed_page",
-			"mediainfo",
-			"<b>Written:</b>",
-			"<b>Audio:</b>",
-			"&a",
-			"&",
-			"<div class=\"box collapsed-box\">",
-			"<div class=\"box-tools pull-right\">\n            <button class=\"btn btn-box-tool\" data-widget=\"collapse\">\n            <i class=\"fa fa-plus\"></i>\n            </button>\n         </div>",
-			"\n         <div class=\"box-tools pull-right\">\n            <button class=\"btn btn-box-tool\" data-widget=\"collapse\">\n            <i class=\"fa fa-minus\"></i>\n            </button>\n         </div>",
-			"<div class=\"box\">",
-			"<div class=\"box-tools pull-right\"> <button class=\"btn btn-box-tool\" data-widget=\"collapse\" data-toggle=\"tooltip\" title=\"Collapse\"><i class=\"fa fa-minus\"></i></button> </div>",
-			"<div class=\"box\">",
-			"<a",
-			"posted",
-			"classes"
+			"click"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1208,46 +1181,45 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "index.html",
+					"file": "index.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 47060,
+						"buffer_size": 35512,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								28253,
-								28253
+								7037,
+								7037
 							]
 						],
 						"settings":
 						{
 							"WordCount":
 							{
-								"changes": 5126,
-								"count": 367,
-								"modified": false,
-								"selection": false,
+								"changes": -1,
+								"modified": true,
+								"selection": true,
 								"status": -1,
-								"syntax": "plain text"
+								"syntax": "php"
 							},
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
 							"tab_size": 4,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1723.0,
+						"translation.y": 2956.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 1,
@@ -1255,19 +1227,19 @@
 				},
 				{
 					"buffer": 1,
-					"file": "vendor/bootstrap/css/bootstrap.css",
+					"file": "/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1479504964/jonty/home2/ocassioh/public_html/index.php",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 146010,
+						"buffer_size": 26379,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								47936,
-								47936
+								254,
+								254
 							]
 						],
 						"settings":
@@ -1278,150 +1250,29 @@
 								"modified": true,
 								"selection": true,
 								"status": -1,
-								"syntax": "css"
+								"syntax": "php"
 							},
 							"incomplete_sync": null,
+							"is_remote": true,
 							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/CSS/CSS.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"synced": true,
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tmp_dir": "/var/folders/x4/gt1sjct51f58f6yfn86f7zfm0000gn/T/sublime-sftp-browse-1479504964/jonty/",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 45022.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 4,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "css/main.scss",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 13463,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								4054,
-								4054
-							]
-						],
-						"settings":
-						{
-							"WordCount":
-							{
-								"changes": 1,
-								"count": 12,
-								"modified": true,
-								"selection": true,
-								"status": -1,
-								"syntax": "css"
-							},
-							"_anf_new": "",
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/CSS/CSS.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 2714.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 5423,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								5400,
-								5400
-							]
-						],
-						"settings":
-						{
-							"WordCount":
-							{
-								"changes": 32,
-								"count": 0,
-								"modified": false,
-								"selection": false,
-								"status": -1,
-								"syntax": "plain text"
-							},
-							"default_dir": "/Users/jonty/Sites/capitalcinteriors",
-							"incomplete_sync": null,
-							"syntax": "Packages/HTML/HTML.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1122.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 6,
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "js/general.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 13090,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								10288,
-								10288
-							]
-						],
-						"settings":
-						{
-							"WordCount":
-							{
-								"changes": -1,
-								"modified": true,
-								"selection": true,
-								"status": -1,
-								"syntax": "javascript"
-							},
-							"_anf_new": "",
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 4104.0,
+						"translation.y": 3.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
-					"file": "js/mobile.js",
+					"buffer": 2,
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1,
+						"buffer_size": 182,
 						"regions":
 						{
 						},
@@ -1429,24 +1280,24 @@
 						[
 							[
 								0,
-								0
+								182
 							]
 						],
 						"settings":
 						{
 							"WordCount":
 							{
-								"changes": -1,
-								"modified": true,
-								"selection": true,
+								"changes": 103,
+								"count": 15,
+								"modified": false,
+								"selection": false,
 								"status": -1,
-								"syntax": "javascript"
+								"syntax": "plain text"
 							},
-							"_anf_new": "",
+							"auto_name": "Incoming Mail Server:",
+							"default_dir": "/Users/jonty/Sites/capitalcinteriors",
 							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -1456,85 +1307,44 @@
 					"type": "text"
 				},
 				{
-					"buffer": 6,
-					"file": "js/agency.js",
+					"buffer": 3,
+					"file": "/Users/jonty/Desktop/dash/bbcrd/client_manifest-events.mpd",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1252,
+						"buffer_size": 5308,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								537,
-								537
+								2528,
+								2528
 							]
 						],
 						"settings":
 						{
 							"WordCount":
 							{
-								"changes": -1,
-								"modified": true,
-								"selection": true,
+								"changes": 0,
+								"count": 76,
+								"modified": false,
+								"selection": false,
 								"status": -1,
-								"syntax": "javascript"
+								"syntax": "plain text"
 							},
 							"incomplete_sync": null,
 							"remote_loading": false,
 							"synced": false,
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/XML/XML.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 89.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
-					"type": "text"
-				},
-				{
-					"buffer": 7,
-					"file": "css/agency.css",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 16446,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6567,
-								6567
-							]
-						],
-						"settings":
-						{
-							"WordCount":
-							{
-								"changes": -1,
-								"modified": true,
-								"selection": true,
-								"status": -1,
-								"syntax": "css"
-							},
-							"incomplete_sync": null,
-							"remote_loading": false,
-							"synced": false,
-							"syntax": "Packages/CSS/CSS.sublime-syntax",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 4488.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 5,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -1597,16 +1407,36 @@
 		"selected_items":
 		[
 			[
+				"index",
+				"index.php"
+			],
+			[
+				"admin.js",
+				"admin/admin.js"
+			],
+			[
+				"admin",
+				"css/admin.scss"
+			],
+			[
+				"js/gen",
+				"js/general.js"
+			],
+			[
+				"agency",
+				"css/agency.css"
+			],
+			[
+				"grunt",
+				"Gruntfile.js"
+			],
+			[
 				"cssboot",
 				"vendor/bootstrap/css/bootstrap.css"
 			],
 			[
 				"css/boot",
 				"vendor/bootstrap/css/bootstrap.css"
-			],
-			[
-				"index",
-				"index.html"
 			],
 			[
 				"js/",
@@ -2087,26 +1917,6 @@
 			[
 				"invoicedi",
 				"scripts/invoicePDF.action.php"
-			],
-			[
-				"modal",
-				"js/modal-ajax.js"
-			],
-			[
-				"invoicepdf",
-				"scripts/invoicePDF.action.php"
-			],
-			[
-				"blankmod",
-				"blankModal.php"
-			],
-			[
-				"js/invoi",
-				"js/invoiceEdit.js"
-			],
-			[
-				"issue",
-				"invoices/issueModal.php"
 			]
 		],
 		"width": 0.0

@@ -1,4 +1,25 @@
 <?php
+function sanitize_output($buffer) {
+
+    $search = array(
+        '/\>[^\S ]+/s',  // strip whitespaces after tags, except space
+        '/[^\S ]+\</s',  // strip whitespaces before tags, except space
+        '/(\s)+/s'       // shorten multiple whitespace sequences
+    );
+
+    $replace = array(
+        '>',
+        '<',
+        '\\1'
+    );
+
+    $buffer = preg_replace($search, $replace, $buffer);
+
+    return $buffer;
+}
+
+ob_start("sanitize_output");
+header( 'Cache-Control: max-age=604800' );
 
 if(isset($_GET['message'])){
  
@@ -97,24 +118,20 @@ if(isset($_GET['url'])) {
     <meta name="description" content="A professional design, architecture and real estate project management firm with a personal touch. Based in NYC and lead by principal Juan Carretero, we have a decade of experience working in many countries and cultures, and have built a deep appreciation for local craftsmanship and tradition.">
     <meta name="author" content="Juan Carretero">
     <link rel="shortcut icon" href="img/favicon.ico" />
-    <meta name="google-site-verification" content="wiIhXckL6Fb_ikH3t97vOMWQ8-cevhhld7yQsVJq0xE" />
+    <meta http-equiv="cache-control" content="public">
 
     <title>capitalcinteriors.com</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-
-    <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <style>
+        <?php include("vendor/bootstrap/css/bootstrap.min.css"); ?>
+    </style>
 
     <!-- Theme CSS -->
-    <link href="css/agency.css" rel="stylesheet">
-    <link href="css/production.css" rel="stylesheet">
+    <style>
+        <?php include("css/agency.css"); ?>
+        <?php include("css/production.css"); ?>
+    </style>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -123,7 +140,6 @@ if(isset($_GET['url'])) {
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script src='https://www.google.com/recaptcha/api.js'></script>
 
 </head>
 
@@ -418,7 +434,7 @@ if(isset($_GET['url'])) {
     </section>
 
 <?php
-    $instagram = file_get_contents('https://www.instagram.com/juanjocarr/');
+    $instagram = file_get_contents("https://www.instagram.com/juan.j.carretero/");
     $instagramJSON = get_string_between($instagram, 'window._sharedData = ', ';</script>');
     $instagramArray = json_decode($instagramJSON,true);
     $instagramMedia = $instagramArray['entry_data']['ProfilePage'][0]['user']['media']['nodes'];
@@ -428,7 +444,7 @@ if(isset($_GET['url'])) {
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading"><i class="fa fa-instagram"></i>&nbsp;juanjocarr</h2>
+                    <h2 class="section-heading"><i class="fa fa-instagram"></i>&nbsp;juan.j.carretero</h2>
                 </div>
             </div>
             <div class="row">
@@ -473,7 +489,6 @@ if(isset($_GET['url'])) {
             </div>
         </div>
     </footer>
-
 
 
 
@@ -643,20 +658,27 @@ if(isset($_GET['url'])) {
     </div>
     <?php endforeach; ?>
 
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
     <!-- jQuery -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     <!-- Plugin JavaScript -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="plugins/jquery.easing.min.js"></script>
     <!-- ScrollReveal -->
     <script src="https://cdn.jsdelivr.net/scrollreveal.js/3.3.1/scrollreveal.min.js"></script>
     <!-- mousewheel -->
     <script type='text/javascript' src='plugins/mousewheel/jquery.mousewheel.min.js'></script>
     <!-- scrollup -->
     <script type='text/javascript' src='plugins/scrollup/src/jquery.scrollUp.js'></script>
-    <!-- Pinterest -->
+    <!-- Recaptcha -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 
     <script src="js/build/production.min.js"></script>
 
