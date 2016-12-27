@@ -16,7 +16,11 @@ $(function () {
 	// Load modals via ajax
 	$.get( "modals.php", function( data ) {
 		$( "#modals-wrapper" ).html( data );
-		console.log( data );
+	});
+
+	// Load instagram via ajax
+	$.get( "instagram.php", function( data ) {
+		$( "#instagram .ajax" ).html( data );
 	});
 
 	$.scrollUp({topDistance: '1000'});
