@@ -8,8 +8,8 @@ if( !isset($projects) || !isset($press) ){
     include("../../capitalcinteriors_password.php");
     $dbname = "ocassioh_capitalcinteriors";
 
-    $dbuser = "root";
-    $dbpass = "";
+    // $dbuser = "root";
+    // $dbpass = "";
 
     $db = new mysqli($host, $dbuser, $dbpass, $dbname) or die(mysql_error());
 
