@@ -18,7 +18,7 @@ function sanitize_output($buffer) {
     return $buffer;
 }
 
-// ob_start("sanitize_output");
+ob_start("sanitize_output");
 header( 'Cache-Control: max-age=604800' );
 
 if(isset($_GET['message'])){
