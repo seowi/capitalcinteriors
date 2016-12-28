@@ -110,6 +110,14 @@ $(function () {
     // itemHeight = itemWidth * (3/5);
     // $("#projects .portfolio-item .portfolio-link").height(itemHeight);
 
+	function loadModals() {
+		if($(".project.modal").length == 0 ){
+			// Load modals via ajax
+			$.get( "modals.php", function( data ) {
+				$( "#modals-wrapper" ).html( data );
+			});
+		}
+	}
 
 	// MAINTAIN PORTFOLIO ASPECT RATIO
 	function resizePortfolioImages(modalID){
@@ -185,15 +193,12 @@ $(function () {
 			$('body').css("opacity",1);
 		}, 400);
 	});
+
 	$(document).on("mouseover", "#press a, #projects a" , function() {
-		if($(".project.modal").length == 0 ){
-			// Load modals via ajax
-			$.get( "modals.php", function( data ) {
-				$( "#modals-wrapper" ).html( data );
-			});
-		}
+		loadModals();
 	});
 	$(document).on("click", "#press a" , function() {
+		loadModals();
 		modalID = $(this).attr("href");
 		resizePortfolioImages(modalID);
 		title = $(this).data("title");
@@ -201,6 +206,7 @@ $(function () {
 		ChangeUrl('Capital C Interiors - ' + title,url);
 	});
 	$(document).on("click", "#projects a" , function() {
+		loadModals();
 		modalID = $(this).attr("href");
 		resizePortfolioImages(modalID);
 		title = $(this).data("title");
