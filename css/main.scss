@@ -14,6 +14,7 @@ body{
 	transition-timing-function: ease;
 }
 
+
 .form-control{
 	border-radius: 0;
 }
@@ -153,10 +154,22 @@ section{
 	padding: 50px 0;
 }
 
-#quote{
+#process{
+	@media (max-width: 990px) {
+		.text-justify{
+			text-align: center;
+		}
+		.col-md-10{
+			padding-top: 20px;
+		}
+	}
+}
+
+#quote,
+#reviews{
 	text-align: center;
 	.quote{
-		color: #777777;
+		color: #ffffff;
 		font-size: 20px;
 		font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
 		text-transform: none;
@@ -166,7 +179,24 @@ section{
 		margin-bottom: 10px;
 	}
 	.author{
+		color: #cccccc;
 		font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+	}
+}
+
+#reviews{
+	text-align: left;
+	h2{
+		color: white;
+	}
+	.quote{
+		font-size: 16px;
+		hr{
+			display: none;
+		}
+	}
+	.author{
+		text-align: right;
 	}
 }
 

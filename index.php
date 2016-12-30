@@ -60,8 +60,8 @@ $dbuser ="ocassioh_cci";
 include("../../capitalcinteriors_password.php");
 $dbname = "ocassioh_capitalcinteriors";
 
-// $dbuser = "root";
-// $dbpass = "";
+$dbuser = "root";
+$dbpass = "";
 
 $db = new mysqli($host, $dbuser, $dbpass, $dbname) or die(mysql_error());
 
@@ -166,7 +166,13 @@ if(isset($_GET['url'])) {
                         <a class="page-scroll" href="#projects">Projects</a>
                     </li>
                     <li>
+                        <a class="page-scroll" href="#process">Process</a>
+                    </li>
+                    <li>
                         <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#reviews">Reviews</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#instagram"><i class="fa fa-instagram"></i></a>
@@ -350,7 +356,105 @@ if(isset($_GET['url'])) {
         </div>
     </section>
 
-    <section id="quote">
+    <section id="process">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Our Process</h2>
+                    <h3 class="section-subheading text-center text-muted" style="margin-bottom: 20px;">
+                        <div style="margin: auto; max-width: 75%;">
+                            We have been around the block a few times so we are well equipped to foresee and control  the issues that inevitably arise through all phases of design and construction. Our aim is to make this process worry-free for you, under budget and as fast as possible. Planning is key.
+                        </div>
+                    </h3>
+                </div>
+            </div>
+            <div style="padding: 0 50px;">
+                <hr>
+                <div class="row">
+                    <div class="col-md-2 text-center">
+                        <i class="fa fa-5x fa-comments-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-md-10 text-justify">
+                        <b>FIRST THINGS FIRST...</b><br/>
+                        We begin with the basics. Communication is key.  We must identify your needs, even those you didn’t know you have. Everything you love and more importantly maybe,  everything you don’t. What is your life like and how can we make it better?. We need to learn <b>what is really meaningful to you</b>, what makes you happy and what is the image you want to project, so we can fully understand your perfect world.
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-2 text-center">
+                        <i class="fa fa-5x fa-paint-brush" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-md-10 text-justify">
+                        <b>CONCEPT PROPOSAL...</b><br/>
+                        We present our initial schematic designs to <b>help you visualize your new interiors</b>. We show you our concept boards with proposed furnishings, colors, millwork, cabinetry, etc. 
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-2 text-center">
+                        <i class="fa fa-5x fa-clipboard" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-md-10 text-justify">
+                        <b>DOCS...</b><br/>
+                        We proceed with the construction documents to inform craftspeople, trades people and contractors of how exactly to build out your new rooms. Remember our background is in architecture so <b>we understand you and the building process</b>.
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-2 text-center">
+                        <i class="fa fa-5x fa-check-square-o" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-md-10 text-justify">
+                        <b>APPROVALS...</b><br/>
+                        We finalize all the drawings, all the layouts, all the custom finishes and all the details and we show you the final proposal <b>for your approval</b>. 
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-2 text-center">
+                        <i class="fa fa-5x fa-flip-horizontal fa-truck " aria-hidden="true"></i>
+                    </div>
+                    <div class="col-md-10 text-justify">
+                        <b>PROCUREMENT...</b><br/>
+                        We proceed to purchase, order, ship, receive, inspect and store all your furnishings until Installation Day. 
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-2 text-center">
+                        <i class="fa fa-5x fa-wrench" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-md-10 text-justify">
+                        <b>CONSTRUCTION &amp; PROJECT MANAGEMENT...</b><br/>
+                        But this is not only decorating, at the same time <b>we could also manage your project on site</b> – think electrical, plumbing, lighting, AV, landscaping, cabinetry, millwork, wallpapers, curtains, rugs, hardware, painters and every other imaginable trade. From the ground up we constantly update your “punch list,” ensuring that everything is being done to the higher standard. In the meantime we keep you in the loop - in as much as you like - by sending you pictures of the process. 
+
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-2 text-center">
+                        <i class="fa fa-5x fa-home" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-md-10 text-justify">
+                        <b>INSTALLATION...</b><br/>
+                        Nearly there! On Installation day, we show with all your beautiful furnishings and we make sure everything is perfectly placed where we have carefully planned to.  We are experts in scale, proportions, textures, comfort, durability, suitability, color coordination, art placement and decorating. 
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-2 text-center">
+                        <i class="fa fa-5x fa-key" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-md-10 text-justify">
+                        <b>THE BIG REVEAL...</b><br/>
+                        Your new space is ready for you to enjoy and share with your family and friends and <b>it is our greatest wish that you build wonderful new memories with them in your beautiful new perfect world</b>. 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quote" class="bg-light-gray">
         <div class="container">
             <div class="quote">
                 "A space that meets your personal goals of comfort, aesthetics and personality is what we strive for. Our vision should be in harmony with your own style and sensibility."
@@ -360,6 +464,8 @@ if(isset($_GET['url'])) {
             </div>
         </div>
     </section>
+
+
 
     <!-- Contact Section -->
     <section id="contact">
@@ -420,6 +526,57 @@ if(isset($_GET['url'])) {
                         <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&key=AIzaSyBhyyaFxrsQUkZPKCCoYGUn0j3AMEU0cbs"></script><div style="overflow:hidden;height:400px;width:100%;"><div id="gmap_canvas" style="height:400px;width:100%;"><style>#gmap_canvas img{max-width:none!important;background:none!important}</style><a class="google-map-code" href="" id="get-map-data"></a></div></div><script type="text/javascript"> function init_map(){var myOptions = {zoom:14,center:new google.maps.LatLng(40.7287089,-73.98941509999997),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById("gmap_canvas"), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(40.7287089, -73.98941509999997)});infowindow = new google.maps.InfoWindow({content:"<b>Capital C Interiors</b><br/>23 East 7th St<br/>Ground Floor<br/>New York, NY<br/>10003" });google.maps.event.addListener(marker, "click", function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="bg-light-gray">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Customer Reviews</h2>
+                </div>
+            </div>
+            <hr style="margin: 0 25% 20px">
+            <div>
+                <div class="quote">
+                    "It's not just that Juan Carretero is clearly an outstanding talent, I can also vouch for his amazing efficiency and decency. If you want a fabulous job done in your home that will also be executed smoothly without unexpected headaches or drama, I would absolutely recommend Capital C. I could not have been more satisfied with the whole process or more thrilled with the outcome."
+                    <div class="author">
+                        David L.
+                    </div>
+                </div>
+                <div class="quote" style="display: none;">
+                    <hr>
+                     "I've had great experiences working with Capital C Interiors on several occasions. Outstanding creativity, design drive and process, always looking after the client's specific needs."
+                    <div class="author">
+                        Fernando D.
+                    </div>
+                </div>
+                <div class="quote" style="display: none;">
+                    <hr>
+                     "Did an outstanding job designing the renovation of two homes. Juan is a consummate professional. Highly recommended!"
+                    <div class="author">
+                        Chris C.
+                    </div>
+                </div>
+                <div class="quote" style="display: none;">
+                    <hr>
+                     "I have worked with Juan three times. He is amazing! Great design sense. Wonderfully adventurous and skilled with colors. And finds economical solutions. He is also a delight to work with."
+                    <div class="author">
+                        Alex O.
+                    </div>
+                </div>
+                <div class="quote" style="display: none;">
+                    <hr>
+                     "I worked with Juan for a year and a half on a two-story new concept restaurant in a complex, 100-year old historic building, which led to many accessory projects for the accomplished, multi-national owners. His innovative approach to design and collaborative attitude enabled seamless interaction with multiple architects, owner representatives and demanding clientele. All budgets, deadlines and expectations were met or exceeded, and the end products brought a new and fresh sophistication to the downtown redevelopment. Many thanks. Would highly recommend."
+                    <div class="author">
+                        Mark B.
+                    </div>
+                </div>
+            </div>
+            <div style="margin: 0 25% -10px; font-size: 20px; text-align: center;">
+                <hr>
+                <a href="#">Read more...</a>
             </div>
         </div>
     </section>

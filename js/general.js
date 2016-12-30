@@ -44,6 +44,23 @@ $(function () {
 	}
 	setInterval(function(){ progressHeaderPhoto() }, 7000);
 
+	// Reviews
+	function progressReviews(){
+		index = $("#reviews .quote:visible").index();
+		count = $("#reviews .quote").length;
+		$("#reviews .quote").eq(index).fadeOut( 400, function() {
+			if(index==count-1) index = -1;
+			$("#reviews .quote").eq(index+1).fadeIn();
+		});
+	}
+	reviewInterval = setInterval(function(){ progressReviews() }, 5500);
+	$(document).on("click", "#reviews a" , function() {
+		clearInterval(reviewInterval);
+		$("#reviews .quote hr").fadeIn();
+		$("#reviews .quote").fadeIn();
+		$(this).fadeOut();
+		return false;
+	});
 
 	if(isMobile && window.screen.height<=768){
 	  	var windowHeight = window.screen.height;
@@ -94,8 +111,16 @@ $(function () {
 		    		ipHeight = $("#projects a.portfolio-link:first").height();
 			    	$("#in-progress a").height(ipHeight);
 			    	$("#in-progress-img").css("margin-top",(-ipHeight/2)+"px");
-		    	}, 1000);
+		    	}, 2000);
 	    	}
+    	// Add facebook
+    		setTimeout(function(){ 
+    			$("iframe[src*='facebook']").parent().remove();
+	    		fullHeight = $("#projects div.portfolio-item:first").height();
+	    		ipWidth = $("#projects a.portfolio-link:first").width();
+		    	facebook = "<div class='col-md-4 col-sm-6 portfolio-item'> <iframe src='https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fcapitalcinteriors%2F&tabs=timeline&width=" + ipWidth + "&height=" + fullHeight + "&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=454088521298355' width='" + ipWidth + "' height='" + fullHeight + "' style='border:none;overflow:hidden' scrolling='no' frameborder='0' allowTransparency='true'></iframe> </div>";
+		    	$("#in-progress").after(facebook);
+	    	}, 2000);
 	}
 	resizeAdjustments();
 	$( window ).resize(function() {
@@ -349,7 +374,9 @@ $(function () {
 	    sr.reveal("header .intro-heading", {origin: 'left'});
 	    sr.reveal("header .intro-lead-in", {origin: 'left', delay: 100});
 	    sr.reveal("#headerButton", {origin: 'left', delay: 200});
-	    sr.reveal('#quote .container', {delay: 0, duration: 1000});
+	    sr.reveal('#process .col-md-2', {origin: 'left', delay: 200, duration: 1000});
+	    sr.reveal('#process .col-md-10', {origin: 'right', delay: 200, duration: 1000});
+	    // sr.reveal('#quote .container', {delay: 0, duration: 1000});
 	    // sr.reveal('#projects .portfolio-item');
 
     // HORIZONTAL SCROLL WHEN WE REACH PRESS 
