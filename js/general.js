@@ -113,19 +113,21 @@ $(function () {
 			    	$("#in-progress-img").css("margin-top",(-ipHeight/2)+"px");
 		    	}, 2000);
 	    	}
-    	// Add facebook
-    		setTimeout(function(){ 
-    			$("iframe[src*='facebook']").parent().remove();
-	    		fullHeight = $("#projects div.portfolio-item:first").height();
-	    		ipWidth = $("#projects a.portfolio-link:first").width();
-		    	facebook = "<div class='col-md-4 col-sm-6 portfolio-item'> <iframe src='https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fcapitalcinteriors%2F&tabs=timeline&width=" + ipWidth + "&height=" + fullHeight + "&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=454088521298355' width='" + ipWidth + "' height='" + fullHeight + "' style='border:none;overflow:hidden' scrolling='no' frameborder='0' allowTransparency='true'></iframe> </div>";
-		    	$("#in-progress").after(facebook);
-	    	}, 2000);
 	}
 	resizeAdjustments();
 	$( window ).resize(function() {
 		resizeAdjustments();
 	});
+
+	
+	// Add facebook
+	setTimeout(function(){ 
+		$("iframe[src*='facebook']").parent().remove();
+		fullHeight = $("#projects div.portfolio-item:first").height();
+		ipWidth = $("#projects a.portfolio-link:first").width();
+    	facebook = "<div class='col-md-4 col-sm-6 portfolio-item'> <iframe src='https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fcapitalcinteriors%2F&tabs=timeline&width=" + ipWidth + "&height=" + fullHeight + "&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId=454088521298355' width='" + ipWidth + "' height='" + fullHeight + "' style='border:none;overflow:hidden' scrolling='no' frameborder='0' allowTransparency='true'></iframe> </div>";
+    	$("#in-progress").after(facebook);
+	}, 2000);
 
 
     $("body").css('visibility', 'visible');
