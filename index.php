@@ -110,9 +110,21 @@ if(isset($_GET['url'])) {
     <meta name="author" content="Juan Carretero">
     <link rel="shortcut icon" href="img/favicon.ico" />
     <meta http-equiv="cache-control" content="public">
-
-    <title>capitalcinteriors.com</title>
-
+    <title>Juan Carretero - New York Interior Design | NYC Interior Design | Affordable Interior Design</title>
+    <meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Juan Carretero - New York Interior Design | Affordable Interior Design" />
+	<meta property="og:description" content="A professional design, architecture and real estate project management firm with a personal touch. Based in NYC and lead by principal Juan Carretero, we have a decade of experience working in many countries and cultures, and have built a deep appreciation for local craftsmanship and tradition." />
+	<meta property="og:url" content="http://capitalcinteriors.com" />
+	<meta property="og:site_name" content="Juan Carretero - New York Interior Design" />
+	<meta property="og:image" content="http://capitalcinteriors.com/img/projects/od7gg3-p.jpg" />
+	<meta property="og:image:width" content="810" />
+	<meta property="og:image:height" content="486" />
+    <meta name="twitter:title" content="Juan Carretero - New York Interior Design | Affordable Interior Design"/>
+    <meta name="twitter:description" content="A professional design, architecture and real estate project management firm with a personal touch. Based in NYC and lead by principal Juan Carretero, we have a decade of experience working in many countries and cultures, and have built a deep appreciation for local craftsmanship and tradition."/>	
+	<meta name="twitter:url" content="http://capitalcinteriors.com/"/>
+    <meta name="twitter:image" content="http://capitalcinteriors.com/img/projects/od7gg3-p.jpg">
+	<meta name="twitter:card" content="summary"/>
     <!-- Bootstrap Core CSS -->
     <style>
         <?php include("vendor/bootstrap/css/bootstrap.min.css"); ?>
