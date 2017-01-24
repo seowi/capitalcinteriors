@@ -125,6 +125,7 @@ if(isset($_GET['url'])) {
 	<meta name="twitter:url" content="http://capitalcinteriors.com/"/>
     <meta name="twitter:image" content="http://capitalcinteriors.com/img/projects/od7gg3-p.jpg">
 	<meta name="twitter:card" content="summary"/>
+	<meta name="google-site-verification" content="Qq6NbIQa75ZpP0S8q3f4n1kf90wyOFN3R2nlY7IU5uM" />
     <!-- Bootstrap Core CSS -->
     <style>
         <?php include("vendor/bootstrap/css/bootstrap.min.css"); ?>
