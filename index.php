@@ -126,6 +126,7 @@ if(isset($_GET['url'])) {
     <meta name="twitter:image" content="http://capitalcinteriors.com/img/projects/od7gg3-p.jpg">
 	<meta name="twitter:card" content="summary"/>
 	<meta name="google-site-verification" content="Qq6NbIQa75ZpP0S8q3f4n1kf90wyOFN3R2nlY7IU5uM" />
+    <meta name="google-site-verification" content="Qq6NbIQa75ZpP0S8q3f4n1kf90wyOFN3R2nlY7IU5uM" />
     <!-- Bootstrap Core CSS -->
     <style>
         <?php include("vendor/bootstrap/css/bootstrap.min.css"); ?>
@@ -143,8 +144,16 @@ if(isset($_GET['url'])) {
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
+  ga('create', 'UA-97199951-1', 'auto');
+  ga('send', 'pageview');
 
+    </script>
 </head>
 
 <body id="page-top" class="index" data-root="<?=$rootURI?>">
